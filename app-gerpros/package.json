@@ -23,6 +23,6 @@
     "globals": "^15.9.0",
     "prettier": "^3.3.3",
     "vite-plugin-vuetify": "^2.0.4",
-    "vuetify": "npm:@vuetify/nightly@3.3.0-master.2023-05-21"
+    "vuetify": "^3.7.0"
   }
 }
