@@ -1,29 +1,13 @@
 <template>
   <div>
-    <div class="hello">Hello Nuxt :D {{ version }}!</div>
+    <div class="hello">Hello Nuxt :D {{ version }} !</div>
     <header>
       <nav>
         <ul>
-          <li>
-            <NuxtLink to="/products">產品項目</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/products/1">產品細項 1(test)</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/topic">主題專欄</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/contact">聯絡方式</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/FAQ">常見問題</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/aboutUs">關於我們</NuxtLink>
-          </li>
-          <li>
-            <NuxtLink to="/services">服務項目</NuxtLink>
+          <li v-for="(page, index) in pages" :key="index">
+            <nuxt-link :key="page.label" :to="page.to">
+              {{ page.label }}
+            </nuxt-link>
           </li>
         </ul>
       </nav>
@@ -31,7 +15,22 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+const pages = [
+  { label: '產品項目', to: '/products' },
+  {
+    label: '產品細項 1(test)',
+    to: '/products/1',
+  },
+  { label: '主題專欄', to: '/topic' },
+  { label: '聯絡方式', to: '/contact' },
+  { label: '常見問題', to: '/FAQ' },
+  { label: '關於我們', to: '/aboutUs' },
+  { label: '服務項目', to: '/services' },
+];
+
+const version = '2.0';
+</script>
 
 <style scoped>
 .hello {
