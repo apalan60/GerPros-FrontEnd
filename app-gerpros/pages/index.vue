@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="hello">Hello Nuxt :D {{ version }} !</div>
+    <h1 class="text-3xl font-bold underline">Hello world!</h1>
     <header>
       <nav>
         <ul>
