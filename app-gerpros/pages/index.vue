@@ -1,22 +1,18 @@
-<template>
-  <div>
-    <h1 class="text-3xl font-bold underline">Hello world!</h1>
-    <header>
-      <nav>
-        <ul>
-          <li v-for="(page, index) in pages" :key="index">
-            <nuxt-link :key="page.label" :to="page.to">
-              {{ page.label }}
-            </nuxt-link>
-          </li>
-        </ul>
-      </nav>
-    </header>
-  </div>
+<template>  
+      <UHeader :links="links">
+      <template #logo>
+        <Logo class="w-auto h-6" />
+      </template>
+      <UHorizontalNavigation :links="links" class="border-b border-gray-200 dark:border-gray-800 justify-center" />
+      <UCommandPalette
+        :empty-state= null
+      />
+      <ColorScheme><USelect v-model="$colorMode.preference" :options="['system', 'light', 'dark']" /></ColorScheme>
+    </UHeader>
 </template>
 
 <script setup>
-const pages = [
+const links = [
   { label: '產品項目', to: '/products' },
   {
     label: '產品細項 1(test)',
