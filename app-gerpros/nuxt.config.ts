@@ -5,5 +5,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-08-22',
   eslint: {
     checker: true,
+    config: {
+      stylistic: true,
+    },
   },
 });

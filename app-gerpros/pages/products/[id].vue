@@ -5,7 +5,7 @@
 </template>
 
 <script setup>
-//access route detail
+// access route detail
 const route = useRoute();
 console.log('current id:' + route.params.id);
 </script>

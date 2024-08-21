@@ -1,14 +1,19 @@
-<template>  
-      <UHeader :links="links">
-      <template #logo>
-        <Logo class="w-auto h-6" />
-      </template>
-      <UHorizontalNavigation :links="links" class="border-b border-gray-200 dark:border-gray-800 justify-center" />
-      <UCommandPalette
-        :empty-state= null
-      />
-      <ColorScheme><USelect v-model="$colorMode.preference" :options="['system', 'light', 'dark']" /></ColorScheme>
-    </UHeader>
+<template>
+  <UHeader :links="links">
+    <template #logo>
+      <Logo class="w-auto h-6" />
+    </template>
+    <UHorizontalNavigation
+      :links="links"
+      class="border-b border-gray-200 dark:border-gray-800 justify-center"
+    />
+    <UCommandPalette :empty-state="null" />
+    <ColorScheme
+      ><USelect
+        v-model="$colorMode.preference"
+        :options="['system', 'light', 'dark']"
+    /></ColorScheme>
+  </UHeader>
 </template>
 
 <script setup>
