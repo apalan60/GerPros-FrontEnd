@@ -1,15 +1,11 @@
 <template>
   <div>
-    <UHeader :links="links">
-      <template #logo>
-        <Logo class="w-auto h-6" />
-      </template>
-      <UHorizontalNavigation
-        :links="links"
-        class="border-b border-gray-200 dark:border-gray-800 justify-center"
-      />
-      <UCommandPalette :empty-state="null" />
-    </UHeader>
+    <UHeader :links="links" class="justify-between items-center border-b border-gray-200 dark:border-gray-800 grid">
+      
+  <UHorizontalNavigation :links="links" class="col-start-4 col-end-4" />
+  <UCommandPalette :empty-state="null" class="col-end-7 col-span-2" />
+</UHeader >
+
     <div class="container h-4/5">
       <slot />
     </div>
