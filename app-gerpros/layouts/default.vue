@@ -2,7 +2,7 @@
   <div>
     <UHeader
       :links="links"
-      class="justify-between items-center border-b border-gray-200 dark:border-gray-800 grid"
+      class=" sticky top-0 z-50 justify-between items-center border-b border-gray-200 dark:border-gray-800 grid bg-white "
     >
       <ULink
         to="/"
@@ -27,11 +27,11 @@
     <div class="min-h-screen">
       <slot />
     </div>
-    <footer class="bg-gray-200 py-2 text-center">
+    <Ufooter class="bg-gray-200 py-2 text-center">
       <p class="text-gray-600">
         Copyright © 2024 Gerpros.com.tw — 保留所有權利。
       </p>
-    </footer>
+    </Ufooter>
   </div>
 </template>
 

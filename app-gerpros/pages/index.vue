@@ -1,7 +1,6 @@
 <template>
   <div>
     <div class="todo portfolio w-screen= min-h-5 ">
-      <UContainer>
       <UCarousel 
       ref="carouselRef"
       v-slot="{ item }" 
@@ -10,7 +9,6 @@
       class=" rounded-lg overflow-hidden">
     <img :src="item" class="w-full h-full" draggable="false">
   </UCarousel>
-</UContainer>
     </div>
     <div class="todo service w-screen min-h-5 bg-slate-200">
       服務的內容幫助過多少客戶
