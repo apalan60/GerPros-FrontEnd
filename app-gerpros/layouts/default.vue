@@ -2,7 +2,7 @@
   <div>
     <UHeader
       :links="links"
-      class=" sticky top-0 z-50 justify-between items-center border-b border-gray-200 dark:border-gray-800 grid bg-white "
+      class="sticky top-0 z-50 justify-between items-center border-b border-gray-200 dark:border-gray-800 grid bg-white"
     >
       <ULink
         to="/"

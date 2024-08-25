@@ -1,10 +1,10 @@
 <template>
   <div>
     <div class="todo service w-screen min-h-5 bg-slate-200">
-    <Carousel/>
+      <Carousel />
     </div>
     <div class="todo service w-screen min-h-5 bg-slate-200">
-      test
+      <Testimonials />
     </div>
     <div class="todo comment w-screen min-h-5 bg-slate-200">
       客戶正面回饋的評論
@@ -17,6 +17,7 @@
 </template>
 
 <script setup>
+import Testimonials from '~/components/Testimonial.vue';
 </script>
 
 <style scoped></style>
