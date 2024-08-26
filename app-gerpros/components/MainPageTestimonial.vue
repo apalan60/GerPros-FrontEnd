@@ -29,6 +29,8 @@
   </section>
 </template>
 
+<!-- todo reference https://go.demo.nextjstemplates.com/ -->
+
 <script>
 export default {
   data() {
@@ -47,7 +49,7 @@ export default {
           image: 'path/to/image2.jpg',
           quote:
             'Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation...',
-        },                                          
+        },
       ],
     };
   },

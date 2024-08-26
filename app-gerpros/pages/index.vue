@@ -8,12 +8,14 @@
       </swiper-container>
     </div>
     <div class="todo service w-screen min-h-5 bg-slate-200">
-      <Testimonials />
+      <Services />
     </div>
     <div class="todo comment w-screen min-h-5 bg-slate-200">
-      客戶正面回饋的評論
+      <Testimonials />
     </div>
-    <div class="todo production w-screen min-h-5 bg-slate-400">主打的商品</div>
+    <div class="todo production w-screen min-h-5 bg-slate-400">
+      <Products />
+    </div>
     <div class="todo contact w-screen min-h-5 bg-slate-400">
       強調是總代理，聯繫方式，經銷地方
     </div>
@@ -22,10 +24,11 @@
 
 <script setup>
 import { register } from 'swiper/element/bundle';
-import Testimonials from '~/components/Testimonial.vue';
+import Testimonials from '~/components/MainPageTestimonial.vue';
+import Services from '~/components/MainPageService.vue';
+import Products from '~/components/MainPageProduct.vue';
 
 register();
-import Testimonials from '~/components/MainPageTestimonial.vue';
 </script>
 
 <style scoped>
