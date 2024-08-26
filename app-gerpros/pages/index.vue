@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-import Testimonials from '~/components/Testimonial.vue';
+import Testimonials from '~/components/MainPageTestimonial.vue';
 </script>
 
 <style scoped></style>

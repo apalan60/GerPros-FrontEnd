@@ -47,7 +47,7 @@ export default {
           image: 'path/to/image2.jpg',
           quote:
             'Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation...',
-        },
+        },                                          
       ],
     };
   },
