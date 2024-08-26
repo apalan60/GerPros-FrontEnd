@@ -19,5 +19,8 @@
     "nuxt": "^3.12.4",
     "prettier": "^3.3.3",
     "vite-plugin-eslint2": "^4.4.0"
+  },
+  "dependencies": {
+    "swiper": "^11.1.10"
   }
 }
