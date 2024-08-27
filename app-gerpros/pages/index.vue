@@ -16,8 +16,8 @@
     <div class="todo production w-screen min-h-5 bg-slate-400">
       <Products />
     </div>
-    <div class="todo contact w-screen min-h-5 bg-slate-400">
-      強調是總代理，聯繫方式，經銷地方
+    <div class="todo contact w-screen min-h-5 bg-black pt-12">
+      <SoleAgent />
     </div>
   </div>
 </template>
@@ -27,6 +27,7 @@ import { register } from 'swiper/element/bundle';
 import Testimonials from '~/components/MainPageTestimonial.vue';
 import Services from '~/components/MainPageService.vue';
 import Products from '~/components/MainPageProduct.vue';
+import SoleAgent from '~/components/SoleAgent.vue';
 
 register();
 </script>
