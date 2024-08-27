@@ -27,11 +27,7 @@
     <div class="min-h-screen">
       <slot />
     </div>
-    <Ufooter class="bg-gray-200 py-2 text-center">
-      <p class="text-gray-600">
-        Copyright © 2024 Gerpros.com.tw — 保留所有權利。
-      </p>
-    </Ufooter>
+    <AppFooter />
   </div>
 </template>
 
