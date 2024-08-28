@@ -1,15 +1,15 @@
 <template>
-  <section class="bg-black text-white py-20">
+  <section class="bg-white text-black py-20">
     <div class="max-w-6xl mx-auto text-center">
       <h2 class="text-4xl font-bold">What our customers are saying.</h2>
-      <p class="text-lg text-gray-400 mt-4">
+      <p class="text-lg text-gray-900 mt-4">
         Proident sunt exercitation minim laborum enim laboris labore esse.
       </p>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
         <div
           v-for="testimonial in testimonials"
           :key="testimonial.name"
-          class="bg-gray-900 p-6 rounded-lg"
+          class="bg-gray-900 text-white p-6 rounded-lg"
         >
           <p class="text-lg">"{{ testimonial.quote }}"</p>
           <div class="mt-6 flex items-center">

@@ -1,5 +1,5 @@
 <template>
-  <section class="bg-black text-white py-12">
+  <section class="bg-white text-gray-900 py-12">
     <div class="container mx-auto text-center">
       <h2 class="text-4xl font-bold mb-4">Why choose our service?</h2>
       <p class="text-gray-400 mb-12">
@@ -42,7 +42,4 @@
   </section>
 </template>
 
-<script setup>
-// 引入你的 FeatureCard component
-import FeatureCard from '~/components/FeatureCard.vue';
-</script>
+<script setup></script>

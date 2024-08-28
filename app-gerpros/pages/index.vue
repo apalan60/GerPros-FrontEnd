@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="title-wrapper w-screen bg-black flex items-center justify-center"
+      class="title-wrapper w-screen bg-white flex items-center justify-center"
     >
       <swiper-container
         class="slide-container"
@@ -17,16 +17,16 @@
         <h3>打造專屬居家美學</h3>
       </div>
     </div>
-    <div class="todo service w-screen min-h-5 bg-slate-200">
-      <Services />
+    <div>
+      <MainPageService />
     </div>
-    <div class="todo comment w-screen min-h-5 bg-slate-200">
-      <Testimonials />
+    <div>
+      <MainPageTestimonial />
     </div>
-    <div class="todo production w-screen min-h-5 bg-slate-400">
-      <Products />
+    <div>
+      <MainPageProduct />
     </div>
-    <div class="todo contact w-screen min-h-5 bg-black pt-12">
+    <div>
       <SoleAgent />
     </div>
   </div>
@@ -34,10 +34,6 @@
 
 <script setup>
 import { register } from 'swiper/element/bundle';
-import Testimonials from '~/components/MainPageTestimonial.vue';
-import Services from '~/components/MainPageService.vue';
-import Products from '~/components/MainPageProduct.vue';
-import SoleAgent from '~/components/SoleAgent.vue';
 
 register();
 </script>
@@ -72,11 +68,11 @@ register();
 
 .title-text {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
   font-weight: bold;
-  z-index: 999;
+  z-index: 2;
   color: #dedede;
   mix-blend-mode: exclusion;
   text-align: center;
