@@ -17,49 +17,21 @@
           </p>
           <div class="inline-flex mt-6 space-x-3">
             <div class="flex flex-wrap space-x-4">
-              <NuxtLink
-                href="https://www.facebook.com/vuedesigner"
-                aria-label="facebook"
-                external
-                target="_blank"
-              >
-                <BaseIcon
-                  name="i-logos-facebook"
-                  class="text-2xl"
-                  width="28px"
-                />
+              <NuxtLink href="" aria-label="facebook" external target="_blank">
+                <Icon name="i-logos-facebook" class="text-2xl" width="28px" />
               </NuxtLink>
-              <NuxtLink
-                href="https://twitter.com/vuedesigner"
-                aria-label="twitter"
-                external
-                target="_blank"
-              >
-                <BaseIcon
-                  name="i-logos-twitter"
-                  class="text-2xl"
-                  width="28px"
-                />
+              <NuxtLink href="" aria-label="twitter" external target="_blank">
+                <Icon name="i-logos-twitter" class="text-2xl" width="28px" />
               </NuxtLink>
-              <NuxtLink
-                href="https://discord.gg/BYp45Nnu5T"
-                aria-label="discord"
-                external
-                target="_blank"
-              >
-                <BaseIcon
+              <NuxtLink href="" aria-label="discord" external target="_blank">
+                <Icon
                   name="i-logos-discord-icon"
                   class="text-2xl"
                   width="28px"
                 />
               </NuxtLink>
-              <NuxtLink
-                href="https://www.youtube.com/@vuedesigner"
-                aria-label="youtube"
-                external
-                target="_blank"
-              >
-                <BaseIcon
+              <NuxtLink href="" aria-label="youtube" external target="_blank">
+                <Icon
                   name="i-logos-youtube-icon"
                   class="text-2xl"
                   width="28px"
@@ -80,14 +52,14 @@
           <ul class="text-center lg:mt-2 lg:text-left">
             <li class="mb-4">
               <NuxtLink
-                to="/quick-start"
+                to=""
                 class="hover:text-primary-600 dark:text-primary-200"
                 >Phone (06)12345678</NuxtLink
               >
             </li>
             <li class="mb-4">
               <NuxtLink
-                to="/articles"
+                to="/"
                 class="hover:text-primary-600 dark:text-primary-200"
                 >Adress</NuxtLink
               >
@@ -101,50 +73,67 @@
           <div class="-mx-2 flex flex-wrap items-center lg:mt-2">
             <div class="p-2 w-1/2 sm:w-4/12">
               <div class="block hover:opacity-75 overflow-hidden rounded-xl">
-                <NuxtImg
-                  src="https://images.unsplash.com/photo-1522444195799-478538b28823?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  class="w-full"
-                />
+                <ClientOnly
+                  ><NuxtImg
+                    src="https://picsum.photos/600/800?random=1"
+                    class="w-full"
+                    sizes="(max-width: 600px) 100vw, 50vw"
+                  />
+                </ClientOnly>
               </div>
             </div>
             <div class="p-2 w-1/2 sm:w-4/12">
               <div class="block hover:opacity-75 overflow-hidden rounded-xl">
-                <NuxtImg
-                  src="https://images.unsplash.com/photo-1499916078039-922301b0eb9b?q=80&w=1480&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  class="w-full"
-                />
+                <ClientOnly
+                  ><NuxtImg
+                    src="https://picsum.photos/600/800?random=2"
+                    class="w-full"
+                    sizes="(max-width: 600px) 100vw, 50vw"
+                  />
+                </ClientOnly>
               </div>
             </div>
             <div class="p-2 w-1/2 sm:w-4/12">
               <div class="block hover:opacity-75 overflow-hidden rounded-xl">
-                <NuxtImg
-                  src="https://plus.unsplash.com/premium_photo-1676321046449-5fc72b124490?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  class="w-full"
-                />
+                <ClientOnly
+                  ><NuxtImg
+                    src="https://picsum.photos/600/800?random=3"
+                    class="w-full"
+                    sizes="(max-width: 600px) 100vw, 50vw"
+                  />
+                </ClientOnly>
               </div>
             </div>
             <div class="p-2 w-1/2 sm:w-4/12">
               <div class="block hover:opacity-75 overflow-hidden rounded-xl">
-                <NuxtImg
-                  src="https://images.unsplash.com/photo-1481277542470-605612bd2d61?q=80&w=1406&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  class="w-full"
-                />
+                <ClientOnly
+                  ><NuxtImg
+                    src="https://picsum.photos/600/800?random=4"
+                    class="w-full"
+                    sizes="(max-width: 600px) 100vw, 50vw"
+                  />
+                </ClientOnly>
               </div>
             </div>
             <div class="p-2 w-1/2 sm:w-4/12">
               <div class="block hover:opacity-75 overflow-hidden rounded-xl">
-                <NuxtImg
-                  src="https://images.unsplash.com/photo-1556020685-ae41abfc9365?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  class="w-full"
-                />
+                <ClientOnly
+                  ><NuxtImg
+                    src="https://picsum.photos/600/800?random=5"
+                    class="w-full"
+                    sizes="(max-width: 600px) 100vw, 50vw"
+                  />
+                </ClientOnly>
               </div>
             </div>
             <div class="p-2 w-1/2 sm:w-4/12">
               <div class="block hover:opacity-75 overflow-hidden rounded-xl">
-                <NuxtImg
-                  src="https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                  class="w-full"
-                />
+                <ClientOnly
+                  ><NuxtImg
+                    src="https://picsum.photos/600/800?random=6"
+                    class="w-full"
+                  />
+                </ClientOnly>
               </div>
             </div>
           </div>

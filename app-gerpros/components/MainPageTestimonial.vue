@@ -39,14 +39,14 @@ export default {
         {
           name: 'Rose Roberson',
           position: 'CEO at Company',
-          image: 'path/to/image1.jpg',
+          image: '',
           quote:
             'Nostrud tempor sunt fugiat. Dolor in sint dolore labore non occaecat adipisicing Lorem labore ullamco enim excepteur...',
         },
         {
           name: 'Chace Rodgers',
           position: 'CEO at Company',
-          image: 'path/to/image2.jpg',
+          image: '',
           quote:
             'Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation...',
         },

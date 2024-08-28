@@ -1,6 +1,6 @@
 <template>
   <div>
-    <UHeader
+    <div
       :links="links"
       class="sticky top-0 z-50 justify-between items-center border-b border-gray-200 dark:border-gray-800 grid bg-white"
     >
@@ -23,7 +23,7 @@
         }"
         class="col-end-7 col-span-2"
       />
-    </UHeader>
+    </div>
     <div class="min-h-screen">
       <slot />
     </div>

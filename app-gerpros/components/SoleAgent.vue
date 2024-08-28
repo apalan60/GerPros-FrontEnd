@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="text-center">
-      <p class="text-white text-lg mb-8">
+      <p class="text-b text-lg mb-8">
         "Sole Agent for Numerous International Brands"
       </p>
       <div class="flex items-center justify-center space-x-8">
