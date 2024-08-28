@@ -21,6 +21,7 @@
     "vite-plugin-eslint2": "^4.4.0"
   },
   "dependencies": {
+    "@nuxt/image": "^1.7.1",
     "swiper": "^11.1.10"
   }
 }
