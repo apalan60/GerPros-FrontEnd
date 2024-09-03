@@ -1,11 +1,8 @@
 <template>
   <section class="bg-white text-black py-20">
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-4xl font-bold">What our customers are saying.</h2>
-      <p class="text-lg text-gray-900 mt-4">
-        Proident sunt exercitation minim laborum enim laboris labore esse.
-      </p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+      <h2 class="text-4xl font-bold">客戶回饋</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
         <div
           v-for="testimonial in testimonials"
           :key="testimonial.name"
@@ -42,6 +39,34 @@ export default {
           image: '',
           quote:
             'Nostrud tempor sunt fugiat. Dolor in sint dolore labore non occaecat adipisicing Lorem labore ullamco enim excepteur...',
+        },
+        {
+          name: 'Chace Rodgers',
+          position: 'CEO at Company',
+          image: '',
+          quote:
+            'Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation...',
+        },
+        {
+          name: 'Chace Rodgers',
+          position: 'CEO at Company',
+          image: '',
+          quote:
+            'Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation...',
+        },
+        {
+          name: 'Chace Rodgers',
+          position: 'CEO at Company',
+          image: '',
+          quote:
+            'Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation...',
+        },
+        {
+          name: 'Chace Rodgers',
+          position: 'CEO at Company',
+          image: '',
+          quote:
+            'Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation...',
         },
         {
           name: 'Chace Rodgers',
