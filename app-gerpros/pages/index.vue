@@ -1,7 +1,7 @@
 <template>
   <div>
     <div
-      class="title-wrapper w-screen bg-white flex items-center justify-center"
+      class="title-wrapper w-screen flex items-center justify-center"
     >
       <swiper-container
         class="slide-container"
@@ -34,6 +34,7 @@
 
 <script setup>
 import { register } from 'swiper/element/bundle';
+
 
 register();
 </script>

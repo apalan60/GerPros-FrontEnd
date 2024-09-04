@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div data-theme="light">
     <div>About us</div>
   </div>
 </template>

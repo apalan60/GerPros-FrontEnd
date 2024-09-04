@@ -8,7 +8,7 @@
         v-for="link in links"
         :key="link.name"
         :to="link.to"
-        class="menu menu-horizontal px-1 hover:text-gray-300 text-base"
+        class="menu menu-horizontal px-1 hover:text-accent "
         :class="{ 'text-sky-700': $route.path === link.to }"
       >
         {{ link.label }}
