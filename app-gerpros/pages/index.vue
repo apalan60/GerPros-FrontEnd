@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div
-      class="title-wrapper w-screen flex items-center justify-center"
-    >
+    <div class="title-wrapper w-screen flex items-center justify-center">
       <swiper-container
         class="slide-container"
         effect="fade"

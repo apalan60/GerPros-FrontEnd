@@ -1,6 +1,6 @@
 <template>
-  <div data-theme="customTheme">
-    <AppHeader/>
+  <div>
+    <AppHeader />
     <div class="min-h-screen">
       <slot />
     </div>
