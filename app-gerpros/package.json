@@ -24,6 +24,7 @@
   "dependencies": {
     "@nuxt/image": "^1.7.1",
     "scrollmagic": "^2.0.8",
-    "swiper": "^11.1.10"
+    "swiper": "^11.1.10",
+    "theme-change": "^2.5.0"
   }
 }

@@ -77,7 +77,7 @@ const changeFilter = (value) => {
 </script>
 
 <template>
-  <section class="bg-white text-gray-900 py-12">
+  <section class="text-gray-900 py-12">
     <div class="container mx-auto text-center">
       <h2 class="text-4xl font-bold mb-2">最新商品</h2>
       <p class="text-gray-400 mb-8">

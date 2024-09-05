@@ -8,13 +8,16 @@
         v-for="link in links"
         :key="link.name"
         :to="link.to"
-        class="menu menu-horizontal px-1 hover:text-gray-300 text-base"
+        class="menu menu-horizontal px-1 hover:text-accent"
         :class="{ 'text-sky-700': $route.path === link.to }"
       >
         {{ link.label }}
       </nuxt-link>
     </div>
     <div class="navbar-end">
+      <button class="btn btn-ghost btn-circle">
+        <ThemeToggle />
+      </button>
       <button class="btn btn-ghost btn-circle">
         <svg
           xmlns="http://www.w3.org/2000/svg"
