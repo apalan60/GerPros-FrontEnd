@@ -1,24 +1,4 @@
-<script setup>
-onMounted(async () => {
-  if (typeof window !== 'undefined') {
-    const ScrollMagic = (await import('scrollmagic')).default;
-
-    const controller = new ScrollMagic.Controller();
-
-    const revealElements = document.querySelectorAll('.digit');
-
-    revealElements.forEach((element) => {
-      new ScrollMagic.Scene({
-        triggerElement: element,
-        triggerHook: 0.7,
-        reverse: true,
-      })
-        .setClassToggle(element, 'visible')
-        .addTo(controller);
-    });
-  }
-});
-</script>
+<script setup></script>
 
 <template>
   <section class="text-gray-900 py-12">
@@ -70,26 +50,4 @@ onMounted(async () => {
   </section>
 </template>
 
-<style scoped>
-.digit {
-  opacity: 0;
-  -webkit-transform: translateX(-40px);
-  -moz-transform: translateX(-40px);
-  -ms-transform: translateX(-40px);
-  -o-transform: translateX(-40px);
-  transform: translateX(-40px);
-  -webkit-transition: all 0.6s ease-out;
-  -moz-transition: all 0.6s ease-out;
-  -ms-transition: all 0.6s ease-out;
-  -o-transition: all 0.6s ease-out;
-  transition: all 0.6s ease-out;
-}
-.digit.visible {
-  opacity: 1;
-  -webkit-transform: none;
-  -moz-transform: none;
-  -ms-transform: none;
-  -o-transform: none;
-  transform: none;
-}
-</style>
+<style scoped></style>
