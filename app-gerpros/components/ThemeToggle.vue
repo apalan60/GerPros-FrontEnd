@@ -1,7 +1,7 @@
 <template>
   <label class="swap swap-rotate">
     <!-- This hidden checkbox controls the toggle -->
-    <input type="checkbox" @change="toggleTheme" />
+    <input type="checkbox" @change.prevent="toggleTheme()" />
 
     <!-- sun icon -->
     <svg
@@ -30,11 +30,11 @@
 <script setup>
 const toggleTheme = () => {
   const currentTheme = document.documentElement.getAttribute('data-theme');
-
+  console.log('🚀 ~ toggleTheme ~ currentTheme:', currentTheme);
   if (currentTheme === 'autumn') {
     document.documentElement.setAttribute('data-theme', 'sunset');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'autumn');
+    return;
   }
+  document.documentElement.setAttribute('data-theme', 'autumn');
 };
 </script>
