@@ -77,32 +77,30 @@ const changeFilter = (value) => {
 </script>
 
 <template>
-  <section class="text-gray-900 py-12">
+  <section class="py-12">
     <div class="container mx-auto text-center">
       <h2 class="text-4xl font-bold mb-2">最新商品</h2>
       <p class="text-gray-400 mb-8">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In convallis
-        tortor eros. Donec vitae tortor lacus. Phasellus aliquam ante in
-        maximus.
+        
       </p>
       <div class="flex justify-center space-x-4 mb-8">
         <button
           class="text-gray-400 font-semibold"
-          :class="{ 'text-gray-900': filter === 'All' }"
+          :class="{ 'text-accent ': filter === 'All' }"
           @click="changeFilter('All')"
         >
           All
         </button>
         <button
           class="text-gray-400 font-semibold"
-          :class="{ 'text-gray-900': filter === 'type1' }"
+          :class="{ 'text-accent ': filter === 'type1' }"
           @click="changeFilter('type1')"
         >
           北歐簡約
         </button>
         <button
           class="text-gray-400 font-semibold"
-          :class="{ 'text-gray-900': filter === 'type2' }"
+          :class="{ 'text-accent ': filter === 'type2' }"
           @click="changeFilter('type2')"
         >
           古典奢華

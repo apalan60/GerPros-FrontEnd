@@ -34,12 +34,9 @@
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
         <li v-for="link in links" :key="link.name">
-          <nuxt-link
-            :to="link.to"
-            :class="{ 'text-sky-700': $route.path === link.to }"
+          <nuxt-link 
             class="hover:text-accent"
-          >
-            {{ link.label }}
+            :to="link.to">{{ link.label }}
           </nuxt-link>
         </li>
       </ul>
