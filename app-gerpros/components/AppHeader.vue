@@ -34,10 +34,7 @@
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
         <li v-for="link in links" :key="link.name">
-          <nuxt-link 
-            class="hover:text-accent"
-            :to="link.to">{{ link.label }}
-          </nuxt-link>
+          <nuxt-link class="hover:text-accent">{{ link.label }} </nuxt-link>
         </li>
       </ul>
     </div>
