@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="base-100">
     <div class="title-wrapper w-screen flex items-center justify-center">
       <swiper-container
         class="slide-container"

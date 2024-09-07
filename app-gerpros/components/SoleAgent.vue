@@ -1,9 +1,7 @@
 <template>
   <section>
     <div class="text-center">
-      <p class="text-b text-lg mb-8">
-        "Sole Agent for Numerous International Brands"
-      </p>
+      <p class="text-b text-lg mb-8">眾多國際品牌的總代理</p>
       <div class="flex items-center justify-center space-x-8">
         <img
           src="https://api.iconify.design/logos:angular.svg"

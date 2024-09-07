@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <section class="text-gray-900 py-12">
+  <section class="py-12">
     <div class="container mx-auto text-center">
       <h2 class="text-4xl font-bold mb-4">Why choose our service?</h2>
       <p class="text-gray-400 mb-12">

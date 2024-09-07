@@ -31,7 +31,7 @@
 const toggleTheme = () => {
   const currentTheme = document.documentElement.getAttribute('data-theme');
   console.log('🚀 ~ toggleTheme ~ currentTheme:', currentTheme);
-  if (currentTheme === 'autumn') {
+  if (currentTheme === 'autumn' || currentTheme === null) {
     document.documentElement.setAttribute('data-theme', 'sunset');
     return;
   }
