@@ -2,23 +2,37 @@
   <div class="navbar bg-base-100">
     <div class="navbar-start">
       <div class="dropdown lg:hidden">
-        <div tabindex="0" role="button" class="btn btn-ghost">
+        <label
+          tabindex="0"
+          role="button"
+          class="btn btn-circle swap swap-rotate"
+        >
+          <input v-model="isOpen" type="checkbox" />
           <svg
+            class="swap-off fill-current"
             xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+            width="32"
+            height="32"
+            viewBox="0 0 512 512"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h8m-8 6h16"
+              d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z"
             />
           </svg>
-        </div>
+          <svg
+            class="swap-on fill-current"
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="32"
+            viewBox="0 0 512 512"
+          >
+            <polygon
+              points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"
+            />
+          </svg>
+        </label>
         <ul
+          v-if="isOpen"
           tabindex="0"
           class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[50] mt-3 w-52 p-2 shadow"
         >
@@ -34,7 +48,9 @@
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1">
         <li v-for="link in links" :key="link.name">
-          <nuxt-link class="hover:text-accent">{{ link.label }} </nuxt-link>
+          <nuxt-link :to="link.to" class="hover:text-accent">{{
+            link.label
+          }}</nuxt-link>
         </li>
       </ul>
     </div>
@@ -83,6 +99,10 @@
 </template>
 
 <script setup>
+import { ref } from 'vue';
+
+const isOpen = ref(false);
+
 const links = [
   { label: '產品項目', to: '/products' },
   // {
