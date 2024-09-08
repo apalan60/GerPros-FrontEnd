@@ -1,123 +1,174 @@
+<!-- eslint-disable @stylistic/arrow-parens -->
 <script setup>
+import { register } from 'swiper/element/bundle';
+import 'swiper/swiper-bundle.css';
+
+register();
+
 const productions = reactive([
   {
-    name: 'product1',
-    category: 'type1',
+    name: '壁布1',
+    category: 'prodWall',
     image: 'https://picsum.photos/600/800?random=1',
   },
   {
-    name: 'product2',
-    category: 'type1',
+    name: '壁布2',
+    category: 'prodWall',
     image: 'https://picsum.photos/600/800?random=2',
   },
   {
-    name: 'product3',
-    category: 'type1',
+    name: '壁布3',
+    category: 'prodWall',
     image: 'https://picsum.photos/600/800?random=3',
   },
   {
-    name: 'product4',
-    category: 'type1',
+    name: '壁布4',
+    category: 'prodWall',
     image: 'https://picsum.photos/600/800?random=4',
   },
   {
-    name: 'product5',
-    category: 'type1',
+    name: '壁布5',
+    category: 'prodWall',
     image: 'https://picsum.photos/600/800?random=5',
   },
   {
-    name: 'product6',
-    category: 'type1',
+    name: '壁布6',
+    category: 'prodWall',
     image: 'https://picsum.photos/600/800?random=6',
   },
   {
-    name: 'product7',
-    category: 'type2',
+    name: '天花板7',
+    category: 'prodCeiling',
     image: 'https://picsum.photos/600/800?random=7',
   },
   {
-    name: 'product8',
-    category: 'type2',
+    name: '天花板8',
+    category: 'prodCeiling',
     image: 'https://picsum.photos/600/800?random=8',
   },
   {
-    name: 'product9',
-    category: 'type2',
+    name: '天花板9',
+    category: 'prodCeiling',
     image: 'https://picsum.photos/600/800?random=9',
   },
   {
-    name: 'product10',
-    category: 'type2',
+    name: '天花板10',
+    category: 'prodCeiling',
     image: 'https://picsum.photos/600/800?random=10',
   },
   {
-    name: 'product11',
-    category: 'type3',
+    name: '磁磚11',
+    category: 'prodFloor',
     image: 'https://picsum.photos/600/800?random=11',
   },
   {
-    name: 'product12',
-    category: 'type3',
+    name: '磁磚12',
+    category: 'prodFloor',
     image: 'https://picsum.photos/600/800?random=12',
   },
+  {
+    name: '磁磚13',
+    category: 'prodFloor',
+    image: 'https://picsum.photos/600/800?random=13',
+  },
 ]);
-const filter = ref('All');
 
-const filterProducts = computed(() => {
-  if (filter.value === 'All') {
-    return productions;
-  }
-  // eslint-disable-next-line @stylistic/arrow-parens
-  return productions.filter((p) => p.category === filter.value);
-});
-
-const changeFilter = (value) => {
-  filter.value = value;
-};
+const prodWall = productions.filter((prod) => prod.category === 'prodWall');
+const prodCeiling = productions.filter(
+  (prod) => prod.category === 'prodCeiling',
+);
+const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
 </script>
 
 <template>
   <section class="py-12">
     <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-2">最新商品</h2>
-      <p class="text-gray-400 mb-8"></p>
-      <div class="flex justify-center space-x-4 mb-8">
-        <button
-          class="text-gray-400 font-semibold"
-          :class="{ 'text-accent ': filter === 'All' }"
-          @click="changeFilter('All')"
-        >
-          All
-        </button>
-        <button
-          class="text-gray-400 font-semibold"
-          :class="{ 'text-accent ': filter === 'type1' }"
-          @click="changeFilter('type1')"
-        >
-          北歐簡約
-        </button>
-        <button
-          class="text-gray-400 font-semibold"
-          :class="{ 'text-accent ': filter === 'type2' }"
-          @click="changeFilter('type2')"
-        >
-          古典奢華
-        </button>
+      <h2 class="text-4xl font-bold mb-4">注目產品</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+        <div class="ceiling">
+          <div class="prod-type">
+            <img
+              src="https://img.icons8.com/?size=100&id=N3FFDKM86cIZ&format=png&color=666666"
+              alt="ceiling-icon"
+              class="icon"
+            />
+            <h3 class="ceiling-title text-xl">天花板</h3>
+          </div>
+          <swiper-container
+            class="swiper-container"
+            direction="vertical"
+            pagination="true"
+            autoplay-delay="3000"
+            loop="true"
+          >
+            <swiper-slide
+              v-for="product in prodCeiling"
+              :key="product.name"
+              class="slide slide-ceiling"
+            >
+              <img :src="product.image" alt="product" />
+              <div class="title">{{ product.name }}</div>
+            </swiper-slide>
+          </swiper-container>
+        </div>
+
+        <div class="wall">
+          <div class="prod-type">
+            <img
+              src="https://img.icons8.com/?size=100&id=aJW9bYLdUlk9&format=png&color=666666"
+              alt="wall-icon"
+              class="icon"
+            />
+            <h3 class="wall-title text-xl">壁布</h3>
+          </div>
+          <swiper-container
+            class="swiper-container"
+            direction="vertical"
+            pagination="true"
+            autoplay-delay="3000"
+            loop="true"
+          >
+            <swiper-slide
+              v-for="product in prodWall"
+              :key="product.name"
+              class="slide slide-wall"
+            >
+              <img :src="product.image" alt="product" />
+              <div class="title">{{ product.name }}</div>
+            </swiper-slide>
+          </swiper-container>
+        </div>
+
+        <div class="floor">
+          <div class="prod-type">
+            <div class="icon">
+              <img
+                src="https://img.icons8.com/?size=100&id=gmNNZ8Tvt2bT&format=png&color=666666"
+                alt="floor-icon"
+                class="floor-icon"
+              />
+            </div>
+            <h3 class="floor-title text-xl">地板</h3>
+          </div>
+          <swiper-container
+            class="swiper-container"
+            direction="vertical"
+            pagination="true"
+            autoplay-delay="3000"
+            loop="true"
+          >
+            <swiper-slide
+              v-for="product in prodFloor"
+              :key="product.name"
+              class="slide slide-floor"
+            >
+              <img :src="product.image" alt="product" />
+              <div class="title">{{ product.name }}</div>
+            </swiper-slide>
+          </swiper-container>
+        </div>
       </div>
     </div>
-
-    <div class="container">
-      <div class="flex w-screen h-4/5 flex-wrap">
-        <img
-          v-for="p in filterProducts"
-          :key="p.name"
-          class="w-1/5 h-2/5 object-cover rounded-lg"
-          :src="p.image"
-          :alt="p.name"
-        />
-      </div>
-    </div>
-
     <div class="text-center mt-8">
       <NuxtLink :to="'/products'">
         <button
@@ -129,3 +180,78 @@ const changeFilter = (value) => {
     </div>
   </section>
 </template>
+
+<style scoped>
+.swiper-container {
+  width: 100%;
+  height: 300px;
+  display: block;
+  margin-top: 1rem;
+}
+
+swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+.slide-ceiling {
+  border-top-left-radius: 100px;
+}
+
+.slide-ceiling img {
+  border-top-left-radius: 100px;
+}
+
+.slide-floor {
+  border-top-right-radius: 100px;
+}
+
+.slide-floor img {
+  border-top-right-radius: 100px;
+}
+
+.title {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(66, 66, 66, 0.5);
+  color: white;
+  padding: 0.5rem;
+}
+
+.icon {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.floor-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.prod-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
