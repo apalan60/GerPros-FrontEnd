@@ -37,46 +37,44 @@ const productions = reactive([
     image: 'https://picsum.photos/600/800?random=6',
   },
   {
-    name: '天花板7',
-    category: 'prodCeiling',
+    name: '磁磚7',
+    category: 'prodTile',
     image: 'https://picsum.photos/600/800?random=7',
   },
   {
-    name: '天花板8',
-    category: 'prodCeiling',
+    name: '磁磚8',
+    category: 'prodTile',
     image: 'https://picsum.photos/600/800?random=8',
   },
   {
-    name: '天花板9',
-    category: 'prodCeiling',
+    name: '磁磚9',
+    category: 'prodTile',
     image: 'https://picsum.photos/600/800?random=9',
   },
   {
-    name: '天花板10',
-    category: 'prodCeiling',
+    name: '磁磚10',
+    category: 'prodTile',
     image: 'https://picsum.photos/600/800?random=10',
   },
   {
-    name: '磁磚11',
+    name: '地板11',
     category: 'prodFloor',
     image: 'https://picsum.photos/600/800?random=11',
   },
   {
-    name: '磁磚12',
+    name: '地板12',
     category: 'prodFloor',
     image: 'https://picsum.photos/600/800?random=12',
   },
   {
-    name: '磁磚13',
+    name: '地板13',
     category: 'prodFloor',
     image: 'https://picsum.photos/600/800?random=13',
   },
 ]);
 
 const prodWall = productions.filter((prod) => prod.category === 'prodWall');
-const prodCeiling = productions.filter(
-  (prod) => prod.category === 'prodCeiling',
-);
+const prodTile = productions.filter((prod) => prod.category === 'prodTile');
 const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
 </script>
 
@@ -87,12 +85,14 @@ const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
         <div class="ceiling">
           <div class="prod-type">
-            <img
-              src="https://img.icons8.com/?size=100&id=N3FFDKM86cIZ&format=png&color=666666"
-              alt="ceiling-icon"
-              class="icon"
-            />
-            <h3 class="ceiling-title text-xl">天花板</h3>
+            <div class="icon">
+              <img
+                src="https://img.icons8.com/?size=100&id=gmNNZ8Tvt2bT&format=png&color=666666"
+                alt="floor-icon"
+                class="floor-icon"
+              />
+            </div>
+            <h3 class="ceiling-title text-xl">磁磚</h3>
           </div>
           <swiper-container
             class="swiper-container"
@@ -102,7 +102,7 @@ const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
             loop="true"
           >
             <swiper-slide
-              v-for="product in prodCeiling"
+              v-for="product in prodTile"
               :key="product.name"
               class="slide slide-ceiling"
             >
@@ -141,13 +141,11 @@ const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
 
         <div class="floor">
           <div class="prod-type">
-            <div class="icon">
-              <img
-                src="https://img.icons8.com/?size=100&id=gmNNZ8Tvt2bT&format=png&color=666666"
-                alt="floor-icon"
-                class="floor-icon"
-              />
-            </div>
+            <img
+              src="https://img.icons8.com/?size=100&id=h7tOIyNxrvf2&format=png&color=666666"
+              alt="ceiling-icon"
+              class="icon"
+            />
             <h3 class="floor-title text-xl">地板</h3>
           </div>
           <swiper-container

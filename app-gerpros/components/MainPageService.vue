@@ -26,7 +26,7 @@ const countUpItem = reactive({
 <template>
   <section class="py-12">
     <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-4">從天花板到地板，給您最好的品質</h2>
+      <h2 class="text-4xl font-bold mb-4">從磁磚到地板，給您最好的品質</h2>
       <p class="text-gray-400 mb-12">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua.

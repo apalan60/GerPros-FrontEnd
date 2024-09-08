@@ -15,18 +15,17 @@
         <h3>打造專屬居家美學</h3>
       </div>
     </div>
-    <div>
+    <div class="block">
       <MainPageService />
-    </div>
-    <div>
-      <MainPageTestimonial />
-    </div>
-    <div>
-      <MainPageProduct />
-    </div>
-    <div>
       <SoleAgent />
     </div>
+    <div class="block">
+      <MainPageTestimonial />
+    </div>
+    <div class="block">
+      <MainPageProduct />
+    </div>
+    <div></div>
   </div>
 </template>
 
