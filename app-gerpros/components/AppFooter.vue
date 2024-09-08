@@ -1,15 +1,15 @@
 <template>
-  <footer class="footer bg-base-200 text-base-content p-10  ">
+  <footer class="footer bg-base-200 text-base-content p-10">
     <div></div>
     <div></div>
     <aside class="flex flex-col items-center mx-auto">
       <LogoIcon />
       <p>"溫度，從你的每一步開始"</p>
       <div class="grid grid-flow-col gap-4 pt-2">
-          <InstagramIcon />
-          <LineIcon />
-          <FacebookIcon />
-    </div>
+        <InstagramIcon />
+        <LineIcon />
+        <FacebookIcon />
+      </div>
     </aside>
 
     <nav class="">
@@ -50,19 +50,30 @@
       </div>
       <h6 class="footer-title pt-2">營業時間</h6>
       <div class="flex">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="20"
-        height="20"><path d="M48 0C21.5 0 0 21.5 0 48L0 464c0 26.5 21.5 48 48 48l96 0 0-80c0-26.5 21.5-48 48-48s48 21.5 48 48l0 80 96 0c26.5 0 48-21.5 48-48l0-416c0-26.5-21.5-48-48-48L48 0zM64 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm112-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM80 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM272 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z"/></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 384 512"
+          width="20"
+          height="20"
+        >
+          <path
+            d="M48 0C21.5 0 0 21.5 0 48L0 464c0 26.5 21.5 48 48 48l96 0 0-80c0-26.5 21.5-48 48-48s48 21.5 48 48l0 80 96 0c26.5 0 48-21.5 48-48l0-416c0-26.5-21.5-48-48-48L48 0zM64 240c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zm112-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM80 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16zm80 16c0-8.8 7.2-16 16-16l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32zM272 96l32 0c8.8 0 16 7.2 16 16l0 32c0 8.8-7.2 16-16 16l-32 0c-8.8 0-16-7.2-16-16l0-32c0-8.8 7.2-16 16-16z"
+          />
+        </svg>
         <p class="pl-2">平日 08:30 – 17:00</p>
       </div>
     </aside>
     <aside class="">
       <h6 class="footer-title">作品集</h6>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4 ">
-        <div v-for="(image, index) in images" :key="index" class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
-  <img :src="image" alt="Pet image" class="w-full h-16 object-cover">
-</div>
-
-  </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div
+          v-for="(image, index) in images"
+          :key="index"
+          class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
+        >
+          <img :src="image" alt="Pet image" class="w-full h-16 object-cover" />
+        </div>
+      </div>
     </aside>
     <div></div>
     <div></div>
@@ -77,7 +88,7 @@ const images = [
   'https://images.unsplash.com/photo-1523755231516-e43fd2e8dca5?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   'https://plus.unsplash.com/premium_photo-1678402545080-2353b489c0c3?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
   'https://images.unsplash.com/photo-1499955085172-a104c9463ece?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-]
+];
 </script>
 
 <style scoped></style>
