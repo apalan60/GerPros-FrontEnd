@@ -1,8 +1,5 @@
 <template>
-  <div class="flex flex-col items-center p-4 w-full md:w-1/3">
-    <h2 class="font-bold text-primary-600 dark:text-primary-200 text-xl">
-      Gallery
-    </h2>
+  <div class="flex flex-col items-center p-4 w-auto md:w-1/3">
     <div class="-mx-2 flex flex-wrap items-center lg:mt-2">
       <div class="p-2 w-1/2 sm:w-4/12">
         <div class="block hover:opacity-75 overflow-hidden rounded-xl">

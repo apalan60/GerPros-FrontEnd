@@ -5,5 +5,6 @@
       <slot />
     </div>
     <AppFooter />
+    <SecondAppFooter />
   </div>
 </template>
