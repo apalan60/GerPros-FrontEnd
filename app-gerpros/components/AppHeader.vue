@@ -1,5 +1,5 @@
-<template>
-  <div class="navbar bg-base-100">
+<template class="relative">
+  <div class="navbar bg-base-100 fixed">
     <div class="navbar-start">
       <div class="dropdown lg:hidden">
         <label
@@ -41,8 +41,7 @@
           </li>
         </ul>
       </div>
-
-      <nuxt-link to="/" class="btn btn-ghost text-xl">GerPros</nuxt-link>
+      <logoIcon />
     </div>
 
     <div class="navbar-center hidden lg:flex">
