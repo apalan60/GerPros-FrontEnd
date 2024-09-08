@@ -116,4 +116,8 @@ const links = [
 ];
 </script>
 
-<style scoped></style>
+<style scoped>
+.navbar {
+  z-index: 1000;
+}
+</style>
