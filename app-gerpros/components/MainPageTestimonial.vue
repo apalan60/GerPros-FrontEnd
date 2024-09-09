@@ -23,31 +23,30 @@ const testimonials = ref([
   {
     name: '王先生',
     position: '台南市',
-    image: 'https://cdn.pixabay.com/photo/2017/02/23/13/05/avatar-2092113_1280.png',
-    quote:
-      '非常好的一次消費體驗',
+    image:
+      'https://cdn.pixabay.com/photo/2017/02/23/13/05/avatar-2092113_1280.png',
+    quote: '非常好的一次消費體驗',
   },
   {
     name: '徐先生',
     position: '台北市',
     image: 'https://www.w3schools.com/howto/img_avatar.png',
-    quote:
-      '品質非常良好',
+    quote: '品質非常良好',
   },
   {
     name: '劉小姐',
     position: '台中市',
-    image: 'https://th.bing.com/th/id/OIP.8F97-4tTe0kDw2M0XktW8gHaHZ?rs=1&pid=ImgDetMain',
-    quote:
-      '家人都很喜歡',
+    image:
+      'https://th.bing.com/th/id/OIP.8F97-4tTe0kDw2M0XktW8gHaHZ?rs=1&pid=ImgDetMain',
+    quote: '家人都很喜歡',
   },
   {
     name: '陳小姐',
     position: '嘉義市',
-    image: 'https://th.bing.com/th/id/R.5522155776f935b968ee033b378c7dce?rik=oHI71v3KwMtjtA&riu=http%3a%2f%2fwww.w3schools.com%2fhowto%2fimg_avatar2.png&ehk=v5Am%2bIj3lmC1HosplNbkqiz5jntcbPnbQ%2bvttJpmDHA%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1',
-    quote:
-      '是個好選擇，推薦給有需要的人',
-  }
+    image:
+      'https://th.bing.com/th/id/R.5522155776f935b968ee033b378c7dce?rik=oHI71v3KwMtjtA&riu=http%3a%2f%2fwww.w3schools.com%2fhowto%2fimg_avatar2.png&ehk=v5Am%2bIj3lmC1HosplNbkqiz5jntcbPnbQ%2bvttJpmDHA%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1',
+    quote: '是個好選擇，推薦給有需要的人',
+  },
 ]);
 </script>
 

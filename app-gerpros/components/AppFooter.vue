@@ -42,7 +42,7 @@
           width="20"
           height="20"
           viewBox="0 0 384 512"
-          class="fill-current "
+          class="fill-current"
         >
           <path
             d="M215.7 499.2C267 435 384 279.4 384 192C384 86 298 0 192 0S0 86 0 192c0 87.4 117 243 168.3 307.2c12.3 15.3 35.1 15.3 47.4 0zM192 128a64 64 0 1 1 0 128 64 64 0 1 1 0-128z"
@@ -67,7 +67,7 @@
       </div>
     </aside>
     <aside class="">
-      <h6 class="footer-title">作品集</h6>
+      <h6 class="footer-title klee-one">作品集</h6>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
         <div
           v-for="(image, index) in images"
@@ -94,4 +94,4 @@ const images = [
 ];
 </script>
 
-<style scoped></style>
+
