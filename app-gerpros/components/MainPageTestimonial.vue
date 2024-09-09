@@ -21,47 +21,33 @@ onMounted(async () => {
 
 const testimonials = ref([
   {
-    name: 'Rose Roberson',
-    position: 'CEO at Company',
-    image: '',
+    name: '王先生',
+    position: '台南市',
+    image: 'https://cdn.pixabay.com/photo/2017/02/23/13/05/avatar-2092113_1280.png',
     quote:
-      'Nostrud tempor sunt fugiat. Dolor in sint dolore labore non occaecat adipisicing Lorem labore ullamco enim excepteur...',
+      '非常好的一次消費體驗',
   },
   {
-    name: 'Chace Rodgers',
-    position: 'CEO at Company',
-    image: '',
+    name: '徐先生',
+    position: '台北市',
+    image: 'https://www.w3schools.com/howto/img_avatar.png',
     quote:
-      'Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation...',
+      '品質非常良好',
   },
   {
-    name: 'Chace Rodgers',
-    position: 'CEO at Company',
-    image: '',
+    name: '劉小姐',
+    position: '台中市',
+    image: 'https://th.bing.com/th/id/OIP.8F97-4tTe0kDw2M0XktW8gHaHZ?rs=1&pid=ImgDetMain',
     quote:
-      'Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation...',
+      '家人都很喜歡',
   },
   {
-    name: 'Chace Rodgers',
-    position: 'CEO at Company',
-    image: '',
+    name: '陳小姐',
+    position: '嘉義市',
+    image: 'https://th.bing.com/th/id/R.5522155776f935b968ee033b378c7dce?rik=oHI71v3KwMtjtA&riu=http%3a%2f%2fwww.w3schools.com%2fhowto%2fimg_avatar2.png&ehk=v5Am%2bIj3lmC1HosplNbkqiz5jntcbPnbQ%2bvttJpmDHA%3d&risl=&pid=ImgRaw&r=0&sres=1&sresct=1',
     quote:
-      'Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation...',
-  },
-  {
-    name: 'Chace Rodgers',
-    position: 'CEO at Company',
-    image: '',
-    quote:
-      'Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation...',
-  },
-  {
-    name: 'Chace Rodgers',
-    position: 'CEO at Company',
-    image: '',
-    quote:
-      'Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation...',
-  },
+      '是個好選擇，推薦給有需要的人',
+  }
 ]);
 </script>
 
