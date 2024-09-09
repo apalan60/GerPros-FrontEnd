@@ -11,7 +11,7 @@
 
 body {
   font-family: "LXGW WenKai Mono TC", monospace;
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
 }
 
