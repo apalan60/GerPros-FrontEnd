@@ -68,7 +68,7 @@ const testimonials = ref([
 <template>
   <section>
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-4xl font-bold">客戶回饋</h2>
+      <h2 class="text-3xl font-bold">客戶回饋</h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
         <div
           v-for="testimonial in testimonials"
@@ -83,7 +83,7 @@ const testimonials = ref([
               class="w-12 h-12 rounded-full"
             />
             <div class="ml-4">
-              <h4 class="text-xl font-semibold">{{ testimonial.name }}</h4>
+              <h4 class="text-lg font-semibold">{{ testimonial.name }}</h4>
               <p class="text-sm">{{ testimonial.position }}</p>
             </div>
           </div>

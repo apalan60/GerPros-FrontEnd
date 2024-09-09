@@ -57,7 +57,7 @@ onMounted(async () => {
 <template>
   <section>
     <div class="text-center">
-      <h2 class="text-2xl font-bold">優質國際品牌的總代理</h2>
+      <h2 class="text-xl font-bold">優質國際品牌的總代理</h2>
       <div class="grid grid-cols-1 md:grid-cols-4 max-w-6xl mx-auto">
         <div v-for="brand in brands" :key="brand.name" class="brand">
           <img :src="brand.image" :alt="brand.name" />

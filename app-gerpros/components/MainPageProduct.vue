@@ -81,7 +81,7 @@ const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
 <template>
   <section>
     <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-4">注目產品</h2>
+      <h2 class="text-3xl font-bold mb-4">注目產品</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
         <div class="ceiling">
           <div class="prod-type">
@@ -92,7 +92,7 @@ const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
                 class="floor-icon"
               />
             </div>
-            <h3 class="ceiling-title text-xl">磁磚</h3>
+            <h3 class="ceiling-title text-lg">磁磚</h3>
           </div>
           <swiper-container
             class="swiper-container"
@@ -119,7 +119,7 @@ const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
               alt="wall-icon"
               class="icon"
             />
-            <h3 class="wall-title text-xl">壁布</h3>
+            <h3 class="wall-title text-lg">壁布</h3>
           </div>
           <swiper-container
             class="swiper-container"
@@ -146,7 +146,7 @@ const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
               alt="ceiling-icon"
               class="icon"
             />
-            <h3 class="floor-title text-xl">地板</h3>
+            <h3 class="floor-title text-lg">地板</h3>
           </div>
           <swiper-container
             class="swiper-container"
@@ -194,6 +194,7 @@ swiper-slide {
   justify-content: center;
   align-items: center;
   position: relative;
+  cursor: pointer;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
 }
@@ -248,6 +249,7 @@ swiper-slide img {
 }
 
 .prod-type {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;

@@ -26,7 +26,7 @@ const countUpItem = reactive({
 <template>
   <section>
     <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold">從磁磚到地板，給您最好的品質</h2>
+      <h2 class="text-3xl font-bold">從磁磚到地板，給您最好的品質</h2>
     </div>
     <div class="service-good-count my-6">
       <div
