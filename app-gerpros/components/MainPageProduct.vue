@@ -79,7 +79,7 @@ const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
 </script>
 
 <template>
-  <section class="py-12">
+  <section>
     <div class="container mx-auto text-center">
       <h2 class="text-4xl font-bold mb-4">注目產品</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">

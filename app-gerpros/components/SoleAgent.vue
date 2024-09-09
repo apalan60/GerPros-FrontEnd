@@ -37,7 +37,7 @@ onMounted(async () => {
     revealElements.forEach((element, index) => {
       new ScrollMagic.Scene({
         triggerElement: element,
-        triggerHook: 0.7,
+        triggerHook: 0.9,
         reverse: true,
       })
         .on('enter', () => {
@@ -55,11 +55,11 @@ onMounted(async () => {
 </script>
 
 <template>
-  <section py-12>
-    <div class="text-center mb-20">
+  <section>
+    <div class="text-center">
       <h2 class="text-2xl font-bold">優質國際品牌的總代理</h2>
-      <div class="flex items-center justify-center space-x-8">
-        <div v-for="brand in brands" :key="brand.name" class="brand w-52">
+      <div class="grid grid-cols-1 md:grid-cols-4 max-w-6xl mx-auto">
+        <div v-for="brand in brands" :key="brand.name" class="brand">
           <img :src="brand.image" :alt="brand.name" />
           {{ brand.intro }}
         </div>
@@ -70,6 +70,9 @@ onMounted(async () => {
 
 <style scoped>
 .brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   opacity: 0;
   transform: translateY(20px);
   transition: all 0.5s;

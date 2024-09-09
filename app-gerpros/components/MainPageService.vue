@@ -24,15 +24,11 @@ const countUpItem = reactive({
 </script>
 
 <template>
-  <section class="py-12">
+  <section>
     <div class="container mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-4">從磁磚到地板，給您最好的品質</h2>
-      <p class="text-gray-400 mb-12">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua.
-      </p>
+      <h2 class="text-4xl font-bold">從磁磚到地板，給您最好的品質</h2>
     </div>
-    <div class="service-good-count">
+    <div class="service-good-count my-6">
       <div
         class="count-wrapper grid grid-cols-1 md:grid-cols-3 gap-3 max-w-4xl mx-auto"
       >
@@ -57,34 +53,7 @@ const countUpItem = reactive({
         </div>
       </div>
     </div>
-    <div class="good-service">
-      <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-        <FeatureCard
-          class="digit"
-          icon="lock-closed"
-          title="Secure"
-          description="Proident nostrud excepteur sint ut culpa consectetur aute adipisicing non anim ullamco."
-        />
-        <FeatureCard
-          class="digit"
-          icon="rocket"
-          title="Fast"
-          description="Qui reprehenderit nostrud dolore nisi ad fugiat labore eiusmod sint aliquip nisi voluptate."
-        />
-        <FeatureCard
-          class="digit"
-          icon="dollar-sign"
-          title="Affordable"
-          description="Reprehenderit fugiat elit in do ipsum ut pariatur."
-        />
-        <FeatureCard
-          class="digit"
-          icon="chart-bar"
-          title="Scalable"
-          description="Lorem deserunt et eiusmod. Ea in consectetur minim officia ullamco enim deserunt est."
-        />
-      </div> -->
-    </div>
+    <SoleAgent />
   </section>
 </template>
 
