@@ -79,9 +79,7 @@ const testimonials = ref([
 </template>
 
 <style scoped>
-
-.digit-test
-{
+.digit-test {
   display: flex;
   align-content: center;
   align-items: center;
