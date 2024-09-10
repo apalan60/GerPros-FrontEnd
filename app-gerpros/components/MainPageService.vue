@@ -28,7 +28,7 @@ const countUpItem = reactive({
     <div class="container mx-auto text-center">
       <h2 class="text-3xl font-bold">從磁磚到地板，給您最好的品質</h2>
     </div>
-    <div class="service-good-count my-6">
+    <div class="service-good-count my-10">
       <div
         class="count-wrapper grid grid-cols-1 md:grid-cols-3 gap-3 max-w-4xl mx-auto"
       >

@@ -54,13 +54,13 @@ const testimonials = ref([
   <section>
     <div class="max-w-6xl mx-auto text-center">
       <h2 class="text-3xl font-bold">客戶回饋</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-1 gap-8 mt-12">
         <div
           v-for="testimonial in testimonials"
           :key="testimonial.name"
-          class="bg-gray-900 text-white p-6 rounded-lg digit"
+          class="bg-neutral text-neutral-content p-6 rounded-lg digit"
         >
-          <p class="text-lg">"{{ testimonial.quote }}"</p>
+          <p class="text-lg min-h-12 digit-test">"{{ testimonial.quote }}"</p>
           <div class="mt-6 flex items-center">
             <img
               :src="testimonial.image"
@@ -79,7 +79,18 @@ const testimonials = ref([
 </template>
 
 <style scoped>
+
+.digit-test
+{
+  display: flex;
+  align-content: center;
+  align-items: center;
+}
+
 .digit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   opacity: 0;
   -webkit-transform: translateX(-40px);
   -moz-transform: translateX(-40px);

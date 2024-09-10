@@ -71,7 +71,7 @@ register();
 }
 
 .block {
-  margin-bottom: 7rem;
+  margin-bottom: 9rem;
 }
 
 @keyframes zoom {
