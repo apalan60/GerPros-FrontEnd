@@ -12,9 +12,24 @@ register();
         effect="fade"
         autoplay-delay="7000"
       >
-        <swiper-slide class="slide slide1"> </swiper-slide>
-        <swiper-slide class="slide slide2"> </swiper-slide>
-        <swiper-slide class="slide slide3"> </swiper-slide>
+        <swiper-slide class="slide slide1">
+          <img
+            src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt=""
+          />
+        </swiper-slide>
+        <swiper-slide class="slide slide2">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1670360414946-e33a828d1d52?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt=""
+          />
+        </swiper-slide>
+        <swiper-slide class="slide slide3">
+          <img
+            src="https://images.unsplash.com/photo-1512972972907-6d71529c5e92?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt=""
+          />
+        </swiper-slide>
       </swiper-container>
       <div class="title-text">
         <h2 class="text-8xl">GerPros</h2>
@@ -55,31 +70,22 @@ register();
   justify-content: center;
   align-items: center;
 }
-.slide {
-  background-position: top center;
-  background-size: cover;
+.slide img {
+  width: auto;
+  height: 100%;
+  object-fit: cover;
   animation: zoom 7s infinite alternate;
 }
-.slide1 {
-  background: url('https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-}
-.slide2 {
-  background: url('https://plus.unsplash.com/premium_photo-1670360414946-e33a828d1d52?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-}
-.slide3 {
-  background: url('https://images.unsplash.com/photo-1512972972907-6d71529c5e92?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
-}
-
 .block {
   margin-bottom: 9rem;
 }
 
 @keyframes zoom {
   0% {
-    background-size: 115%;
+    transform: scale(1.15);
   }
   100% {
-    background-size: 105%;
+    transform: scale(1.05);
   }
 }
 </style>
