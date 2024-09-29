@@ -5,8 +5,8 @@ register();
 </script>
 
 <template>
-  <div class="bg-base-100">
-    <div class="title-wrapper w-screen flex items-center justify-center">
+  <div>
+    <div class="title-wrapper w-screen flex items-center justify-center mb-16">
       <swiper-container
         class="slide-container"
         effect="fade"
@@ -20,13 +20,13 @@ register();
         <h2 class="text-8xl">GerPros</h2>
       </div>
     </div>
-    <div class="block">
+    <div class="mb-20">
       <MainPageService />
     </div>
-    <div class="block">
+    <div class="mb-20">
       <MainPageTestimonial />
     </div>
-    <div class="block">
+    <div class="mb-20">
       <MainPageProduct />
     </div>
     <div></div>
@@ -35,7 +35,7 @@ register();
 
 <style scoped>
 .title-wrapper {
-  height: 90vh;
+  height: 75vh;
 }
 .title-text {
   position: absolute;
@@ -48,9 +48,8 @@ register();
   text-align: center;
 }
 .slide-container {
-  height: 80%;
+  height: 100%;
   width: 100vw;
-  max-width: 1200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -69,11 +68,6 @@ register();
 .slide3 {
   background: url('https://images.unsplash.com/photo-1512972972907-6d71529c5e92?q=80&w=2671&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
 }
-
-.block {
-  margin-bottom: 9rem;
-}
-
 @keyframes zoom {
   0% {
     background-size: 115%;
