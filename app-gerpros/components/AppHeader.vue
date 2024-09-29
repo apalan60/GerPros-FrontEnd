@@ -39,6 +39,24 @@
           >
             <li v-for="link in links" :key="link.name">
               <nuxt-link :to="link.to">{{ link.label }}</nuxt-link>
+              <ul v-if="link.to === '/products'">
+                <li><nuxt-link to="/products">熱門商品</nuxt-link></li>
+                <li>
+                  <h2 class="menu-title">精選項目</h2>
+                  <ul>
+                    <li><nuxt-link to="/products">磁磚</nuxt-link></li>
+                    <li><nuxt-link to="/products">壁布</nuxt-link></li>
+                    <li><nuxt-link to="/products">地板</nuxt-link></li>
+                  </ul>
+                  <h2 class="menu-title">精選品牌</h2>
+                  <ul>
+                    <li><nuxt-link to="/products">Cersanit</nuxt-link></li>
+                    <li><nuxt-link to="/products">Art Floor</nuxt-link></li>
+                    <li><nuxt-link to="/products">Arteo</nuxt-link></li>
+                    <li><nuxt-link to="/products">Philipp Plein</nuxt-link></li>
+                  </ul>
+                </li>
+              </ul>
             </li>
           </ul>
         </div>
@@ -47,10 +65,41 @@
 
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
-          <li v-for="link in links" :key="link.name">
-            <nuxt-link :to="link.to" class="hover:text-accent">{{
-              link.label
-            }}</nuxt-link>
+          <li
+            v-for="link in links"
+            :key="link.name"
+            class="dropdown dropdown-hover"
+          >
+            <nuxt-link
+              :to="link.to"
+              class="hover:text-accent relative"
+              :tabindex="link.to === '/products' ? 0 : -1"
+              >{{ link.label }}</nuxt-link
+            >
+            <ul
+              v-if="link.to === '/products'"
+              tabindex="0"
+              class="dropdown-content bg-base-100 rounded-box shadow w-52"
+            >
+              <li>
+                <nuxt-link to="/products">熱門商品</nuxt-link>
+              </li>
+              <li>
+                <h2 class="menu-title">精選項目</h2>
+                <ul>
+                  <li><nuxt-link to="/products">磁磚</nuxt-link></li>
+                  <li><nuxt-link to="/products">壁布</nuxt-link></li>
+                  <li><nuxt-link to="/products">地板</nuxt-link></li>
+                </ul>
+                <h2 class="menu-title">精選品牌</h2>
+                <ul>
+                  <li><nuxt-link to="/products">Cersanit</nuxt-link></li>
+                  <li><nuxt-link to="/products">Art Floor</nuxt-link></li>
+                  <li><nuxt-link to="/products">Arteo</nuxt-link></li>
+                  <li><nuxt-link to="/products">Philipp Plein</nuxt-link></li>
+                </ul>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
