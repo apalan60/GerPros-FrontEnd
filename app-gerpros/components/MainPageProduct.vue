@@ -1,83 +1,3 @@
-<!-- eslint-disable @stylistic/arrow-parens -->
-<script setup>
-import { register } from 'swiper/element/bundle';
-import 'swiper/swiper-bundle.css';
-
-register();
-
-const productions = reactive([
-  {
-    name: '壁布1',
-    category: 'prodWall',
-    image: 'https://picsum.photos/600/800?random=1',
-  },
-  {
-    name: '壁布2',
-    category: 'prodWall',
-    image: 'https://picsum.photos/600/800?random=2',
-  },
-  {
-    name: '壁布3',
-    category: 'prodWall',
-    image: 'https://picsum.photos/600/800?random=3',
-  },
-  {
-    name: '壁布4',
-    category: 'prodWall',
-    image: 'https://picsum.photos/600/800?random=4',
-  },
-  {
-    name: '壁布5',
-    category: 'prodWall',
-    image: 'https://picsum.photos/600/800?random=5',
-  },
-  {
-    name: '壁布6',
-    category: 'prodWall',
-    image: 'https://picsum.photos/600/800?random=6',
-  },
-  {
-    name: '磁磚7',
-    category: 'prodTile',
-    image: 'https://picsum.photos/600/800?random=7',
-  },
-  {
-    name: '磁磚8',
-    category: 'prodTile',
-    image: 'https://picsum.photos/600/800?random=8',
-  },
-  {
-    name: '磁磚9',
-    category: 'prodTile',
-    image: 'https://picsum.photos/600/800?random=9',
-  },
-  {
-    name: '磁磚10',
-    category: 'prodTile',
-    image: 'https://picsum.photos/600/800?random=10',
-  },
-  {
-    name: '地板11',
-    category: 'prodFloor',
-    image: 'https://picsum.photos/600/800?random=11',
-  },
-  {
-    name: '地板12',
-    category: 'prodFloor',
-    image: 'https://picsum.photos/600/800?random=12',
-  },
-  {
-    name: '地板13',
-    category: 'prodFloor',
-    image: 'https://picsum.photos/600/800?random=13',
-  },
-]);
-
-const prodWall = productions.filter((prod) => prod.category === 'prodWall');
-const prodTile = productions.filter((prod) => prod.category === 'prodTile');
-const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
-</script>
-
 <template>
   <section>
     <div class="container mx-auto text-center">
@@ -178,6 +98,86 @@ const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
     </div>
   </section>
 </template>
+
+<!-- eslint-disable @stylistic/arrow-parens -->
+<script setup>
+import { register } from 'swiper/element/bundle';
+import 'swiper/swiper-bundle.css';
+
+register();
+
+const productions = reactive([
+  {
+    name: '壁布1',
+    category: 'prodWall',
+    image: 'https://picsum.photos/600/800?random=1',
+  },
+  {
+    name: '壁布2',
+    category: 'prodWall',
+    image: 'https://picsum.photos/600/800?random=2',
+  },
+  {
+    name: '壁布3',
+    category: 'prodWall',
+    image: 'https://picsum.photos/600/800?random=3',
+  },
+  {
+    name: '壁布4',
+    category: 'prodWall',
+    image: 'https://picsum.photos/600/800?random=4',
+  },
+  {
+    name: '壁布5',
+    category: 'prodWall',
+    image: 'https://picsum.photos/600/800?random=5',
+  },
+  {
+    name: '壁布6',
+    category: 'prodWall',
+    image: 'https://picsum.photos/600/800?random=6',
+  },
+  {
+    name: '磁磚7',
+    category: 'prodTile',
+    image: 'https://picsum.photos/600/800?random=7',
+  },
+  {
+    name: '磁磚8',
+    category: 'prodTile',
+    image: 'https://picsum.photos/600/800?random=8',
+  },
+  {
+    name: '磁磚9',
+    category: 'prodTile',
+    image: 'https://picsum.photos/600/800?random=9',
+  },
+  {
+    name: '磁磚10',
+    category: 'prodTile',
+    image: 'https://picsum.photos/600/800?random=10',
+  },
+  {
+    name: '地板11',
+    category: 'prodFloor',
+    image: 'https://picsum.photos/600/800?random=11',
+  },
+  {
+    name: '地板12',
+    category: 'prodFloor',
+    image: 'https://picsum.photos/600/800?random=12',
+  },
+  {
+    name: '地板13',
+    category: 'prodFloor',
+    image: 'https://picsum.photos/600/800?random=13',
+  },
+]);
+
+const prodWall = productions.filter((prod) => prod.category === 'prodWall');
+const prodTile = productions.filter((prod) => prod.category === 'prodTile');
+const prodFloor = productions.filter((prod) => prod.category === 'prodFloor');
+</script>
 
 <style scoped>
 .swiper-container {

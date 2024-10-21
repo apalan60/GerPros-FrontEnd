@@ -1,3 +1,31 @@
+<template>
+  <section>
+    <div class="max-w-6xl mx-auto text-center">
+      <h2 class="text-3xl font-bold">客戶回饋</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-1 gap-8 mt-12">
+        <div
+          v-for="testimonial in testimonials"
+          :key="testimonial.name"
+          class="bg-neutral text-neutral-content p-6 rounded-lg digit"
+        >
+          <p class="text-lg min-h-12 digit-test">"{{ testimonial.quote }}"</p>
+          <div class="mt-6 flex items-center">
+            <img
+              :src="testimonial.image"
+              alt="avatar"
+              class="w-12 h-12 rounded-full"
+            />
+            <div class="ml-4">
+              <h4 class="text-lg font-semibold">{{ testimonial.name }}</h4>
+              <p class="text-sm">{{ testimonial.position }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
 <script setup>
 onMounted(async () => {
   if (typeof window !== 'undefined') {
@@ -49,34 +77,6 @@ const testimonials = ref([
   },
 ]);
 </script>
-
-<template>
-  <section>
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl font-bold">客戶回饋</h2>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-1 gap-8 mt-12">
-        <div
-          v-for="testimonial in testimonials"
-          :key="testimonial.name"
-          class="bg-neutral text-neutral-content p-6 rounded-lg digit"
-        >
-          <p class="text-lg min-h-12 digit-test">"{{ testimonial.quote }}"</p>
-          <div class="mt-6 flex items-center">
-            <img
-              :src="testimonial.image"
-              alt="avatar"
-              class="w-12 h-12 rounded-full"
-            />
-            <div class="ml-4">
-              <h4 class="text-lg font-semibold">{{ testimonial.name }}</h4>
-              <p class="text-sm">{{ testimonial.position }}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-</template>
 
 <style scoped>
 .digit-test {

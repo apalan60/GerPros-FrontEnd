@@ -1,28 +1,3 @@
-<script setup>
-import CountUp from 'vue-countup-v3';
-
-const countUpItem = reactive({
-  customer: {
-    text: '滿意回饋',
-    endVal: 99,
-    prefix: '%',
-    duration: 4,
-  },
-  case: {
-    text: '完成案件',
-    endVal: 6666,
-    prefix: '+',
-    duration: 7,
-  },
-  trust: {
-    text: '貼心信賴',
-    endVal: 100,
-    prefix: '%',
-    duration: 4,
-  },
-});
-</script>
-
 <template>
   <section>
     <div class="container mx-auto text-center">
@@ -56,6 +31,31 @@ const countUpItem = reactive({
     <SoleAgent />
   </section>
 </template>
+
+<script setup>
+import CountUp from 'vue-countup-v3';
+
+const countUpItem = reactive({
+  customer: {
+    text: '滿意回饋',
+    endVal: 99,
+    prefix: '%',
+    duration: 4,
+  },
+  case: {
+    text: '完成案件',
+    endVal: 6666,
+    prefix: '+',
+    duration: 7,
+  },
+  trust: {
+    text: '貼心信賴',
+    endVal: 100,
+    prefix: '%',
+    duration: 4,
+  },
+});
+</script>
 
 <style scoped>
 .count-wrapper {
