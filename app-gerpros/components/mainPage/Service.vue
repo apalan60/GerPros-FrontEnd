@@ -28,7 +28,7 @@
         </div>
       </div>
     </div>
-    <SoleAgent />
+    <MainPageSoleAgent />
   </section>
 </template>
 

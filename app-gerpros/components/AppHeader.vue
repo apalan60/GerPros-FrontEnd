@@ -60,7 +60,6 @@
             </li>
           </ul>
         </div>
-        <logoIcon />
       </div>
 
       <div class="navbar-center hidden lg:flex">
@@ -155,10 +154,6 @@ const isOpen = ref(false);
 
 const links = [
   { label: '產品項目', to: '/products' },
-  // {
-  //   label: '產品細項 1(test)',
-  //   to: '/products/1',
-  // },
   { label: '主題專欄', to: '/topic' },
   { label: '聯絡方式', to: '/contact' },
   { label: '常見問題', to: '/FAQ' },

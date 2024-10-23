@@ -3,12 +3,12 @@
     <div></div>
     <div></div>
     <aside class="flex flex-col items-center mx-auto">
-      <LogoIcon />
+      <IconLogo />
       <p>"溫度，從你的每一步開始"</p>
       <div class="grid grid-flow-col gap-4 pt-2">
-        <InstagramIcon />
-        <LineIcon />
-        <FacebookIcon />
+        <IconInstagram />
+        <IconLine />
+        <IconFacebook />
       </div>
     </aside>
 
