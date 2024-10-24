@@ -60,8 +60,8 @@
             </li>
           </ul>
         </div>
+        <IconLogo />
       </div>
-
       <div class="navbar-center hidden lg:flex">
         <ul class="menu menu-horizontal px-1">
           <li

@@ -1,40 +1,22 @@
-<script setup>
-import { TEST_PRODUCTIONS } from '@/constants';
-
-const productionsData = ref(Object.values(TEST_PRODUCTIONS));
-</script>
-
 <template>
   <div class="drawer lg:drawer-open">
     <input id="drawer" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content flex flex-col items-center justify-center">
+    <div class="drawer-content flex flex-col items-center">
+      <h1 v-if="isSearched" class="text-xl my-5 flex gap-9">
+        <span v-if="searchedKeyWord">關鍵字：{{ searchedKeyWord }}</span>
+        <span v-if="searchedBrand">品牌：{{ searchedBrand }}</span>
+        <span v-if="searchedSeries">系列：{{ searchedSeries }}</span>
+      </h1>
       <div
-        class="productions-wrapper grid grid-cols-1 md:grid-cols-3 gap-10 p-10 mx-16"
+        class="productions-wrapper grid grid-cols-1 md:grid-cols-2 gap-10 mx-16"
       >
-        <div
-          v-for="prod in productionsData"
-          :key="prod.id"
-          class="card w-100 h-100 shadow-xl"
-        >
-          <figure class="cursor-pointer">
-            <img :src="prod.image" :alt="prod.title" />
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title cursor-pointer">
-              {{ prod.title }}
-              <div v-if="prod.isNew" class="badge badge-secondary">NEW</div>
-            </h2>
-            <p>{{ prod.description }}</p>
-            <div class="card-actions justify-end">
-              <div class="badge badge-outline cursor-pointer">
-                {{ prod.tags[0] }}
-              </div>
-              <div class="badge badge-outline cursor-pointer">
-                {{ prod.tags[1] }}
-              </div>
-            </div>
-          </div>
-        </div>
+        <ProductCard
+          v-for="product in productionsData"
+          :key="product.name"
+          :production="product"
+          @search-series="searchSeries"
+          @search-brand="searchBrand"
+        />
       </div>
       <label for="drawer" class="btn btn-primary drawer-button lg:hidden">
         Open drawer
@@ -47,25 +29,69 @@ const productionsData = ref(Object.values(TEST_PRODUCTIONS));
         class="drawer-overlay"
       ></label>
       <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-        <li><a>熱門商品</a></li>
         <li>
-          <h2 class="menu-title">精選項目</h2>
-          <ul>
-            <li><a>磁磚</a></li>
-            <li><a>壁布</a></li>
-            <li><a>地板</a></li>
-          </ul>
           <h2 class="menu-title">精選品牌</h2>
-          <ul>
-            <li><a>Cersanit</a></li>
-            <li><a>Art Floor</a></li>
-            <li><a>Arteo</a></li>
-            <li><a>Philipp Plein</a></li>
+          <ul v-for="brand in brandsList" :key="brand.name">
+            <li>
+              <a>{{ brand.name }}</a>
+            </li>
+            <ul>
+              <li v-for="s in brand.series" :key="s">
+                <a>{{ s }}</a>
+              </li>
+            </ul>
           </ul>
         </li>
       </ul>
     </div>
   </div>
 </template>
+
+<script setup>
+import { TEST_PRODUCTIONS_LIST, TEST_BRANDS_LIST } from '@/constants';
+
+const productionsData = computed(() => {
+  // TODO: 未來改帶 API 的參數
+  return TEST_PRODUCTIONS_LIST.products.filter((product) => {
+    let matches = true;
+    if (searchedKeyWord.value) {
+      matches = matches && product.name.includes(searchedKeyWord.value);
+    }
+    if (searchedSeries.value) {
+      matches = matches && product.series.includes(searchedSeries.value);
+    }
+    if (searchedBrand.value) {
+      matches = matches && product.brand.includes(searchedBrand.value);
+    }
+    return matches;
+  });
+});
+const brandsList = ref(TEST_BRANDS_LIST.brands);
+const searchedKeyWord = useState('searchedKeyWord');
+const searchedBrand = useState('searchedBrand');
+const searchedSeries = useState('searchedSeries');
+const isSearched = computed(() => {
+  return searchedKeyWord.value || searchedBrand.value || searchedSeries.value;
+});
+
+onMounted(() => {
+  searchedKeyWord.value = '';
+  searchedBrand.value = '';
+  searchedSeries.value = '';
+});
+
+function toggleSearch(value, searchField) {
+  searchField.value = value === searchField.value ? '' : value;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function searchBrand(brand) {
+  toggleSearch(brand, searchedBrand);
+}
+
+function searchSeries(series) {
+  toggleSearch(series, searchedSeries);
+}
+</script>
 
 <style scoped></style>
