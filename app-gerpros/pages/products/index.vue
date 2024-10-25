@@ -1,7 +1,6 @@
 <template>
-  <div class="drawer lg:drawer-open">
-    <input id="drawer" type="checkbox" class="drawer-toggle" />
-    <div class="drawer-content flex flex-col items-center">
+  <NuxtLayout name="production">
+    <template #content>
       <h1 v-if="isSearched" class="text-xl my-5 flex gap-9">
         <span v-if="searchedKeyWord">關鍵字：{{ searchedKeyWord }}</span>
         <span v-if="searchedBrand">品牌：{{ searchedBrand }}</span>
@@ -21,30 +20,8 @@
       <label for="drawer" class="btn btn-primary drawer-button lg:hidden">
         Open drawer
       </label>
-    </div>
-    <div class="drawer-side">
-      <label
-        for="drawer"
-        aria-label="close sidebar"
-        class="drawer-overlay"
-      ></label>
-      <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
-        <li>
-          <h2 class="menu-title">精選品牌</h2>
-          <ul v-for="brand in brandsList" :key="brand.name">
-            <li>
-              <a>{{ brand.name }}</a>
-            </li>
-            <ul>
-              <li v-for="s in brand.series" :key="s">
-                <a>{{ s }}</a>
-              </li>
-            </ul>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
+    </template>
+  </NuxtLayout>
 </template>
 
 <script setup>
