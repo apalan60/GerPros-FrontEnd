@@ -25,7 +25,7 @@
 </template>
 
 <script setup>
-import { TEST_PRODUCTIONS_LIST, TEST_BRANDS_LIST } from '@/constants';
+import { TEST_PRODUCTIONS_LIST } from '@/constants';
 
 const productionsData = computed(() => {
   // TODO: 未來改帶 API 的參數
@@ -43,7 +43,6 @@ const productionsData = computed(() => {
     return matches;
   });
 });
-const brandsList = ref(TEST_BRANDS_LIST.brands);
 const searchedKeyWord = useState('searchedKeyWord');
 const searchedBrand = useState('searchedBrand');
 const searchedSeries = useState('searchedSeries');
