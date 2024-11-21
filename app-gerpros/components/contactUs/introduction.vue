@@ -1,6 +1,6 @@
 <template>
   <div class="container introduction flex mt-10">
-    <div class="ms-12 title columns-sm-3 w-1/5">
+    <div class="ms-12 title basis-1/5">
       <h2 class="service-title text-2xl font-bold mb-6">服務說明</h2>
       <option
         v-for="option in contactOptions"
@@ -12,7 +12,7 @@
         {{ option.title }}
       </option>
     </div>
-    <div class="content columns-sm-5 w-2/5 p-4 flex flex-col items-center">
+    <div class="content basis-2/5 p-4 flex flex-col items-center">
       <div>
         <h3 class="text-xl mb-5 font-semibold">{{ contactOption.title }}</h3>
         <p class="mb-5">{{ contactOption.detail }}</p>
@@ -28,14 +28,14 @@
         </button>
       </div>
     </div>
-    <div class="image-mask w-2/5 flex items-center content-center">
+    <div class="image-mask basis-2/5 items-center content-center">
       <img
-        class="image-object"
+        class="image-object hidden sm:block"
         :src="contactOption.image"
         :alt="contactOption.title"
         :class="[`image-${contactOption.id}`, `image-contact`]"
       />
-      <div class="image-title">
+      <div class="image-title hidden sm:block">
         <h3 class="text-3xl mb-2">{{ contactOption.title }}</h3>
         <p class="tracking-widest">{{ contactOption.subtitle }}</p>
       </div>
@@ -44,6 +44,8 @@
 </template>
 
 <script setup>
+const emit = defineEmits(['click-reserve']);
+
 const contactOptionData = reactive({
   staff: {
     id: 'staff',
@@ -75,7 +77,7 @@ function handleOptionClick(optionId) {
 const contactOption = computed(() => contactOptionData[selectedOption.value]);
 
 function clickReserve() {
-  emit('click-reserve'); // FIXME: emit is not defined
+  emit('click-reserve');
 }
 </script>
 

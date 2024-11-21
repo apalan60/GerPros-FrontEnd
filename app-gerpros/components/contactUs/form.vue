@@ -25,9 +25,9 @@
                 v-model="firstName"
                 type="text"
                 placeholder="請輸入名字"
-                class="input input-bordered max-w-full"
+                class="input input-bordered w-full sm:w-7/12"
               />
-              <div class="flex gap-1 items-center">
+              <div class="hidden sm:flex gap-1 items-center">
                 <input
                   id="mr"
                   v-model="customerTitle"
@@ -45,6 +45,30 @@
                 />
                 <label for="mrs">小姐</label>
               </div>
+            </div>
+          </label>
+
+          <label class="flex sm:hidden">
+            <div class="label">
+              <span class="label-text">稱謂</span>
+            </div>
+            <div class="flex gap-1 items-center">
+              <input
+                id="mr"
+                v-model="customerTitle"
+                type="radio"
+                value="先生"
+                class="radio"
+              />
+              <label for="mr">先生</label>
+              <input
+                id="mrs"
+                v-model="customerTitle"
+                type="radio"
+                value="小姐"
+                class="radio"
+              />
+              <label for="mrs">小姐</label>
             </div>
           </label>
 
@@ -168,19 +192,21 @@
             <div class="label">
               <span class="label-text">如何得知</span>
             </div>
-            <div class="flex gap-2 items-center mb-2">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-center mb-2">
               <template
                 v-for="(option, index) in knowMethodOption"
                 :key="index"
               >
-                <input
-                  :id="index"
-                  v-model="knowMethod"
-                  type="radio"
-                  :value="option"
-                  class="radio"
-                />
-                <label :for="index">{{ option }}</label>
+                <div>
+                  <input
+                    :id="index"
+                    v-model="knowMethod"
+                    type="radio"
+                    :value="option"
+                    class="radio"
+                  />
+                  <label :for="index">{{ option }}</label>
+                </div>
               </template>
             </div>
             <div class="flex items-center gap-4">
@@ -197,7 +223,7 @@
               <input
                 v-model="otherKnowMethod"
                 type="text"
-                class="input input-bordered w-4/5"
+                class="input input-bordered w-3/5"
                 placeholder="其他"
               />
             </div>

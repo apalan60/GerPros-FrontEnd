@@ -7,15 +7,17 @@
       </div>
     </div>
     <ContactUsIntroduction @click-reserve="onClickReserve" />
-    <ContactUsForm ref="form" />
+    <ContactUsForm ref="formRef" />
   </div>
 </template>
 
 <script setup>
+defineEmits(['click-reserve']);
+
+const formRef = ref(null);
+
 function onClickReserve() {
-  console.log('🚀 ~ onClickReserve ~ onClickReserve:', onClickReserve);
-  // scroll to form
-  this.$refs.form.$el.scrollIntoView({ behavior: 'smooth' });
+  formRef.value.$el.scrollIntoView({ behavior: 'smooth' });
 }
 </script>
 
