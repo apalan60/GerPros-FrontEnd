@@ -1,3 +1,22 @@
+<template>
+  <section>
+    <div class="text-center">
+      <h2 class="text-xl font-bold tracking-widest">代理品牌</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 max-w-6xl mx-auto">
+        <div v-for="brand in brands" :key="brand.name" class="brand">
+          <img :src="brand.image" :alt="brand.name" />
+          <h2 class="text-lg m-3">
+            {{ brand.name }}
+          </h2>
+          <p>
+            {{ brand.intro }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</template>
+
 <script setup>
 const brands = reactive([
   {
@@ -53,20 +72,6 @@ onMounted(async () => {
   }
 });
 </script>
-
-<template>
-  <section>
-    <div class="text-center">
-      <h2 class="text-xl font-bold">優質國際品牌的總代理</h2>
-      <div class="grid grid-cols-1 md:grid-cols-4 max-w-6xl mx-auto">
-        <div v-for="brand in brands" :key="brand.name" class="brand">
-          <img :src="brand.image" :alt="brand.name" />
-          {{ brand.intro }}
-        </div>
-      </div>
-    </div>
-  </section>
-</template>
 
 <style scoped>
 .brand {

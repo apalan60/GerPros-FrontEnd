@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div>About us</div>
+    <AboutUsIntroduction />
+    <AboutUsCulture />
+    <div class="pt-8 pb-8">
+      <MainPageSoleAgent />
+    </div>
+    <AboutUsMap />
+    <AboutUsPhotos />
   </div>
 </template>
 
