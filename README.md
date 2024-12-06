@@ -23,3 +23,7 @@
 - 希望小改動有個段落就pr，不用要求做到很完美再推，小步推進持續修改就好
 - 專案依賴項的安裝方式在app-gerpros/readme.md
 - 目前dmeo page release的版本即為main最新版，進main就會自動佈署
+
+## API fetch
+
+- 使用 Nuxt3 的 useFetch, useAsyncData 與 $fetch來簡化開發，不須另外封裝 fetch 方法。 ref:[nuxt/ data fetching](https://nuxt.com/docs/getting-started/data-fetching)
