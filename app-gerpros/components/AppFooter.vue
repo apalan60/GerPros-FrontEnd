@@ -15,9 +15,9 @@
     <nav class="">
       <h5 class="footer-title">頁面導覽</h5>
       <NuxtLink class="link link-hover" to="/products">產品項目</NuxtLink>
-      <a class="link link-hover" to="/topic">主題專欄</a>
-      <a class="link link-hover" to="/FAQ">常見問題</a>
-      <a class="link link-hover" to="/contact">關於我們</a>
+      <NuxtLink class="link link-hover" to="/topic">主題專欄</NuxtLink>
+      <NuxtLink class="link link-hover" to="/FAQ">常見問題</NuxtLink>
+      <NuxtLink class="link link-hover" to="/contact">關於我們</NuxtLink>
       <NuxtLink class="link link-hover" to="/services">服務項目</NuxtLink>
     </nav>
     <aside class="">
