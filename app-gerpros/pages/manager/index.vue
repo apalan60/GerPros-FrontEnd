@@ -44,7 +44,14 @@ const handleLogin = async () => {
     }
 
     if (data.value) {
-      auth.setTokens(data.value as string);
+      auth.setTokens(data.value);
+      //測試refresh token用
+//       auth.setTokens({
+//   tokenType: data.value.tokenType,
+//   accessToken: data.value.accessToken,
+//   refreshToken: data.value.refreshToken,
+//   expiresIn: 5 // 設為10秒，方便測試
+// })
       router.push('manager/register');
     }
   } catch (e) {
