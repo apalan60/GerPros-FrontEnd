@@ -1,6 +1,5 @@
 <template>
   <div class="admin-page container mx-auto py-10">
-    <h1 class="text-2xl font-bold mb-8 text-center">後臺管理頁面</h1>
     <div class="grid grid-cols-2 gap-8">
       <NuxtLink to="/manager/register" class="option-card bg-blue-100 p-6 rounded-lg text-center hover:bg-blue-200">
         <h2 class="text-xl font-semibold">註冊</h2>
@@ -22,6 +21,10 @@
 </template>
 
 <script setup>
+
+definePageMeta({
+  layout: 'manager',
+});
 </script>
 
 <style scoped>

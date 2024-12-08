@@ -1,18 +1,37 @@
+
 <template>
-  <div>
-    <h1>Login</h1>
-    <form @submit.prevent="handleLogin">
-      <div>
-        <label>Email:</label>
-        <input v-model="email" type="email" required />
-      </div>
-      <div>
-        <label>Password:</label>
-        <input v-model="password" type="password" required />
-      </div>
-      <button type="submit">Login</button>
-    </form>
-    <p v-if="errorMessage" style="color: red">{{ errorMessage }}</p>
+  <div class="flex items-center justify-center min-h-screen bg-gray-100">
+    <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
+      <h1 class="mb-6 text-2xl font-bold text-center text-gray-800">登入</h1>
+      <form @submit.prevent="handleLogin" class="space-y-6">
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Email:</span>
+          </label>
+          <input
+              v-model="email"
+              type="email"
+              class="input input-bordered w-full"
+              placeholder="Enter your email"
+              required
+          />
+        </div>
+        <div class="form-control">
+          <label class="label">
+            <span class="label-text">Password:</span>
+          </label>
+          <input
+              v-model="password"
+              type="password"
+              class="input input-bordered w-full"
+              placeholder="Enter your password"
+              required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary w-full">送出</button>
+      </form>
+      <p v-if="errorMessage" class="mt-4 text-sm text-red-500 text-center">{{ errorMessage }}</p>
+    </div>
   </div>
 </template>
 
@@ -45,13 +64,6 @@ const handleLogin = async () => {
 
     if (data.value) {
       auth.setTokens(data.value);
-      //測試refresh token用
-//       auth.setTokens({
-//   tokenType: data.value.tokenType,
-//   accessToken: data.value.accessToken,
-//   refreshToken: data.value.refreshToken,
-//   expiresIn: 5 // 設為10秒，方便測試
-// })
       router.push('manager/dashboard');
     }
   } catch (e) {
@@ -60,3 +72,12 @@ const handleLogin = async () => {
   }
 };
 </script>
+
+<style>
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #f9fafb;
+}
+</style>
+/script>
