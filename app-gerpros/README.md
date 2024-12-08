@@ -1,6 +1,16 @@
-# Nuxt UI Minimal Starter
+# GerPros-FrontEnd
 
-Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui.nuxt.com) to learn more.
+## Demo
+
+[Demo Page](https://main.d1hm4l1a6kz6r6.amplifyapp.com/)
+
+## Tech stack
+
+- Framework [Nuxt v3.13](https://nuxt.com/)
+- Library
+  - [Nuxt UI Community v2.18](https://ui.nuxt.com/)
+  - [Tailwind v3.4.10](https://tailwindcss.com/docs/installation)
+
 
 ## Setup
 
@@ -47,3 +57,9 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+
+
+## API fetch
+
+- 使用 Nuxt3 的 useFetch, useAsyncData 與 $fetch來簡化開發，不須另外封裝 fetch 方法。 ref:[nuxt/ data fetching](https://nuxt.com/docs/getting-started/data-fetching)
