@@ -7,6 +7,7 @@ export async function useApiFetch<T>(url: string, options: any = {}) {
   // 檢查 token 是否需要刷新
   if (auth.isLoggedIn.value && auth.shouldRefresh.value) {
     try {
+      console.log()
       const { data, error } = await useApiFetch('/Users/Refresh', {
         method: 'POST',
         headers: {
