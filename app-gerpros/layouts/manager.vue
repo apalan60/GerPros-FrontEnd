@@ -28,7 +28,7 @@
         <div class="mx-2 flex-1 px-2">Manager Site</div>
         <div class="hidden flex-none lg:block">
           <ul class="menu menu-horizontal">
-            <NuxtLink to="/product">Production</NuxtLink>
+            <NuxtLink to="/products">Production</NuxtLink>
             <li><NuxtLink to="/manager/topic">Topic</NuxtLink></li>
             <li><NuxtLink to="/manager/faq">FAQ</NuxtLink></li>
           </ul>
@@ -47,7 +47,7 @@
       ></label>
       <ul class="menu bg-base-200 min-h-full w-80 p-4">
         <!-- Sidebar content here -->
-        <li><NuxtLink to="/manager/product">Production</NuxtLink></li>
+        <li><NuxtLink to="/manager/products">Production</NuxtLink></li>
         <li><NuxtLink to="/manager/topic">Topic</NuxtLink></li>
         <li><NuxtLink to="/manager/faq">FAQ</NuxtLink></li>
       </ul>

@@ -9,7 +9,7 @@
       </NuxtLink>
 
       <NuxtLink
-        to="/manager/product"
+        to="/manager/products"
         class="option-card bg-green-100 p-6 rounded-lg text-center hover:bg-green-200"
       >
         <h2 class="text-xl font-semibold">產品/品牌系列</h2>
