@@ -52,7 +52,7 @@ const handleLogin = async () => {
 //   refreshToken: data.value.refreshToken,
 //   expiresIn: 5 // 設為10秒，方便測試
 // })
-      router.push('manager/register');
+      router.push('manager/dashboard');
     }
   } catch (e) {
     console.error(e);
