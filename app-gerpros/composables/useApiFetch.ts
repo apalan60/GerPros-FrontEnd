@@ -10,9 +10,9 @@ async function refreshTokens() {
       method: 'POST',
       headers: {
         Authorization: `${auth.tokenType.value} ${auth.accessToken.value}`,
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body: { refreshToken: auth.refreshToken.value }
+      body: { refreshToken: auth.refreshToken.value },
     });
 
     if (error) {
