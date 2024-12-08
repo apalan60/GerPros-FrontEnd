@@ -1,6 +1,6 @@
 <template>
   <NuxtLayout name="production">
-    <!-- <template #content>
+    <template #content>
       <h1 v-if="isSearched" class="text-xl my-5 flex gap-9">
         <span v-if="searchedKeyWord">關鍵字：{{ searchedKeyWord }}</span>
         <span v-if="searchedBrand">品牌：{{ searchedBrand }}</span>
@@ -20,30 +20,28 @@
       <label for="drawer" class="btn btn-primary drawer-button lg:hidden">
         Open drawer
       </label>
-    </template> -->
+    </template>
   </NuxtLayout>
 </template>
 
 <script setup>
-// import { TEST_PRODUCTIONS_LIST } from '@/constants';
-const TEST_PRODUCTIONS_LIST = ref(null);
+import { TEST_PRODUCTIONS_LIST } from '@/constants';
 
 const productionsData = computed(() => {
   // TODO: 未來改帶 API 的參數
-  // return TEST_PRODUCTIONS_LIST.value.products.filter((product) => {
-  //   let matches = true;
-  //   if (searchedKeyWord.value) {
-  //     matches = matches && product.name.includes(searchedKeyWord.value);
-  //   }
-  //   if (searchedSeries.value) {
-  //     matches = matches && product.series.includes(searchedSeries.value);
-  //   }
-  //   if (searchedBrand.value) {
-  //     matches = matches && product.brand.includes(searchedBrand.value);
-  //   }
-  //   return matches;
-  // });
-  return TEST_PRODUCTIONS_LIST;
+  return TEST_PRODUCTIONS_LIST.products.filter((product) => {
+    let matches = true;
+    if (searchedKeyWord.value) {
+      matches = matches && product.name.includes(searchedKeyWord.value);
+    }
+    if (searchedSeries.value) {
+      matches = matches && product.series.includes(searchedSeries.value);
+    }
+    if (searchedBrand.value) {
+      matches = matches && product.brand.includes(searchedBrand.value);
+    }
+    return matches;
+  });
 });
 const searchedKeyWord = useState('searchedKeyWord');
 const searchedBrand = useState('searchedBrand');
@@ -52,18 +50,10 @@ const isSearched = computed(() => {
   return searchedKeyWord.value || searchedBrand.value || searchedSeries.value;
 });
 
-onMounted(async () => {
+onMounted(() => {
   searchedKeyWord.value = '';
   searchedBrand.value = '';
   searchedSeries.value = '';
-  const data = await $fetch(
-    'http://localhost:8080/api/ProductItems?PageNumber=1&PageSize=5',
-    {
-      method: 'GET',
-    },
-  );
-
-  console.log('data', data);
 });
 
 function toggleSearch(value, searchField) {
