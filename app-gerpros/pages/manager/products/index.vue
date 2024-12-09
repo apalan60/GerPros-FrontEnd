@@ -2,34 +2,45 @@
   <div class="container mx-auto p-4">
     <h1 class="text-2xl font-bold mb-4">產品管理</h1>
 
-    <!-- 品牌系列清單 -->
+    <!-- 品牌與系列選單 -->
     <div class="mb-4">
-      <div class="flex gap-2 overflow-x-auto">
-        <button
-            v-for="brand in brands"
-            :key="brand.id"
-            class="btn btn-sm btn-outline"
-            @click="selectBrand(brand.id, null)"
-        >
-          {{ brand.name }}
-        </button>
-        <div v-if="selectedBrand" class="flex gap-2 ml-4">
-          <button
-              v-for="series in selectedBrand.series"
-              :key="series.id"
-              class="btn btn-sm btn-outline"
-              @click="selectSeries(selectedBrand.id, series.id)"
+      <div class="flex flex-col sm:flex-row gap-4">
+        <!-- 品牌下拉選單 -->
+        <div class="flex flex-col">
+          <label for="brand-select" class="mb-1 text-sm font-semibold">選擇品牌</label>
+          <select
+              id="brand-select"
+              class="select select-bordered"
+              v-model="selectedBrandId"
+              @change="onBrandChange"
           >
-            {{ series.name }}
-          </button>
+            <option value="" disabled selected>請選擇品牌</option>
+            <option v-for="brand in brands" :key="brand.id" :value="brand.id">
+              {{ brand.name }}
+            </option>
+          </select>
+        </div>
+
+        <!-- 系列下拉選單 -->
+        <div class="flex flex-col" v-if="selectedBrand">
+          <label for="series-select" class="mb-1 text-sm font-semibold">選擇系列</label>
+          <select
+              id="series-select"
+              class="select select-bordered"
+              v-model="selectedSeriesId"
+              @change="onSeriesChange"
+          >
+            <option value="" disabled selected>請選擇系列</option>
+            <option v-for="series in selectedBrand.series" :key="series.id" :value="series.id">
+              {{ series.name }}
+            </option>
+          </select>
         </div>
       </div>
     </div>
 
     <!-- 產品清單 -->
-    <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-    >
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       <div
           v-for="product in products"
           :key="product.id"
@@ -74,13 +85,11 @@
 import { ref, onMounted } from 'vue';
 import { useApiFetch } from '~/composables/useApiFetch';
 
-definePageMeta({
-  layout: 'manager',
-});
-
 const products = ref([]);
 const brands = ref([]);
 const selectedBrand = ref(null);
+const selectedBrandId = ref("");
+const selectedSeriesId = ref("");
 const pagination = ref({
   pageNumber: 1,
   totalPages: 0,
@@ -100,14 +109,18 @@ const fetchBrands = async () => {
   }
 };
 
-const fetchProducts = async (page: number, brandId: string | null = null, seriesId: string | null = null) => {
+const fetchProducts = async (page: number) => {
   try {
     const params: Record<string, any> = {
       PageNumber: page,
       PageSize: 24,
     };
-    if (brandId) params.Brand = brands.value.find((b) => b.id === brandId)?.name;
-    if (seriesId) params.Series = selectedBrand.value?.series.find((s) => s.id === seriesId)?.name;
+    if (selectedBrandId.value) {
+      params.Brand = brands.value.find((b) => b.id === selectedBrandId.value)?.name;
+    }
+    if (selectedSeriesId.value) {
+      params.Series = selectedBrand.value?.series.find((s) => s.id === selectedSeriesId.value)?.name;
+    }
 
     const { data } = await useApiFetch('/ProductItems', { params });
     if (data.value) {
@@ -125,13 +138,14 @@ const fetchProducts = async (page: number, brandId: string | null = null, series
   }
 };
 
-const selectBrand = (brandId: string, seriesId: string | null) => {
-  selectedBrand.value = brands.value.find((b) => b.id === brandId) || null;
-  fetchProducts(1, brandId, seriesId);
+const onBrandChange = () => {
+  selectedBrand.value = brands.value.find((b) => b.id === selectedBrandId.value) || null;
+  selectedSeriesId.value = ""; // 重置系列選擇
+  fetchProducts(1);
 };
 
-const selectSeries = (brandId: string, seriesId: string) => {
-  fetchProducts(1, brandId, seriesId);
+const onSeriesChange = () => {
+  fetchProducts(1);
 };
 
 onMounted(() => {
