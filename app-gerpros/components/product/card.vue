@@ -13,6 +13,7 @@
       </h2>
       <div class="card-actions justify-end">
         <div
+          v-if=" production.brandName"
           class="badge badge-outline cursor-pointer"
           :class="{
             'bg-indigo-100 text-indigo-800':
@@ -20,9 +21,10 @@
           }"
           @click="clickBrand"
         >
-          {{ production?.brand }}
+          {{ production.brandName }}
         </div>
         <div
+          v-if="production.seriesName"
           class="badge badge-outline cursor-pointer"
           :class="{
             'bg-indigo-100 text-indigo-800':
@@ -30,7 +32,7 @@
           }"
           @click="clickSeries"
         >
-          {{ production?.series }}
+          {{ production.seriesName }}
         </div>
       </div>
     </div>

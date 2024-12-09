@@ -7,7 +7,7 @@
         <span v-if="searchedSeries">系列：{{ searchedSeries }}</span>
       </h1>
       <div
-        class="productions-wrapper grid grid-cols-1 md:grid-cols-2 gap-10 mx-16"
+        class="productions-wrapper grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-10 mx-16"
       >
         <ProductCard
           v-for="product in productionsData"
@@ -17,30 +17,19 @@
           @search-brand="searchBrand"
         />
       </div>
-      <label for="drawer" class="btn btn-primary drawer-button lg:hidden">
-        Open drawer
-      </label>
     </template>
   </NuxtLayout>
 </template>
 
 <script setup>
-import { TEST_PRODUCTIONS_LIST } from '@/constants';
-
+const TEST_PRODUCTIONS_LIST = ref({});
 const productionsData = computed(() => {
-  // TODO: 未來改帶 API 的參數
-  return TEST_PRODUCTIONS_LIST.products.filter((product) => {
-    let matches = true;
-    if (searchedKeyWord.value) {
-      matches = matches && product.name.includes(searchedKeyWord.value);
-    }
-    if (searchedSeries.value) {
-      matches = matches && product.series.includes(searchedSeries.value);
-    }
-    if (searchedBrand.value) {
-      matches = matches && product.brand.includes(searchedBrand.value);
-    }
-    return matches;
+  const productions = TEST_PRODUCTIONS_LIST.value.items;
+  return productions?.map((production) => {
+    return {
+      ...production,
+      image: '/image/about-us-photo-2.webp',
+    };
   });
 });
 const searchedKeyWord = useState('searchedKeyWord');
@@ -50,7 +39,14 @@ const isSearched = computed(() => {
   return searchedKeyWord.value || searchedBrand.value || searchedSeries.value;
 });
 
-onMounted(() => {
+onMounted(async () => {
+  TEST_PRODUCTIONS_LIST.value = await $fetch(
+    'http://localhost:8080/api/ProductItems?PageNumber=1&PageSize=12',
+    {
+      method: 'GET',
+    },
+  );
+
   searchedKeyWord.value = '';
   searchedBrand.value = '';
   searchedSeries.value = '';
