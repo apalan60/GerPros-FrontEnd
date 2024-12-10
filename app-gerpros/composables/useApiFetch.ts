@@ -28,6 +28,9 @@ async function refreshTokens() {
 }
 
 export async function useApiFetch<T>(url: string, options: any = {}) {
+  console.log('🚀 ~ options:', options);
+  console.log('🚀 ~ url:', url);
+  console.log('🚀 ~ useApiFetch:', 'useApiFetch');
   const auth = useAuthStore();
   const config = useRuntimeConfig();
 
@@ -41,6 +44,7 @@ export async function useApiFetch<T>(url: string, options: any = {}) {
       Authorization: `${auth.tokenType.value} ${auth.accessToken.value}`,
     };
   }
+  console.log('////ee////');
 
   return useFetch<T>(url, {
     baseURL: config.public.apiBase,

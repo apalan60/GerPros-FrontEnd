@@ -17,6 +17,7 @@
           @search-brand="searchBrand"
         />
       </div>
+      <span @click="goTo({ pageNumber: 2 })">2</span>
     </template>
   </NuxtLayout>
 </template>
@@ -40,17 +41,39 @@ const isSearched = computed(() => {
 });
 
 onMounted(async () => {
-  TEST_PRODUCTIONS_LIST.value = await $fetch(
-    'http://localhost:8080/api/ProductItems?PageNumber=1&PageSize=12',
-    {
-      method: 'GET',
-    },
-  );
+  const route = useRoute();
+  const { PageNumber, Brand, Series } = route.query;
+  const params = {
+    PageSize: 12, // 固定參數
+  };
+  params.PageNumber = PageNumber ?? 1;
+  if (Brand) {
+    params.Brand = Brand;
+  }
+  if (Series) {
+    params.Series = Series;
+  }
+
+  console.log('🚀 ~ onMounted ~ params:', params);
+  TEST_PRODUCTIONS_LIST.value = await useApiFetch('/ProductItems', {
+    params,
+  });
 
   searchedKeyWord.value = '';
   searchedBrand.value = '';
   searchedSeries.value = '';
 });
+
+async function goTo({ pageNumber = 1, brand, series }) {
+  await navigateTo({
+    path: '/product',
+    query: {
+      PageNumber: pageNumber,
+      Brand: brand,
+      Series: series,
+    },
+  });
+}
 
 function toggleSearch(value, searchField) {
   searchField.value = value === searchField.value ? '' : value;
