@@ -42,7 +42,7 @@ export async function useApiFetch<T>(url: string, options: any = {}) {
     };
   }
 
-  return useFetch<T>(url, {
+  return $fetch<T>(url, {
     baseURL: config.public.apiBase,
     ...options,
   });
