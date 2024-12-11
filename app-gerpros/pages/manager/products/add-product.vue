@@ -6,7 +6,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
         <path stroke-linecap="round" stroke-linejoin="round"
-              d="M12 4v16m8-8H4" />
+              d="M12 4v16m8-8H4"/>
       </svg>
     </button>
 
@@ -20,7 +20,7 @@
           <label class="label">
             <span class="label-text">Series ID</span>
           </label>
-          <input class="input input-bordered" v-model="seriesId" placeholder="請輸入 seriesId" />
+          <input class="input input-bordered" v-model="seriesId" placeholder="請輸入 seriesId"/>
         </div>
 
         <!-- 輸入產品名稱 -->
@@ -28,7 +28,7 @@
           <label class="label">
             <span class="label-text">產品名稱</span>
           </label>
-          <input class="input input-bordered" v-model="name" placeholder="請輸入產品名稱" />
+          <input class="input input-bordered" v-model="name" placeholder="請輸入產品名稱"/>
         </div>
 
         <!-- 輸入價格 -->
@@ -36,7 +36,7 @@
           <label class="label">
             <span class="label-text">價格</span>
           </label>
-          <input class="input input-bordered" v-model.number="price" type="number" placeholder="請輸入價格" />
+          <input class="input input-bordered" v-model.number="price" type="number" placeholder="請輸入價格"/>
         </div>
 
         <!-- 輸入圖片連結 -->
@@ -44,7 +44,7 @@
           <label class="label">
             <span class="label-text">圖片 URL</span>
           </label>
-          <input class="input input-bordered" v-model="image" placeholder="請輸入圖片 URL" />
+          <input class="input input-bordered" v-model="image" placeholder="請輸入圖片 URL"/>
         </div>
 
         <!-- 輸入詳細描述 -->
@@ -72,22 +72,15 @@
         </div>
       </form>
     </dialog>
+    <ToastMessage />
 
-    <!-- Toast 區域 -->
-    <div class="toast toast-top toast-end">
-      <div v-if="successMessage" class="alert alert-success">
-        <span>{{ successMessage }}</span>
-      </div>
-      <div v-if="errorMessage" class="alert alert-error">
-        <span>{{ errorMessage }}</span>
-      </div>
-    </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import {ref} from 'vue';
 import AddProductButton from "~/components/product/AddProductButton.vue";
+import ToastMessage from "~/components/ToastMessages.vue";
 
 const showModal = ref(false);
 
@@ -99,27 +92,14 @@ const image = ref('');
 const detail = ref('');
 
 // Toast 訊息
-const successMessage = ref('');
-const errorMessage = ref('');
-
-// 成功回調
-const handleSuccess = (result: any) => {
-  successMessage.value = '產品新增成功！';
-  errorMessage.value = '';
+const { showToast } = useToast();
+const handleSuccess = () => {
+  showToast('success', '產品新增成功！');
   showModal.value = false;
-  // 幾秒後自動清除提示，可自行調整
-  setTimeout(() => {
-    successMessage.value = '';
-  }, 3000);
 };
 
-// 失敗回調
-const handleError = (error: any) => {
-  successMessage.value = '';
-  errorMessage.value = '產品新增失敗，請稍後再試';
-  // 幾秒後自動清除提示，可自行調整
-  setTimeout(() => {
-    errorMessage.value = '';
-  }, 3000);
+const handleError = () => {
+  showToast('error', '產品新增失敗');
 };
+
 </script>
