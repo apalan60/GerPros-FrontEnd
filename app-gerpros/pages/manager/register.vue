@@ -104,25 +104,27 @@ const handleRegister = async () => {
     return;
   }
 
-  const { data, error } = await useApiFetch('/Users/Register', {
-    method: 'POST',
-    body: { email: regEmail.value, password: regPassword.value },
-  });
+  try {
+    const data = await useApiFetch('/Users/Register', {
+      method: 'POST',
+      body: { email: regEmail.value, password: regPassword.value },
+    });
 
-  if (error.value) {
-    const errorData = error.value.data as any;
+    notificationMessage.value = '註冊成功';
+    showNotification.value = true;
+
+  } catch (error: any) {
+    const errorData = error?.data;
     if (errorData && errorData.errors) {
       const serverErrors = Object.values(errorData.errors).flat();
       message.value = serverErrors.join(', ');
     } else {
       message.value = 'Registration failed.';
     }
-  } else {
-    notificationMessage.value = '註冊成功';
-    showNotification.value = true;
+  } finally {
+    isLoading.value = false;
   }
 
-  isLoading.value = false;
 };
 </script>
 

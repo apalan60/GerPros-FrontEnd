@@ -53,19 +53,15 @@ const auth = useAuthStore();
 
 const handleLogin = async () => {
   try {
-    const { data, error } = await useApiFetch('/Users/Login', {
+    const response: { tokenType: string; accessToken: string; refreshToken: string; expiresIn: number } = 
+        await useApiFetch('/Users/Login', {
       method: 'POST',
       body: { email: email.value, password: password.value },
     });
 
-    if (error.value) {
-      errorMessage.value = 'Login failed';
-      return;
-    }
-
-    if (data.value) {
-      auth.setTokens(data.value);
-      router.push('manager/dashboard');
+    if (response) {
+      auth.setTokens(response);
+      await router.push('manager/dashboard');
     }
   } catch (e) {
     console.error(e);

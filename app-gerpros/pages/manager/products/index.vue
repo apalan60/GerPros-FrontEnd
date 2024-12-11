@@ -54,8 +54,34 @@ definePageMeta({
   layout: 'manager',
 });
 
-const products = ref([]);
-const pagination = ref({
+
+interface Product {
+  id: number;
+  name: string;
+  detail?: string;
+  price: number;
+  image: string;
+}
+
+interface Pagination {
+  pageNumber: number;
+  totalPages: number;
+  totalCount: number;
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
+}
+
+interface ProductData {
+  items: Product[];
+  pageNumber: number;
+  totalPages: number;
+  totalCount: number;
+  hasPreviousPage: boolean;
+  hasNextPage: boolean;
+}
+
+const products = ref<Product[]>([]);
+const pagination = ref<Pagination>({
   pageNumber: 1,
   totalPages: 0,
   totalCount: 0,
@@ -63,22 +89,23 @@ const pagination = ref({
   hasNextPage: false,
 });
 
+
 const fetchProducts = async (page: number) => {
   try {
-    const { data } = await useApiFetch('/ProductItems', {
+    const data = await useApiFetch<ProductData>('/ProductItems', {
       params: {
         PageNumber: page,
         PageSize: 24,
       },
     });
-    if (data.value) {
-      products.value = data.value.items;
+    if (data) {
+      products.value = data.items;
       pagination.value = {
-        pageNumber: data.value.pageNumber,
-        totalPages: data.value.totalPages,
-        totalCount: data.value.totalCount,
-        hasPreviousPage: data.value.hasPreviousPage,
-        hasNextPage: data.value.hasNextPage,
+        pageNumber: data.pageNumber,
+        totalPages: data.totalPages,
+        totalCount: data.totalCount,
+        hasPreviousPage: data.hasPreviousPage,
+        hasNextPage: data.hasNextPage,
       };
     }
   } catch (error) {

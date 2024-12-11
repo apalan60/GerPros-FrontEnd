@@ -5,7 +5,7 @@ async function refreshTokens() {
   const config = useRuntimeConfig();
 
   try {
-    const { data, error } = await $fetch('/Users/Refresh', {
+    const data = await $fetch('/Users/Refresh', {
       baseURL: config.public.apiBase,
       method: 'POST',
       headers: {
@@ -14,13 +14,7 @@ async function refreshTokens() {
       },
       body: { refreshToken: auth.refreshToken.value },
     });
-
-    if (error) {
-      console.error(error);
-      auth.clearTokens();
-    } else if (data) {
-      auth.setTokens(data as any);
-    }
+    auth.setTokens(data as any);
   } catch (e) {
     console.error('Refresh token error:', e);
     auth.clearTokens();
