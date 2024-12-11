@@ -13,24 +13,26 @@
       </h2>
       <div class="card-actions justify-end">
         <div
+          v-if="production.brandName"
           class="badge badge-outline cursor-pointer"
           :class="{
             'bg-indigo-100 text-indigo-800':
               searchedBrand === production?.brand,
           }"
-          @click="clickBrand"
+          @click="searchBrand"
         >
-          {{ production?.brand }}
+          {{ production.brandName }}
         </div>
         <div
+          v-if="production.seriesName"
           class="badge badge-outline cursor-pointer"
           :class="{
             'bg-indigo-100 text-indigo-800':
               searchedSeries === production?.series,
           }"
-          @click="clickSeries"
+          @click="searchSeries"
         >
-          {{ production?.series }}
+          {{ production.seriesName }}
         </div>
       </div>
     </div>
@@ -42,10 +44,13 @@ const { production = {} } = defineProps({ production: Object });
 const emit = defineEmits(['search-brand', 'search-series']);
 const searchedBrand = useState('searchedBrand');
 const searchedSeries = useState('searchedSeries');
-function clickBrand() {
-  emit('search-brand', production.brand);
+function searchBrand() {
+  emit('search-brand', production.brandName);
 }
-function clickSeries() {
-  emit('search-series', production.series);
+function searchSeries() {
+  emit('search-series', {
+    brand: production.brandName,
+    series: production.seriesName,
+  });
 }
 </script>

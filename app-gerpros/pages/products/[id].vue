@@ -7,13 +7,13 @@
             <a><NuxtLink :to="'/products'">Productions</NuxtLink> </a>
           </li>
           <li>
-            <a>{{ product.brand }}</a>
+            <a>{{ product?.brandName }}</a>
           </li>
           <li>
-            <a>{{ product.series }}</a>
+            <a>{{ product?.seriesName }}</a>
           </li>
           <li>
-            <a>{{ product.name }}</a>
+            {{ product?.name }}
           </li>
         </ul>
       </div>
@@ -21,16 +21,16 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mx-16 my-10">
           <div>
             <figure>
-              <img :src="product.image" :alt="product.title" />
+              <img :src="product?.image" :alt="product?.title" />
             </figure>
           </div>
           <div>
-            <h1 class="text-2xl mb-5">{{ product.name }}</h1>
-            <h2 class="text-xl">Brand: {{ product.brand }}</h2>
-            <h2 class="text-xl">Series: {{ product.series }}</h2>
-            <h2 class="text-xl">Price: {{ product.price }}</h2>
+            <h1 class="text-2xl mb-5">{{ product?.name }}</h1>
+            <h2 class="text-xl">Brand: {{ product?.brandName }}</h2>
+            <h2 class="text-xl">Series: {{ product?.seriesName }}</h2>
+            <h2 class="text-xl">Price: {{ product?.price }}</h2>
             <h2 class="text-xl">
-              Description: {{ id }} {{ product.description }}
+              Description: {{ id }} {{ product?.description }}
             </h2>
           </div>
         </div>
@@ -43,8 +43,24 @@
 import { TEST_PRODUCT_DETAIL } from '@/constants';
 
 const route = useRoute();
-const product = ref(TEST_PRODUCT_DETAIL);
+const product = ref();
 const id = ref(route.params.id);
+
+onMounted(async () => {
+  await fetchData();
+});
+
+async function fetchData() {
+  try {
+    const data = await useApiFetch(`/ProductItems/${id.value}`);
+    if (data) {
+      product.value = data;
+    }
+  } catch (error) {
+    product.value = TEST_PRODUCT_DETAIL;
+    console.error('無法獲取產品資料', error);
+  }
+}
 </script>
 
 <style scoped></style>

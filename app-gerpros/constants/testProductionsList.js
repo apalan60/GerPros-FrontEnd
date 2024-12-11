@@ -5,11 +5,11 @@ export const TEST_PRODUCTIONS_LIST = {
   totalPages: 1,
   sortBy: 'price',
   order: 'desc',
-  products: [
+  items: [
     {
       id: 12371984865,
-      brand: 'Artfloor',
-      series: 'Urban',
+      brandName: 'Artfloor',
+      seriesName: 'Urban',
       name: '奶油色橡木',
       price: 7200.0,
       image: 'https://picsum.photos/600/600?random=1',
@@ -17,8 +17,8 @@ export const TEST_PRODUCTIONS_LIST = {
     },
     {
       id: 43725071348,
-      brand: 'Arteo',
-      series: 'normal',
+      brandName: 'Arteo',
+      seriesName: 'normal',
       name: '棕色橡木',
       price: 2000.0,
       image: 'https://picsum.photos/600/600?random=2',

@@ -1,72 +1,113 @@
 <template>
   <NuxtLayout name="production">
     <template #content>
-      <h1 v-if="isSearched" class="text-xl my-5 flex gap-9">
-        <span v-if="searchedKeyWord">關鍵字：{{ searchedKeyWord }}</span>
-        <span v-if="searchedBrand">品牌：{{ searchedBrand }}</span>
-        <span v-if="searchedSeries">系列：{{ searchedSeries }}</span>
-      </h1>
+      <div class="breadcrumbs my-4">
+        <ul>
+          <li><a @click="goTo()">All Products</a></li>
+          <li v-if="searchedBrand">
+            <a @click="goToCurrentBrand()">{{ searchedBrand }}</a>
+          </li>
+          <li v-if="searchedSeries">{{ searchedSeries }}</li>
+        </ul>
+      </div>
       <div
-        class="productions-wrapper grid grid-cols-1 md:grid-cols-2 gap-10 mx-16"
+        class="productions-wrapper grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-10 mx-16"
       >
         <ProductCard
-          v-for="product in productionsData"
+          v-for="product in productionsItems"
           :key="product.name"
           :production="product"
-          @search-series="searchSeries"
           @search-brand="searchBrand"
+          @search-series="searchSeries"
         />
       </div>
-      <label for="drawer" class="btn btn-primary drawer-button lg:hidden">
-        Open drawer
-      </label>
+      <span @click="goToPage({ pageNumber: 2 })">{{
+        productionsTotalPages
+      }}</span>
     </template>
   </NuxtLayout>
 </template>
 
 <script setup>
-import { TEST_PRODUCTIONS_LIST } from '@/constants';
+import { TEST_PRODUCTIONS_LIST } from '~/constants';
 
-const productionsData = computed(() => {
-  // TODO: 未來改帶 API 的參數
-  return TEST_PRODUCTIONS_LIST.products.filter((product) => {
-    let matches = true;
-    if (searchedKeyWord.value) {
-      matches = matches && product.name.includes(searchedKeyWord.value);
-    }
-    if (searchedSeries.value) {
-      matches = matches && product.series.includes(searchedSeries.value);
-    }
-    if (searchedBrand.value) {
-      matches = matches && product.brand.includes(searchedBrand.value);
-    }
-    return matches;
+const route = useRoute();
+
+// production
+const productionsRawData = ref({});
+const productionsItems = computed(() => {
+  const productions = productionsRawData.value.items;
+  return productions?.map((production) => {
+    return {
+      ...production,
+      image: '/image/about-us-photo-2.webp',
+    };
   });
 });
-const searchedKeyWord = useState('searchedKeyWord');
-const searchedBrand = useState('searchedBrand');
-const searchedSeries = useState('searchedSeries');
-const isSearched = computed(() => {
-  return searchedKeyWord.value || searchedBrand.value || searchedSeries.value;
+const productionsTotalPages = computed(() => {
+  return productionsRawData.value.totalPages;
 });
 
-onMounted(() => {
-  searchedKeyWord.value = '';
-  searchedBrand.value = '';
-  searchedSeries.value = '';
-});
-
-function toggleSearch(value, searchField) {
-  searchField.value = value === searchField.value ? '' : value;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
+// search
+const searchedBrand = computed(() => route.query.Brand);
+const searchedSeries = computed(() => route.query.Series);
 
 function searchBrand(brand) {
-  toggleSearch(brand, searchedBrand);
+  goTo({ brand });
 }
 
-function searchSeries(series) {
-  toggleSearch(series, searchedSeries);
+function searchSeries({ brand, series }) {
+  goTo({ brand, series });
+}
+
+// mounted
+onMounted(async () => {
+  await fetchData();
+});
+
+async function fetchData() {
+  const params = {
+    PageSize: 12, // 固定參數
+  };
+  params.PageNumber = route.query.PageNumber ?? 1;
+  if (searchedBrand.value) {
+    params.Brand = searchedBrand.value;
+  }
+  if (searchedSeries.value) {
+    params.Series = searchedSeries.value;
+  }
+  try {
+    const data = await useApiFetch('/ProductItems', {
+      params,
+    });
+    if (data) {
+      productionsRawData.value = data;
+    }
+  } catch (error) {
+    productionsRawData.value = TEST_PRODUCTIONS_LIST;
+    console.error('無法獲取產品資料', error);
+  }
+}
+
+// goTo
+async function goToPage({ pageNumber }) {
+  await goTo({ pageNumber, brand: Brand, series: Series });
+}
+
+async function goToCurrentBrand() {
+  await goTo({ brand: searchedBrand.value });
+}
+
+async function goTo({ pageNumber = 1, brand, series } = {}) {
+  await navigateTo({
+    path: '/products',
+    query: {
+      PageNumber: pageNumber,
+      Brand: brand,
+      Series: series,
+    },
+  });
+  await fetchData();
 }
 </script>
 
