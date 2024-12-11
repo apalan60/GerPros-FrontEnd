@@ -4,18 +4,18 @@
 
     <!-- 產品清單 -->
     <div
-      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
     >
       <div
-        v-for="product in products"
-        :key="product.id"
-        class="card bg-base-100 shadow-md hover:shadow-lg"
+          v-for="product in products"
+          :key="product.id"
+          class="card bg-base-100 shadow-md hover:shadow-lg"
       >
         <figure>
           <img
-            :src="product.image"
-            :alt="product.name"
-            class="w-full h-48 object-cover"
+              :src="product.image"
+              :alt="product.name"
+              class="w-full h-48 object-cover"
           />
         </figure>
         <div class="card-body">
@@ -25,20 +25,20 @@
         </div>
       </div>
     </div>
-
+    <add-product/>
     <!-- 分頁 -->
     <div class="flex justify-center mt-6">
       <button
-        class="btn btn-outline"
-        :disabled="!pagination.hasPreviousPage"
-        @click="fetchProducts(pagination.pageNumber - 1)"
+          class="btn btn-outline"
+          :disabled="!pagination.hasPreviousPage"
+          @click="fetchProducts(pagination.pageNumber - 1)"
       >
         上一頁
       </button>
       <button
-        class="btn btn-outline ml-2"
-        :disabled="!pagination.hasNextPage"
-        @click="fetchProducts(pagination.pageNumber + 1)"
+          class="btn btn-outline ml-2"
+          :disabled="!pagination.hasNextPage"
+          @click="fetchProducts(pagination.pageNumber + 1)"
       >
         下一頁
       </button>
@@ -47,8 +47,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
-import { useApiFetch } from '~/composables/useApiFetch';
+import {ref, onMounted} from 'vue';
+import {useApiFetch} from '~/composables/useApiFetch';
+import AddProduct from "~/pages/manager/products/add-product.vue";
 
 definePageMeta({
   layout: 'manager',
@@ -123,6 +124,7 @@ onMounted(() => {
   display: flex;
   flex-direction: column;
 }
+
 .card-body {
   padding: 1rem;
 }
