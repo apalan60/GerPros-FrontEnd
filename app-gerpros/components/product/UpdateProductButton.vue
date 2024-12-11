@@ -1,6 +1,6 @@
 <template>
   <button class="btn btn-primary" @click="updateProduct">
-    更新產品
+    更新
   </button>
 </template>
 

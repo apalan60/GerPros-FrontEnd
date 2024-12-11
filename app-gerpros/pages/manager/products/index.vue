@@ -11,18 +11,22 @@
           :key="product.id"
           class="card bg-base-100 shadow-md hover:shadow-lg"
       >
-        <figure>
-          <img
-              :src="product.image"
-              :alt="product.name"
-              class="w-full h-48 object-cover"
-          />
-        </figure>
-        <div class="card-body">
-          <h2 class="card-title">{{ product.name }}</h2>
-          <p>{{ product.detail || '暫無描述' }}</p>
-          <p class="text-lg font-bold">${{ product.price }}</p>
-        </div>
+        <NuxtLink
+            :to="{ path: '/manager/products/' + (product?.id ?? 0) }"
+        >
+          <figure>
+            <img
+                :src="product.image"
+                :alt="product.name"
+                class="w-full h-48 object-cover"
+            />
+          </figure>
+          <div class="card-body">
+            <h2 class="card-title">{{ product.name }}</h2>
+            <p>{{ product.detail || '暫無描述' }}</p>
+            <p class="text-lg font-bold">${{ product.price }}</p>
+          </div>
+        </NuxtLink>
       </div>
     </div>
     <add-product/>
