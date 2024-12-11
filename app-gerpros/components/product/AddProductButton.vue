@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-primary" @click="addProduct">
+  <button class="btn btn-primary" @click="handleAdd">
     新增產品
   </button>
 </template>
@@ -15,7 +15,12 @@ const props = defineProps<{
   detail: string
 }>();
 
-const addProduct = async () => {
+const emit = defineEmits<{
+  (e: 'success', result: any): void
+  (e: 'error', error: any): void
+}>();
+
+const handleAdd = async () => {
   try {
     const payload = {
       seriesId: props.seriesId,
@@ -30,8 +35,10 @@ const addProduct = async () => {
       body: payload,
     });
     console.log('產品新增成功', result);
+    emit('success', result);
   } catch (error) {
     console.error('產品新增失敗', error);
+    emit('error', error);
   }
 };
 </script>
