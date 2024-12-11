@@ -35,7 +35,6 @@ export async function useApiFetch<T>(url: string, options: any = {}) {
       Authorization: `${auth.tokenType.value} ${auth.accessToken.value}`,
     };
   }
-  console.log('////ee////');
 
   return $fetch<T>(url, {
     baseURL: config.public.apiBase,
