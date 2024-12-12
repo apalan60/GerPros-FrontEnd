@@ -33,14 +33,20 @@
 
 <script setup>
 import { TEST_BRANDS_LIST } from '@/constants';
+const attrs = useAttrs()
+console.log('attrs',attrs)
 
-const brandsList = ref();
+import { useState } from '#app'
+import {useBrandSeriesStore} from "~/stores/brandSeries.ts";
+const brandsList = useState('brandsList', () => []) // 初始為空陣列
+const { brandSeries } = useBrandSeriesStore()
 
 async function fetchData() {
   try {
     const data = await useApiFetch('/Brands');
     if (data) {
       brandsList.value = data;
+      brandSeries.value = data;
     }
   } catch (error) {
     brandsList.value = TEST_BRANDS_LIST.brands;
@@ -48,13 +54,12 @@ async function fetchData() {
   }
 }
 
-onMounted(() => {
-  fetchData(); // Ensure the hook is registered synchronously
-});
+onMounted(fetchData)
 
 async function goTo({ pageNumber = 1, brand, series } = {}) {
+  const path = attrs.isManager ? '/manager/products' : '/products';
   await navigateTo({
-    path: '/products',
+    path,
     query: {
       PageNumber: pageNumber,
       Brand: brand,

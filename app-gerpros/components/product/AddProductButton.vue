@@ -1,5 +1,5 @@
 <template>
-  <button class="btn btn-primary" @click="addProduct">
+  <button class="btn btn-primary" @click="handleAdd">
     新增產品
   </button>
 </template>
@@ -11,27 +11,36 @@ const props = defineProps<{
   seriesId: string,
   name: string,
   price: number,
-  image: string,
+  image: File | null,
   detail: string
 }>();
 
-const addProduct = async () => {
+const emit = defineEmits<{
+  (e: 'success', result: any): void
+  (e: 'error', error: any): void
+}>();
+
+const handleAdd = async () => {
   try {
-    const payload = {
-      seriesId: props.seriesId,
-      name: props.name,
-      price: props.price,
-      image: props.image,
-      detail: props.detail,
-    };
+    const formData = new FormData();
+    formData.append('seriesId', props.seriesId);
+    formData.append('name', props.name);
+    formData.append('price', props.price.toString());
+    formData.append('detail', props.detail || '');
+    if (props.image) {
+      formData.append('image', props.image);
+    }
 
     const result = await useApiFetch('/ProductItems', {
       method: 'POST',
-      body: payload,
+      body: formData,
     });
     console.log('產品新增成功', result);
+    emit('success', result);
   } catch (error) {
     console.error('產品新增失敗', error);
+    emit('error', error);
   }
 };
+
 </script>
