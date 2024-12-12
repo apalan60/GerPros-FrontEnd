@@ -2,11 +2,11 @@ export const TEST_BRANDS_LIST = {
   brands: [
     {
       name: 'Artfloor',
-      series: ['Urban', 'Prime'],
+      series: [{ name: 'Urban' }, { name: 'Prime' }],
     },
     {
       name: 'Arteo',
-      series: ['人字拼', '一般'],
+      series: [{ name: '人字拼' }, { name: '一般' }],
     },
   ],
 };

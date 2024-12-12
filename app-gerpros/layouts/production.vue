@@ -18,8 +18,10 @@
               <a @click="goTo({ brand: brand.name })">{{ brand.name }}</a>
             </li>
             <ul>
-              <li v-for="s in brand.series" :key="s">
-                <a @click="goTo({ brand: brand.name, series: s })">{{ s }}</a>
+              <li v-for="s in brand.series" :key="s.name">
+                <a @click="goTo({ brand: brand.name, series: s.name })">{{
+                  s.name
+                }}</a>
               </li>
             </ul>
           </ul>
@@ -32,7 +34,24 @@
 <script setup>
 import { TEST_BRANDS_LIST } from '@/constants';
 
-const brandsList = ref(TEST_BRANDS_LIST.brands);
+const brandsList = ref();
+
+async function fetchData() {
+  try {
+    const data = await useApiFetch('/Brands');
+    console.log('🚀 ~ fetchData ~ data:', data);
+    if (data) {
+      brandsList.value = data;
+    }
+  } catch (error) {
+    brandsList.value = TEST_BRANDS_LIST.brands;
+    console.error('無法獲取品牌資料', error);
+  }
+}
+
+onMounted(() => {
+  fetchData(); // Ensure the hook is registered synchronously
+});
 
 async function goTo({ pageNumber = 1, brand, series } = {}) {
   await navigateTo({
