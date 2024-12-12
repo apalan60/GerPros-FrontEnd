@@ -64,11 +64,6 @@ function searchSeries({ brand, series }) {
   goTo({ brand, series });
 }
 
-// mounted
-onMounted(async () => {
-  await fetchData();
-});
-
 async function fetchData() {
   const params = {
     PageSize: 12, // 固定參數
@@ -115,8 +110,15 @@ async function goTo({ pageNumber = 1, brand, series } = {}) {
       Series: series,
     },
   });
-  await fetchData();
 }
+
+watch(
+  () => route.query,
+  () => {
+    fetchData();
+  },
+  { immediate: true },
+);
 </script>
 
 <style scoped></style>

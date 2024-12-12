@@ -15,11 +15,11 @@
           <h2 class="menu-title">精選品牌</h2>
           <ul v-for="brand in brandsList" :key="brand.name">
             <li>
-              <a>{{ brand.name }}</a>
+              <a @click="goTo({ brand: brand.name })">{{ brand.name }}</a>
             </li>
             <ul>
               <li v-for="s in brand.series" :key="s">
-                <a>{{ s }}</a>
+                <a @click="goTo({ brand: brand.name, series: s })">{{ s }}</a>
               </li>
             </ul>
           </ul>
@@ -33,6 +33,17 @@
 import { TEST_BRANDS_LIST } from '@/constants';
 
 const brandsList = ref(TEST_BRANDS_LIST.brands);
+
+async function goTo({ pageNumber = 1, brand, series } = {}) {
+  await navigateTo({
+    path: '/products',
+    query: {
+      PageNumber: pageNumber,
+      Brand: brand,
+      Series: series,
+    },
+  });
+}
 </script>
 
 <style scoped></style>
