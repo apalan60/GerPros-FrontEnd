@@ -39,7 +39,6 @@ const brandsList = ref();
 async function fetchData() {
   try {
     const data = await useApiFetch('/Brands');
-    console.log('🚀 ~ fetchData ~ data:', data);
     if (data) {
       brandsList.value = data;
     }

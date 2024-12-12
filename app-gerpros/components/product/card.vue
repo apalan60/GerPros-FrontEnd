@@ -15,10 +15,6 @@
         <div
           v-if="production.brandName"
           class="badge badge-outline cursor-pointer"
-          :class="{
-            'bg-indigo-100 text-indigo-800':
-              searchedBrand === production?.brand,
-          }"
           @click="searchBrand"
         >
           {{ production.brandName }}
@@ -26,10 +22,6 @@
         <div
           v-if="production.seriesName"
           class="badge badge-outline cursor-pointer"
-          :class="{
-            'bg-indigo-100 text-indigo-800':
-              searchedSeries === production?.series,
-          }"
           @click="searchSeries"
         >
           {{ production.seriesName }}

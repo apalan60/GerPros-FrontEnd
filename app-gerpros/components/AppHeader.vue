@@ -40,20 +40,17 @@
             <li v-for="link in links" :key="link.name">
               <nuxt-link :to="link.to">{{ link.label }}</nuxt-link>
               <ul v-if="link.to === '/products'">
-                <li><nuxt-link to="/products">熱門商品</nuxt-link></li>
                 <li>
-                  <h2 class="menu-title">精選項目</h2>
+                  <nuxt-link to="/products">All Productions</nuxt-link>
+                </li>
+                <li v-for="brand in brandsList" :key="brand.name">
+                  <a @click="goTo({ brand: brand.name })">{{ brand.name }}</a>
                   <ul>
-                    <li><nuxt-link to="/products">磁磚</nuxt-link></li>
-                    <li><nuxt-link to="/products">壁布</nuxt-link></li>
-                    <li><nuxt-link to="/products">地板</nuxt-link></li>
-                  </ul>
-                  <h2 class="menu-title">精選品牌</h2>
-                  <ul>
-                    <li><nuxt-link to="/products">Cersanit</nuxt-link></li>
-                    <li><nuxt-link to="/products">Art Floor</nuxt-link></li>
-                    <li><nuxt-link to="/products">Arteo</nuxt-link></li>
-                    <li><nuxt-link to="/products">Philipp Plein</nuxt-link></li>
+                    <li v-for="s in brand.series" :key="s.name">
+                      <a @click="goTo({ brand: brand.name, series: s.name })">
+                        {{ s.name }}
+                      </a>
+                    </li>
                   </ul>
                 </li>
               </ul>
@@ -81,21 +78,16 @@
               class="dropdown-content bg-base-100 rounded-box shadow w-52"
             >
               <li>
-                <nuxt-link to="/products">熱門商品</nuxt-link>
+                <nuxt-link to="/products">All Productions</nuxt-link>
               </li>
-              <li>
-                <h2 class="menu-title">精選項目</h2>
+              <li v-for="brand in brandsList" :key="brand.name">
+                <a @click="goTo({ brand: brand.name })">{{ brand.name }}</a>
                 <ul>
-                  <li><nuxt-link to="/products">磁磚</nuxt-link></li>
-                  <li><nuxt-link to="/products">壁布</nuxt-link></li>
-                  <li><nuxt-link to="/products">地板</nuxt-link></li>
-                </ul>
-                <h2 class="menu-title">精選品牌</h2>
-                <ul>
-                  <li><nuxt-link to="/products">Cersanit</nuxt-link></li>
-                  <li><nuxt-link to="/products">Art Floor</nuxt-link></li>
-                  <li><nuxt-link to="/products">Arteo</nuxt-link></li>
-                  <li><nuxt-link to="/products">Philipp Plein</nuxt-link></li>
+                  <li v-for="s in brand.series" :key="s.name">
+                    <a @click="goTo({ brand: brand.name, series: s.name })">
+                      {{ s.name }}
+                    </a>
+                  </li>
                 </ul>
               </li>
             </ul>
@@ -148,7 +140,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { TEST_BRANDS_LIST } from '@/constants';
 
 const isOpen = ref(false);
 
@@ -160,6 +152,37 @@ const links = [
   { label: '關於我們', to: '/aboutUs' },
   { label: '服務項目', to: '/services' },
 ];
+
+// brand
+const brandsList = ref();
+
+async function fetchData() {
+  try {
+    const data = await useApiFetch('/Brands');
+    if (data) {
+      brandsList.value = data;
+    }
+  }
+ catch (error) {
+    brandsList.value = TEST_BRANDS_LIST.brands;
+    console.error('無法獲取品牌資料', error);
+  }
+}
+
+onMounted(() => {
+  fetchData(); // Ensure the hook is registered synchronously
+});
+
+async function goTo({ pageNumber = 1, brand, series } = {}) {
+  await navigateTo({
+    path: '/products',
+    query: {
+      PageNumber: pageNumber,
+      Brand: brand,
+      Series: series,
+    },
+  });
+}
 </script>
 
 <style scoped>
