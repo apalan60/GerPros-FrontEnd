@@ -74,7 +74,7 @@
           <button class="btn btn-ghost" @click="showModal = false">取消</button>
           <!-- 新增產品按鈕 -->
           <AddProductButton
-              :seriesId="seriesId"
+              :seriesId= "selectedSeriesId"
               :name="name"
               :price="price"
               :image="selectedFile"

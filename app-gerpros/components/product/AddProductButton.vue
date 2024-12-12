@@ -11,7 +11,7 @@ const props = defineProps<{
   seriesId: string,
   name: string,
   price: number,
-  image: string,
+  image: File | null,
   detail: string
 }>();
 
@@ -22,17 +22,18 @@ const emit = defineEmits<{
 
 const handleAdd = async () => {
   try {
-    const payload = {
-      seriesId: props.seriesId,
-      name: props.name,
-      price: props.price,
-      image: props.image,
-      detail: props.detail,
-    };
+    const formData = new FormData();
+    formData.append('seriesId', props.seriesId);
+    formData.append('name', props.name);
+    formData.append('price', props.price.toString());
+    formData.append('detail', props.detail || '');
+    if (props.image) {
+      formData.append('image', props.image);
+    }
 
     const result = await useApiFetch('/ProductItems', {
       method: 'POST',
-      body: payload,
+      body: formData,
     });
     console.log('產品新增成功', result);
     emit('success', result);
@@ -41,4 +42,5 @@ const handleAdd = async () => {
     emit('error', error);
   }
 };
+
 </script>
