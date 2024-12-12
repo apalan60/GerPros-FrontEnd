@@ -12,28 +12,32 @@ const props = defineProps<{
   seriesId: string,
   name: string,
   price: number,
-  image: string,
+  image: File | null,
   detail: string
 }>();
 
+const { showToast } = useToast();
+
 const updateProduct = async () => {
   try {
-    const payload = {
-      id: props.productItemId,
-      seriesId: props.seriesId,
-      name: props.name,
-      price: props.price,
-      image: props.image,
-      detail: props.detail,
-    };
+    const formData = new FormData();
+    formData.append('seriesId', props.seriesId);
+    formData.append('name', props.name);
+    formData.append('price', props.price.toString());
+    formData.append('detail', props.detail || '');
+    if (props.image) {
+      formData.append('image', props.image);
+    }
 
     const result = await useApiFetch(`/ProductItems/${props.productItemId}`, {
       method: 'PUT',
-      body: payload,
+      body: formData,
     });
     console.log('產品更新成功', result);
+    showToast('success', '產品更新成功！');
   } catch (error) {
     console.error('產品更新失敗', error);
+    showToast('error', '產品更新失敗！');
   }
 };
 </script>

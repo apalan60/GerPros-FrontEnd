@@ -16,3 +16,12 @@ import { useToast } from '~/composables/useToast';
 
 const { toastMessage, toastType } = useToast();
 </script>
+
+<style scoped>
+.toast {
+  position: fixed;
+  z-index: 9999;
+  top: 1rem;
+  right: 1rem;
+}
+</style>

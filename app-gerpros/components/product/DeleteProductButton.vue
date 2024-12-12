@@ -21,6 +21,8 @@ const deleteProduct = async () => {
     const result = await useApiFetch(`/ProductItems/${props.productItemId}`, {
       method: 'DELETE',
     });
+    // route back to the product list page
+    this.$router.push('/manager/products');
     // 刪除成功後顯示成功訊息
     showToast('success', '產品刪除成功！');
   } catch (error) {
