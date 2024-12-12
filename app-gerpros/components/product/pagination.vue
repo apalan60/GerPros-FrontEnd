@@ -1,19 +1,34 @@
 <template>
   <div>
     <div class="join">
-      <button class="join-item btn">1</button>
-      <button class="join-item btn btn-active">2</button>
-      <button class="join-item btn">3</button>
-      <button class="join-item btn">4</button>
+      <button
+        v-for="i in props.totalPages"
+        :key="i"
+        class="join-item btn-sm"
+        :class="{ 'btn-active': i === pageNumber }"
+        @click="onClickNumber(i)"
+      >
+        {{ i }}
+      </button>
     </div>
   </div>
 </template>
 
 <script setup>
+const route = useRoute();
+const emit = defineEmits(['go-to-page']);
 const props = defineProps({
-  totalPages,
+  totalPages: {
+    type: Number,
+    default: 1,
+  },
 });
-console.log('🚀 ~ props:', props);
+
+const pageNumber = computed(() => Number(route.query.PageNumber) || 1);
+
+function onClickNumber(number) {
+  emit('go-to-page', number);
+}
 </script>
 
 <style scoped></style>

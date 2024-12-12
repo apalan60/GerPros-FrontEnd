@@ -1,7 +1,9 @@
 <template>
-  <NuxtLayout name="production">
+  <NuxtLayout name="product">
     <template #content>
-      <div class="breadcrumbs my-4">
+      <div
+        class="breadcrumbs w-full pl-10 mb-8 flex justify-start border-b border-solid border-base-200"
+      >
         <ul>
           <li><a @click="goTo()">All Products</a></li>
           <li v-if="searchedBrand">
@@ -21,9 +23,11 @@
           @search-series="searchSeries"
         />
       </div>
-      <span @click="goToPage({ pageNumber: 2 })">{{
-        productionsTotalPages
-      }}</span>
+      <ProductPagination
+        class="mt-8"
+        :total-pages="productionsTotalPages"
+        @go-to-page="goToPage"
+      />
     </template>
   </NuxtLayout>
 </template>
@@ -60,11 +64,6 @@ function searchSeries({ brand, series }) {
   goTo({ brand, series });
 }
 
-// mounted
-onMounted(async () => {
-  await fetchData();
-});
-
 async function fetchData() {
   const params = {
     PageSize: 12, // 固定參數
@@ -90,8 +89,12 @@ async function fetchData() {
 }
 
 // goTo
-async function goToPage({ pageNumber }) {
-  await goTo({ pageNumber, brand: Brand, series: Series });
+async function goToPage(pageNumber) {
+  await goTo({
+    pageNumber,
+    brand: searchedBrand.value,
+    series: searchedSeries.value,
+  });
 }
 
 async function goToCurrentBrand() {
@@ -107,8 +110,15 @@ async function goTo({ pageNumber = 1, brand, series } = {}) {
       Series: series,
     },
   });
-  await fetchData();
 }
+
+watch(
+  () => route.query,
+  () => {
+    fetchData();
+  },
+  { immediate: true },
+);
 </script>
 
 <style scoped></style>
