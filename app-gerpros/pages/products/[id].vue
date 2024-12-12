@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout name="production">
+  <NuxtLayout name="product">
     <template #content>
       <div
         class="breadcrumbs w-full pl-10 mb-8 flex justify-start border-b border-solid border-base-200"
