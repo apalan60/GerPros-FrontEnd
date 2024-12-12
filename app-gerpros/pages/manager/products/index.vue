@@ -19,6 +19,7 @@
           v-for="product in productionsItems"
           :key="product.name"
           :production="product"
+          :isManager = true
           @search-brand="searchBrand"
           @search-series="searchSeries"
         />
@@ -109,7 +110,7 @@ async function goToCurrentBrand() {
 
 async function goTo({ pageNumber = 1, brand, series } = {}) {
   await navigateTo({
-    path: '/products',
+    path: '/manager/products',
     query: {
       PageNumber: pageNumber,
       Brand: brand,

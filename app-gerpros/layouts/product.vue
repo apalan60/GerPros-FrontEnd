@@ -37,13 +37,16 @@ const attrs = useAttrs()
 console.log('attrs',attrs)
 
 import { useState } from '#app'
+import {useBrandSeriesStore} from "~/stores/brandSeries.ts";
 const brandsList = useState('brandsList', () => []) // 初始為空陣列
+const { brandSeries } = useBrandSeriesStore()
 
 async function fetchData() {
   try {
     const data = await useApiFetch('/Brands');
     if (data) {
       brandsList.value = data;
+      brandSeries.value = data;
     }
   } catch (error) {
     brandsList.value = TEST_BRANDS_LIST.brands;
