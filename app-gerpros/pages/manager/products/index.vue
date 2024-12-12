@@ -23,7 +23,6 @@
           @search-series="searchSeries"
         />
       </div>
-      123
       <add-product/>
       <ProductPagination
         class="mt-8"

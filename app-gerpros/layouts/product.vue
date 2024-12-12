@@ -33,11 +33,11 @@
 
 <script setup>
 import { TEST_BRANDS_LIST } from '@/constants';
-
 const attrs = useAttrs()
 console.log('attrs',attrs)
 
-const brandsList = ref();
+import { useState } from '#app'
+const brandsList = useState('brandsList', () => []) // 初始為空陣列
 
 async function fetchData() {
   try {
@@ -51,9 +51,7 @@ async function fetchData() {
   }
 }
 
-onMounted(() => {
-  fetchData(); // Ensure the hook is registered synchronously
-});
+onMounted(fetchData)
 
 async function goTo({ pageNumber = 1, brand, series } = {}) {
   const path = attrs.isManager ? '/manager/products' : '/products';
