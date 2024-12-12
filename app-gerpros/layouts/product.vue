@@ -34,6 +34,9 @@
 <script setup>
 import { TEST_BRANDS_LIST } from '@/constants';
 
+const attrs = useAttrs()
+console.log('attrs',attrs)
+
 const brandsList = ref();
 
 async function fetchData() {
@@ -53,8 +56,9 @@ onMounted(() => {
 });
 
 async function goTo({ pageNumber = 1, brand, series } = {}) {
+  const path = attrs.isManager ? '/manager/products' : '/products';
   await navigateTo({
-    path: '/products',
+    path,
     query: {
       PageNumber: pageNumber,
       Brand: brand,

@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout name="/product">
+  <NuxtLayout name="product" :isManager="true">
     <template #content>
       <div
         class="breadcrumbs w-full pl-10 mb-8 flex justify-start border-b border-solid border-base-200"
@@ -37,8 +37,12 @@
 <script setup>
 import { TEST_PRODUCTIONS_LIST } from '~/constants';
 import AddProduct from "~/pages/manager/products/add-product.vue";
-
+definePageMeta({
+  layout: 'manager',
+});
 const route = useRoute();
+
+
 
 // production
 const productionsRawData = ref({});
@@ -106,7 +110,7 @@ async function goToCurrentBrand() {
 
 async function goTo({ pageNumber = 1, brand, series } = {}) {
   await navigateTo({
-    path: 'manager/products',
+    path: '/products',
     query: {
       PageNumber: pageNumber,
       Brand: brand,
