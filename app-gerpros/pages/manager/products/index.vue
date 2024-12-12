@@ -1,135 +1,127 @@
 <template>
-  <div class="container mx-auto p-4">
-    <h1 class="text-2xl font-bold mb-4">產品管理</h1>
-
-    <!-- 產品清單 -->
-    <div
-        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"
-    >
+  <NuxtLayout name="/product">
+    <template #content>
       <div
-          v-for="product in products"
-          :key="product.id"
-          class="card bg-base-100 shadow-md hover:shadow-lg"
+        class="breadcrumbs w-full pl-10 mb-8 flex justify-start border-b border-solid border-base-200"
       >
-        <NuxtLink
-            :to="{ path: '/manager/products/' + (product?.id ?? 0) }"
-        >
-          <figure>
-            <img
-                :src="product.image"
-                :alt="product.name"
-                class="w-full h-48 object-cover"
-            />
-          </figure>
-          <div class="card-body">
-            <h2 class="card-title">{{ product.name }}</h2>
-            <p>{{ product.detail || '暫無描述' }}</p>
-            <p class="text-lg font-bold">${{ product.price }}</p>
-          </div>
-        </NuxtLink>
+        <ul>
+          <li><a @click="goTo()">All Products</a></li>
+          <li v-if="searchedBrand">
+            <a @click="goToCurrentBrand()">{{ searchedBrand }}</a>
+          </li>
+          <li v-if="searchedSeries">{{ searchedSeries }}</li>
+        </ul>
       </div>
-    </div>
-    <add-product/>
-    <!-- 分頁 -->
-    <div class="flex justify-center mt-6">
-      <button
-          class="btn btn-outline"
-          :disabled="!pagination.hasPreviousPage"
-          @click="fetchProducts(pagination.pageNumber - 1)"
+      <div
+        class="productions-wrapper grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-10 mx-16"
       >
-        上一頁
-      </button>
-      <button
-          class="btn btn-outline ml-2"
-          :disabled="!pagination.hasNextPage"
-          @click="fetchProducts(pagination.pageNumber + 1)"
-      >
-        下一頁
-      </button>
-    </div>
-  </div>
+        <ProductCard
+          v-for="product in productionsItems"
+          :key="product.name"
+          :production="product"
+          @search-brand="searchBrand"
+          @search-series="searchSeries"
+        />
+      </div>
+      123
+      <add-product/>
+      <ProductPagination
+        class="mt-8"
+        :total-pages="productionsTotalPages"
+        @go-to-page="goToPage"
+      />
+    </template>
+  </NuxtLayout>
 </template>
 
-<script setup lang="ts">
-import {ref, onMounted} from 'vue';
-import {useApiFetch} from '~/composables/useApiFetch';
+<script setup>
+import { TEST_PRODUCTIONS_LIST } from '~/constants';
 import AddProduct from "~/pages/manager/products/add-product.vue";
 
-definePageMeta({
-  layout: 'manager',
+const route = useRoute();
+
+// production
+const productionsRawData = ref({});
+const productionsItems = computed(() => {
+  const productions = productionsRawData.value.items;
+  return productions?.map((production) => {
+    return {
+      ...production,
+      image: '/image/about-us-photo-2.webp',
+    };
+  });
+});
+const productionsTotalPages = computed(() => {
+  return productionsRawData.value.totalPages;
 });
 
+// search
+const searchedBrand = computed(() => route.query.Brand);
+const searchedSeries = computed(() => route.query.Series);
 
-interface Product {
-  id: number;
-  name: string;
-  detail?: string;
-  price: number;
-  image: string;
+function searchBrand(brand) {
+  goTo({ brand });
 }
 
-interface Pagination {
-  pageNumber: number;
-  totalPages: number;
-  totalCount: number;
-  hasPreviousPage: boolean;
-  hasNextPage: boolean;
+function searchSeries({ brand, series }) {
+  goTo({ brand, series });
 }
 
-interface ProductData {
-  items: Product[];
-  pageNumber: number;
-  totalPages: number;
-  totalCount: number;
-  hasPreviousPage: boolean;
-  hasNextPage: boolean;
-}
-
-const products = ref<Product[]>([]);
-const pagination = ref<Pagination>({
-  pageNumber: 1,
-  totalPages: 0,
-  totalCount: 0,
-  hasPreviousPage: false,
-  hasNextPage: false,
-});
-
-
-const fetchProducts = async (page: number) => {
+async function fetchData() {
+  const params = {
+    PageSize: 12, // 固定參數
+  };
+  params.PageNumber = route.query.PageNumber ?? 1;
+  if (searchedBrand.value) {
+    params.Brand = searchedBrand.value;
+  }
+  if (searchedSeries.value) {
+    params.Series = searchedSeries.value;
+  }
   try {
-    const data = await useApiFetch<ProductData>('/ProductItems', {
-      params: {
-        PageNumber: page,
-        PageSize: 24,
-      },
+    const data = await useApiFetch('/ProductItems', {
+      params,
     });
     if (data) {
-      products.value = data.items;
-      pagination.value = {
-        pageNumber: data.pageNumber,
-        totalPages: data.totalPages,
-        totalCount: data.totalCount,
-        hasPreviousPage: data.hasPreviousPage,
-        hasNextPage: data.hasNextPage,
-      };
+      productionsRawData.value = data;
     }
   } catch (error) {
+    productionsRawData.value = TEST_PRODUCTIONS_LIST;
     console.error('無法獲取產品資料', error);
   }
-};
+}
 
-onMounted(() => {
-  fetchProducts(1);
-});
+// goTo
+async function goToPage(pageNumber) {
+  await goTo({
+    pageNumber,
+    brand: searchedBrand.value,
+    series: searchedSeries.value,
+  });
+}
+
+async function goToCurrentBrand() {
+  await goTo({ brand: searchedBrand.value });
+}
+
+async function goTo({ pageNumber = 1, brand, series } = {}) {
+  await navigateTo({
+    path: 'manager/products',
+    query: {
+      PageNumber: pageNumber,
+      Brand: brand,
+      Series: series,
+    },
+  });
+}
+
+watch(
+  () => route.query,
+  () => {
+    fetchData();
+  },
+  { immediate: true },
+);
 </script>
 
-<style scoped>
-.card {
-  display: flex;
-  flex-direction: column;
-}
-
-.card-body {
-  padding: 1rem;
-}
-</style>
+<style scoped></style>
