@@ -41,7 +41,7 @@
               <nuxt-link :to="link.to">{{ link.label }}</nuxt-link>
               <ul v-if="link.to === '/products'">
                 <li>
-                  <nuxt-link to="/products">All Productions</nuxt-link>
+                  <nuxt-link to="/products">All Products</nuxt-link>
                 </li>
                 <li v-for="brand in brandsList" :key="brand.name">
                   <a @click="goTo({ brand: brand.name })">{{ brand.name }}</a>
@@ -78,7 +78,7 @@
               class="dropdown-content bg-base-100 rounded-box shadow w-52"
             >
               <li>
-                <nuxt-link to="/products">All Productions</nuxt-link>
+                <nuxt-link to="/products">All Products</nuxt-link>
               </li>
               <li v-for="brand in brandsList" :key="brand.name">
                 <a @click="goTo({ brand: brand.name })">{{ brand.name }}</a>

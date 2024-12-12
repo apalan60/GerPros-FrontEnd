@@ -1,16 +1,20 @@
 <template>
   <NuxtLayout name="production">
     <template #content>
-      <div class="breadcrumbs text-sm w-full ml-10 flex justify-start">
+      <div
+        class="breadcrumbs w-full pl-10 mb-8 flex justify-start border-b border-solid border-base-200"
+      >
         <ul>
           <li>
-            <a><NuxtLink :to="'/products'">Productions</NuxtLink> </a>
+            <a><NuxtLink :to="'/products'">All Products</NuxtLink> </a>
           </li>
           <li>
-            <a>{{ product?.brandName }}</a>
+            <a @click="goTo({ brand: brandName })">{{ product?.brandName }}</a>
           </li>
           <li>
-            <a>{{ product?.seriesName }}</a>
+            <a @click="goTo({ brand: brandName, series: seriesName })">{{
+              product?.seriesName
+            }}</a>
           </li>
           <li>
             {{ product?.name }}
@@ -60,6 +64,17 @@ async function fetchData() {
     product.value = TEST_PRODUCT_DETAIL;
     console.error('無法獲取產品資料', error);
   }
+}
+
+async function goTo({ pageNumber = 1, brand, series } = {}) {
+  await navigateTo({
+    path: '/products',
+    query: {
+      PageNumber: pageNumber,
+      Brand: brand,
+      Series: series,
+    },
+  });
 }
 </script>
 
