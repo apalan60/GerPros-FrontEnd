@@ -69,7 +69,6 @@ const contentData = {
   },
 };
 function onClickedOption(option) {
-  console.log('🚀 ~ onClickedOption ~ option:', option);
   selectedOption.value = option;
 }
 </script>
