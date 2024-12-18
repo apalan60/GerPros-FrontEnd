@@ -75,7 +75,7 @@ const contentData = {
     title: ['服務介紹說明'],
   },
   value: {
-    title: ['品質認證'],
+    title: ['歐洲進口專業建材'],
   },
 };
 function onClickedOption(option) {
