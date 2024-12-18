@@ -74,7 +74,12 @@
           :key="index"
           class="overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300"
         >
-          <img :src="image" alt="Pet image" class="w-full h-16 object-cover" />
+          <img
+            :src="image"
+            loading="lazy"
+            alt="Pet image"
+            class="w-full h-16 object-cover"
+          />
         </div>
       </div>
     </aside>

@@ -1,7 +1,17 @@
 <template>
   <div class="map w-full">
-    <img class="image" src="/image/about-us-taiwan-1.webp" alt="shop" />
-    <img class="image-2" src="/image/about-us-taiwan-2.webp" alt="shop" />
+    <img
+      class="image"
+      src="/image/about-us-taiwan-1.webp"
+      loading="lazy"
+      alt="shop"
+    />
+    <img
+      class="image-2"
+      src="/image/about-us-taiwan-2.webp"
+      loading="lazy"
+      alt="shop"
+    />
   </div>
 </template>
 

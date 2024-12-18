@@ -31,6 +31,7 @@
     <div class="image-mask basis-2/5 items-center content-center">
       <img
         class="image-object hidden sm:block"
+        loading="lazy"
         :src="contactOption.image"
         :alt="contactOption.title"
         :class="[`image-${contactOption.id}`, `image-contact`]"

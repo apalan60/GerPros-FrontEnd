@@ -9,7 +9,12 @@
           :key="index"
           class="culture-item text-center p-4"
         >
-          <img :src="culture.image" :alt="culture.title" class="mx-auto mb-4" />
+          <img
+            :src="culture.image"
+            loading="lazy"
+            :alt="culture.title"
+            class="mx-auto mb-4"
+          />
           <h2 class="text-lg font-bold mb-3">{{ culture.title }}</h2>
           <p class="text-sm description">{{ culture.description }}</p>
         </div>

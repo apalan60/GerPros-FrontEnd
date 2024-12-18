@@ -1,6 +1,6 @@
 <template>
   <div class="contact-wrapper">
-    <div class="cover-wrapper w-full h-96 bg-red-300">
+    <div class="cover-wrapper w-full h-96 ">
       <div class="contact-us">
         <h2 class="zh">聯絡我們</h2>
         <h3 class="eng">CONTACT US</h3>

@@ -1,6 +1,6 @@
 <template>
   <div class="flex justify-between max-w-screen-xl mx-auto mb-16">
-    <div class="flex-1 h-100 bg-blue-500 bg-side"></div>
+    <div class="flex-1 h-100 bg-side"></div>
     <div class="flex-1 pl-16 space-y-6">
       <div class="space-y-4">
         <div class="flex items-center space-x-4">
