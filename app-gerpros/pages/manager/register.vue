@@ -11,16 +11,26 @@
 
     <!-- 註冊表單 -->
     <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
-      <h1 class="mb-6 text-2xl font-bold text-center text-gray-800">註冊</h1>
-      <div v-if="!auth.isLoggedIn" class="text-center">
+      <h1 class="mb-6 text-2xl font-bold text-center text-gray-800">
+        註冊
+      </h1>
+      <div
+        v-if="!auth.isLoggedIn"
+        class="text-center"
+      >
         <p class="text-gray-600">
           You are not logged in. Please
-          <nuxt-link to="/" class="text-blue-500 hover:underline"
-            >login</nuxt-link
-          >.
+          <nuxt-link
+            to="/"
+            class="text-blue-500 hover:underline"
+          >login</nuxt-link>.
         </p>
       </div>
-      <form v-else class="space-y-6" @submit.prevent="handleRegister">
+      <form
+        v-else
+        class="space-y-6"
+        @submit.prevent="handleRegister"
+      >
         <div class="form-control">
           <label class="label">
             <span class="label-text">Email:</span>
@@ -31,7 +41,7 @@
             class="input input-bordered w-full"
             placeholder="Enter your email"
             required
-          />
+          >
         </div>
         <div class="form-control">
           <label class="label">
@@ -43,11 +53,19 @@
             class="input input-bordered w-full"
             placeholder="Enter your password"
             required
-          />
+          >
         </div>
-        <button type="submit" class="btn btn-success w-full">送出</button>
+        <button
+          type="submit"
+          class="btn btn-success w-full"
+        >
+          送出
+        </button>
       </form>
-      <p v-if="message" class="mt-4 text-sm text-red-500 text-center">
+      <p
+        v-if="message"
+        class="mt-4 text-sm text-red-500 text-center"
+      >
         {{ message }}
       </p>
     </div>
@@ -112,19 +130,20 @@ const handleRegister = async () => {
 
     notificationMessage.value = '註冊成功';
     showNotification.value = true;
-
-  } catch (error: any) {
+  }
+  catch (error: any) {
     const errorData = error?.data;
     if (errorData && errorData.errors) {
       const serverErrors = Object.values(errorData.errors).flat();
       message.value = serverErrors.join(', ');
-    } else {
+    }
+    else {
       message.value = 'Registration failed.';
     }
-  } finally {
+  }
+  finally {
     isLoading.value = false;
   }
-
 };
 </script>
 

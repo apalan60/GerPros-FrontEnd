@@ -9,7 +9,9 @@
           <li v-if="searchedBrand">
             <a @click="goToCurrentBrand()">{{ searchedBrand }}</a>
           </li>
-          <li v-if="searchedSeries">{{ searchedSeries }}</li>
+          <li v-if="searchedSeries">
+            {{ searchedSeries }}
+          </li>
         </ul>
       </div>
       <div
@@ -82,7 +84,8 @@ async function fetchData() {
     if (data) {
       productionsRawData.value = data;
     }
-  } catch (error) {
+  }
+  catch (error) {
     productionsRawData.value = TEST_PRODUCTIONS_LIST;
     console.error('無法獲取產品資料', error);
   }

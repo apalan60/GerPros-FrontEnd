@@ -9,13 +9,14 @@ async function refreshTokens() {
       baseURL: config.public.apiBase,
       method: 'POST',
       headers: {
-        Authorization: `${auth.tokenType.value} ${auth.accessToken.value}`,
+        'Authorization': `${auth.tokenType.value} ${auth.accessToken.value}`,
         'Content-Type': 'application/json',
       },
       body: { refreshToken: auth.refreshToken.value },
     });
     auth.setTokens(data as any);
-  } catch (e) {
+  }
+  catch (e) {
     console.error('Refresh token error:', e);
     auth.clearTokens();
   }

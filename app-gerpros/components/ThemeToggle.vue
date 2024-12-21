@@ -1,7 +1,10 @@
 <template>
   <label class="swap swap-rotate">
     <!-- This hidden checkbox controls the toggle -->
-    <input type="checkbox" @change.prevent="toggleTheme()" />
+    <input
+      type="checkbox"
+      @change.prevent="toggleTheme()"
+    >
 
     <!-- sun icon -->
     <svg

@@ -30,7 +30,7 @@
                   :src="product?.image"
                   :alt="product?.title"
                   class="w-full h-full object-cover"
-                />
+                >
               </figure>
             </div>
             <div class="rounded-lg shadow p-6 md:p-10">
@@ -39,20 +39,36 @@
               </h1>
               <div class="space-y-4 border-t border-gray-200 pt-4">
                 <div>
-                  <h2 class="text-lg font-medium">Brand</h2>
-                  <p class="text-gray-600">{{ product?.brandName }}</p>
+                  <h2 class="text-lg font-medium">
+                    Brand
+                  </h2>
+                  <p class="text-gray-600">
+                    {{ product?.brandName }}
+                  </p>
                 </div>
                 <div>
-                  <h2 class="text-lg font-medium">Series</h2>
-                  <p class="text-gray-600">{{ product?.seriesName }}</p>
+                  <h2 class="text-lg font-medium">
+                    Series
+                  </h2>
+                  <p class="text-gray-600">
+                    {{ product?.seriesName }}
+                  </p>
                 </div>
                 <div>
-                  <h2 class="text-lg font-medium">Price</h2>
-                  <p class="text-gray-600">{{ product?.price }}</p>
+                  <h2 class="text-lg font-medium">
+                    Price
+                  </h2>
+                  <p class="text-gray-600">
+                    {{ product?.price }}
+                  </p>
                 </div>
                 <div>
-                  <h2 class="text-lg font-medium">Description</h2>
-                  <p class="text-gray-600">{{ product?.detail }}</p>
+                  <h2 class="text-lg font-medium">
+                    Description
+                  </h2>
+                  <p class="text-gray-600">
+                    {{ product?.detail }}
+                  </p>
                 </div>
               </div>
             </div>
@@ -81,7 +97,8 @@ async function fetchData() {
       data.image = '/image/about-us-photo-2.webp';
       product.value = data;
     }
-  } catch (error) {
+  }
+  catch (error) {
     product.value = TEST_PRODUCT_DETAIL;
     console.error('無法獲取產品資料', error);
   }

@@ -1,9 +1,12 @@
 <template>
-  <div class="toast toast-top toast-end" v-if="toastMessage">
+  <div
+    v-if="toastMessage"
+    class="toast toast-top toast-end"
+  >
     <div
-        :class="[
+      :class="[
         'alert',
-        toastType === 'success' ? 'alert-success' : 'alert-error'
+        toastType === 'success' ? 'alert-success' : 'alert-error',
       ]"
     >
       <span>{{ toastMessage }}</span>

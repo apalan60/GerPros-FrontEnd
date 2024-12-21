@@ -1,10 +1,13 @@
 <template>
   <div class="card w-100 h-100 shadow-xl">
     <NuxtLink
-      :to="{ name: linkName ,params: { id: production?.id ?? 0 } }"
+      :to="{ name: linkName, params: { id: production?.id ?? 0 } }"
     >
       <figure class="cursor-pointer">
-        <img :src="production?.image" :alt="production?.title" />
+        <img
+          :src="production?.image"
+          :alt="production?.title"
+        >
       </figure>
     </NuxtLink>
     <div class="card-body">
@@ -37,8 +40,8 @@ const emit = defineEmits(['search-brand', 'search-series']);
 const searchedBrand = useState('searchedBrand');
 const searchedSeries = useState('searchedSeries');
 const attrs = useAttrs();
-const isManager = computed(()=>attrs.isManager);
-const linkName = computed(()=>isManager.value?'manager-products-id':'products-id');
+const isManager = computed(() => attrs.isManager);
+const linkName = computed(() => isManager.value ? 'manager-products-id' : 'products-id');
 function searchBrand() {
   emit('search-brand', production.brandName);
 }

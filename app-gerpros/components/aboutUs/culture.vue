@@ -1,8 +1,10 @@
 <template>
-  <div class="culture-middle-image w-full h-96"></div>
+  <div class="culture-middle-image w-full h-96" />
   <section class="company-culture">
     <div class="text-center">
-      <h2 class="text-xl font-bold tracking-widest mb-8">公司文化</h2>
+      <h2 class="text-xl font-bold tracking-widest mb-8">
+        公司文化
+      </h2>
       <div class="grid grid-cols-1 md:grid-cols-4 max-w-6xl mx-auto gap-6">
         <div
           v-for="(culture, index) in companyCultures"
@@ -14,9 +16,13 @@
             loading="lazy"
             :alt="culture.title"
             class="mx-auto mb-4"
-          />
-          <h2 class="text-lg font-bold mb-3">{{ culture.title }}</h2>
-          <p class="text-sm description">{{ culture.description }}</p>
+          >
+          <h2 class="text-lg font-bold mb-3">
+            {{ culture.title }}
+          </h2>
+          <p class="text-sm description">
+            {{ culture.description }}
+          </p>
         </div>
       </div>
     </div>

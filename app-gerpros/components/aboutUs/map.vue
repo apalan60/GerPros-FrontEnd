@@ -5,13 +5,13 @@
       src="/image/about-us-taiwan-1.webp"
       loading="lazy"
       alt="shop"
-    />
+    >
     <img
       class="image-2"
       src="/image/about-us-taiwan-2.webp"
       loading="lazy"
       alt="shop"
-    />
+    >
   </div>
 </template>
 

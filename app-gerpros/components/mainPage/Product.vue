@@ -1,7 +1,9 @@
 <template>
   <section>
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4">注目產品</h2>
+      <h2 class="text-3xl font-bold mb-4">
+        注目產品
+      </h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
         <div class="ceiling">
           <div class="prod-type">
@@ -10,9 +12,11 @@
                 src="https://img.icons8.com/?size=100&id=gmNNZ8Tvt2bT&format=png&color=666666"
                 alt="floor-icon"
                 class="floor-icon"
-              />
+              >
             </div>
-            <h3 class="ceiling-title text-lg">磁磚</h3>
+            <h3 class="ceiling-title text-lg">
+              磁磚
+            </h3>
           </div>
           <swiper-container
             class="swiper-container"
@@ -26,8 +30,13 @@
               :key="product.name"
               class="slide slide-ceiling"
             >
-              <img :src="product.image" alt="product" />
-              <div class="title">{{ product.name }}</div>
+              <img
+                :src="product.image"
+                alt="product"
+              >
+              <div class="title">
+                {{ product.name }}
+              </div>
             </swiper-slide>
           </swiper-container>
         </div>
@@ -38,8 +47,10 @@
               src="https://img.icons8.com/?size=100&id=aJW9bYLdUlk9&format=png&color=666666"
               alt="wall-icon"
               class="icon"
-            />
-            <h3 class="wall-title text-lg">壁布</h3>
+            >
+            <h3 class="wall-title text-lg">
+              壁布
+            </h3>
           </div>
           <swiper-container
             class="swiper-container"
@@ -53,8 +64,13 @@
               :key="product.name"
               class="slide slide-wall"
             >
-              <img :src="product.image" alt="product" />
-              <div class="title">{{ product.name }}</div>
+              <img
+                :src="product.image"
+                alt="product"
+              >
+              <div class="title">
+                {{ product.name }}
+              </div>
             </swiper-slide>
           </swiper-container>
         </div>
@@ -65,8 +81,10 @@
               src="https://img.icons8.com/?size=100&id=h7tOIyNxrvf2&format=png&color=666666"
               alt="ceiling-icon"
               class="icon"
-            />
-            <h3 class="floor-title text-lg">地板</h3>
+            >
+            <h3 class="floor-title text-lg">
+              地板
+            </h3>
           </div>
           <swiper-container
             class="swiper-container"
@@ -80,8 +98,13 @@
               :key="product.name"
               class="slide slide-floor"
             >
-              <img :src="product.image" alt="product" />
-              <div class="title">{{ product.name }}</div>
+              <img
+                :src="product.image"
+                alt="product"
+              >
+              <div class="title">
+                {{ product.name }}
+              </div>
             </swiper-slide>
           </swiper-container>
         </div>

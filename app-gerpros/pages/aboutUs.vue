@@ -1,7 +1,10 @@
 <template>
   <div class="introduction-wrapper">
-    <div class="cover-wrapper w-full h-96"></div>
-    <div class="content-wrapper w-full p-3" :class="{ story: isStory }">
+    <div class="cover-wrapper w-full h-96" />
+    <div
+      class="content-wrapper w-full p-3"
+      :class="{ story: isStory }"
+    >
       <div class="options-wrapper">
         <div
           v-for="option in options"
@@ -13,7 +16,10 @@
           {{ option.label }}
         </div>
       </div>
-      <div class="title font-bold gap-2" :class="{ 'text-xl': !isStory }">
+      <div
+        class="title font-bold gap-2"
+        :class="{ 'text-xl': !isStory }"
+      >
         <h2
           v-for="(title, index) in contentData[selectedOption].title"
           :key="index"
@@ -21,8 +27,11 @@
           {{ title }}
         </h2>
       </div>
-      <div class="line"></div>
-      <div v-if="isStory" class="content gap-1">
+      <div class="line" />
+      <div
+        v-if="isStory"
+        class="content gap-1"
+      >
         <p
           v-for="content in contentData[selectedOption].content"
           :key="content"

@@ -1,5 +1,8 @@
 <template>
-  <button class="btn btn-danger" @click="deleteProduct">
+  <button
+    class="btn btn-danger"
+    @click="deleteProduct"
+  >
     刪除
   </button>
   <ToastMessage />
@@ -8,10 +11,10 @@
 <script setup lang="ts">
 import { useApiFetch } from '~/composables/useApiFetch';
 import { useToast } from '~/composables/useToast';
-import ToastMessage from "~/components/ToastMessages.vue";
+import ToastMessage from '~/components/ToastMessages.vue';
 
 const props = defineProps<{
-  productItemId: string
+  productItemId: string;
 }>();
 
 const { showToast } = useToast();
@@ -21,12 +24,13 @@ const deleteProduct = async () => {
     const result = await useApiFetch(`/ProductItems/${props.productItemId}`, {
       method: 'DELETE',
     });
-    
+
     (useRouter()).push('/manager/products');
-    
+
     // 刪除成功後顯示成功訊息
     showToast('success', '產品刪除成功！');
-  } catch (error) {
+  }
+  catch (error) {
     // 刪除失敗顯示錯誤訊息
     showToast('error', '產品刪除失敗，請稍後再試');
   }

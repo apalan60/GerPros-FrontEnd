@@ -1,5 +1,8 @@
 <template>
-  <a href="" class="neutral-content">
+  <a
+    href=""
+    class="neutral-content"
+  >
     <svg
       xmlns="http://www.w3.org/2000/svg"
       width="24"

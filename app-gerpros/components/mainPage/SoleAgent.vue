@@ -1,10 +1,19 @@
 <template>
   <section>
     <div class="text-center">
-      <h2 class="text-xl font-bold tracking-widest">代理品牌</h2>
+      <h2 class="text-xl font-bold tracking-widest">
+        代理品牌
+      </h2>
       <div class="grid grid-cols-1 md:grid-cols-4 max-w-6xl mx-auto">
-        <div v-for="brand in brands" :key="brand.name" class="brand">
-          <img :src="brand.image" :alt="brand.name" />
+        <div
+          v-for="brand in brands"
+          :key="brand.name"
+          class="brand"
+        >
+          <img
+            :src="brand.image"
+            :alt="brand.name"
+          >
           <h2 class="text-lg m-3">
             {{ brand.name }}
           </h2>

@@ -12,12 +12,14 @@ register();
         effect="fade"
         autoplay-delay="7000"
       >
-        <swiper-slide class="slide slide1"> </swiper-slide>
-        <swiper-slide class="slide slide2"> </swiper-slide>
-        <swiper-slide class="slide slide3"> </swiper-slide>
+        <swiper-slide class="slide slide1" />
+        <swiper-slide class="slide slide2" />
+        <swiper-slide class="slide slide3" />
       </swiper-container>
       <div class="title-text">
-        <h2 class="text-8xl">GerPros</h2>
+        <h2 class="text-8xl">
+          GerPros
+        </h2>
       </div>
     </div>
     <div class="mb-20">
@@ -29,7 +31,7 @@ register();
     <div class="mb-20">
       <MainPageProduct />
     </div>
-    <div></div>
+    <div />
   </div>
 </template>
 

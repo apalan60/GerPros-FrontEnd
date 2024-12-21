@@ -1,5 +1,8 @@
 <template>
-  <button class="btn btn-primary" @click="updateProduct">
+  <button
+    class="btn btn-primary"
+    @click="updateProduct"
+  >
     更新
   </button>
 </template>
@@ -8,12 +11,12 @@
 import { useApiFetch } from '~/composables/useApiFetch';
 
 const props = defineProps<{
-  productItemId: string,
-  seriesId: string,
-  name: string,
-  price: number,
-  image: File | null,
-  detail: string
+  productItemId: string;
+  seriesId: string;
+  name: string;
+  price: number;
+  image: File | null;
+  detail: string;
 }>();
 
 const { showToast } = useToast();
@@ -35,7 +38,8 @@ const updateProduct = async () => {
     });
     console.log('產品更新成功', result);
     showToast('success', '產品更新成功！');
-  } catch (error) {
+  }
+  catch (error) {
     console.error('產品更新失敗', error);
     showToast('error', '產品更新失敗！');
   }

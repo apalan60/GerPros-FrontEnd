@@ -1,8 +1,13 @@
 <template>
   <div class="flex items-center justify-center min-h-screen bg-gray-100">
     <div class="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
-      <h1 class="mb-6 text-2xl font-bold text-center text-gray-800">登入</h1>
-      <form class="space-y-6" @submit.prevent="handleLogin">
+      <h1 class="mb-6 text-2xl font-bold text-center text-gray-800">
+        登入
+      </h1>
+      <form
+        class="space-y-6"
+        @submit.prevent="handleLogin"
+      >
         <div class="form-control">
           <label class="label">
             <span class="label-text">Email:</span>
@@ -13,7 +18,7 @@
             class="input input-bordered w-full"
             placeholder="Enter your email"
             required
-          />
+          >
         </div>
         <div class="form-control">
           <label class="label">
@@ -25,11 +30,19 @@
             class="input input-bordered w-full"
             placeholder="Enter your password"
             required
-          />
+          >
         </div>
-        <button type="submit" class="btn btn-primary w-full">送出</button>
+        <button
+          type="submit"
+          class="btn btn-primary w-full"
+        >
+          送出
+        </button>
       </form>
-      <p v-if="errorMessage" class="mt-4 text-sm text-red-500 text-center">
+      <p
+        v-if="errorMessage"
+        class="mt-4 text-sm text-red-500 text-center"
+      >
         {{ errorMessage }}
       </p>
     </div>
@@ -53,17 +66,18 @@ const auth = useAuthStore();
 
 const handleLogin = async () => {
   try {
-    const response: { tokenType: string; accessToken: string; refreshToken: string; expiresIn: number } = 
-        await useApiFetch('/Users/Login', {
-      method: 'POST',
-      body: { email: email.value, password: password.value },
-    });
+    const response: { tokenType: string; accessToken: string; refreshToken: string; expiresIn: number }
+        = await useApiFetch('/Users/Login', {
+          method: 'POST',
+          body: { email: email.value, password: password.value },
+        });
 
     if (response) {
       auth.setTokens(response);
       await router.push('manager/dashboard');
     }
-  } catch (e) {
+  }
+  catch (e) {
     console.error(e);
     errorMessage.value = 'An error occurred.';
   }

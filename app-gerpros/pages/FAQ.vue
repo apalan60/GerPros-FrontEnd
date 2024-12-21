@@ -2,8 +2,12 @@
   <div class="contact-wrapper">
     <div class="cover-wrapper w-full h-96 ">
       <div class="contact-us">
-        <h2 class="zh">常見問題</h2>
-        <h3 class="eng">FAQ</h3>
+        <h2 class="zh">
+          常見問題
+        </h2>
+        <h3 class="eng">
+          FAQ
+        </h3>
       </div>
     </div>
     <div class="flex w-[70vw] my-8">
@@ -17,7 +21,7 @@
       >
         地板常見問題
       </div>
-      <div class="divider divider-horizontal"></div>
+      <div class="divider divider-horizontal" />
       <div
         class="card bg-zinc-100 rounded-box grid h-20 flex-grow place-items-center hover:bg-zinc-200 cursor-pointer"
         :class="{
@@ -35,7 +39,10 @@
         :key="qa.question"
         class="bg-base-200 collapse collapse-arrow w-[70vw]"
       >
-        <input type="checkbox" class="peer" />
+        <input
+          type="checkbox"
+          class="peer"
+        >
         <div
           class="collapse-title bg-base-200 peer-checked:bg-base-200 peer-checked:text-secondary-content border-b border-solid border-gray-200 font-bold"
         >

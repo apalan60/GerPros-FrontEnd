@@ -14,11 +14,11 @@ export default defineNuxtPlugin((nuxtApp) => {
     const storedLastRefreshTime = localStorage.getItem('lastRefreshTime');
 
     if (
-      storedAccessToken &&
-      storedRefreshToken &&
-      storedExpiresIn &&
-      storedTokenType &&
-      storedLastRefreshTime
+      storedAccessToken
+      && storedRefreshToken
+      && storedExpiresIn
+      && storedTokenType
+      && storedLastRefreshTime
     ) {
       auth.accessToken.value = storedAccessToken;
       auth.refreshToken.value = storedRefreshToken;

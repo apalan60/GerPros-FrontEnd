@@ -8,10 +8,10 @@ export const useAuthStore = () => {
   const lastRefreshTime = useState<number>('lastRefreshTime', () => 0);
 
   const setTokens = (payload: {
-    tokenType: string
-    accessToken: string
-    refreshToken: string
-    expiresIn: number
+    tokenType: string;
+    accessToken: string;
+    refreshToken: string;
+    expiresIn: number;
   }) => {
     accessToken.value = payload.accessToken;
     refreshToken.value = payload.refreshToken;

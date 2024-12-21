@@ -8,7 +8,10 @@
             role="button"
             class="btn btn-circle swap swap-rotate"
           >
-            <input v-model="isOpen" type="checkbox" />
+            <input
+              v-model="isOpen"
+              type="checkbox"
+            >
             <svg
               class="swap-off fill-current"
               xmlns="http://www.w3.org/2000/svg"
@@ -37,16 +40,29 @@
             tabindex="0"
             class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[50] mt-3 w-52 p-2 shadow"
           >
-            <li v-for="link in links" :key="link.name">
-              <nuxt-link :to="link.to">{{ link.label }}</nuxt-link>
+            <li
+              v-for="link in links"
+              :key="link.name"
+            >
+              <nuxt-link :to="link.to">
+                {{ link.label }}
+              </nuxt-link>
               <ul v-if="link.to === '/products'">
                 <li>
-                  <nuxt-link to="/products">All Products</nuxt-link>
+                  <nuxt-link to="/products">
+                    All Products
+                  </nuxt-link>
                 </li>
-                <li v-for="brand in brandsList" :key="brand.name">
+                <li
+                  v-for="brand in brandsList"
+                  :key="brand.name"
+                >
                   <a @click="goTo({ brand: brand.name })">{{ brand.name }}</a>
                   <ul>
-                    <li v-for="s in brand.series" :key="s.name">
+                    <li
+                      v-for="s in brand.series"
+                      :key="s.name"
+                    >
                       <a @click="goTo({ brand: brand.name, series: s.name })">
                         {{ s.name }}
                       </a>
@@ -70,20 +86,27 @@
               :to="link.to"
               class="hover:text-accent relative"
               :tabindex="link.to === '/products' ? 0 : -1"
-              >{{ link.label }}</nuxt-link
-            >
+            >{{ link.label }}</nuxt-link>
             <ul
               v-if="link.to === '/products'"
               tabindex="0"
               class="dropdown-content bg-base-100 rounded-box shadow w-52"
             >
               <li>
-                <nuxt-link to="/products">All Products</nuxt-link>
+                <nuxt-link to="/products">
+                  All Products
+                </nuxt-link>
               </li>
-              <li v-for="brand in brandsList" :key="brand.name">
+              <li
+                v-for="brand in brandsList"
+                :key="brand.name"
+              >
                 <a @click="goTo({ brand: brand.name })">{{ brand.name }}</a>
                 <ul>
-                  <li v-for="s in brand.series" :key="s.name">
+                  <li
+                    v-for="s in brand.series"
+                    :key="s.name"
+                  >
                     <a @click="goTo({ brand: brand.name, series: s.name })">
                       {{ s.name }}
                     </a>
@@ -131,7 +154,7 @@
                 d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"
               />
             </svg>
-            <span class="badge badge-xs badge-primary indicator-item"></span>
+            <span class="badge badge-xs badge-primary indicator-item" />
           </div>
         </button>
       </div>
@@ -163,7 +186,7 @@ async function fetchData() {
       brandsList.value = data;
     }
   }
- catch (error) {
+  catch (error) {
     brandsList.value = TEST_BRANDS_LIST.brands;
     console.error('無法獲取品牌資料', error);
   }

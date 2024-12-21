@@ -1,7 +1,9 @@
 <template>
   <div class="container introduction flex mt-10">
     <div class="ms-12 title basis-1/5">
-      <h2 class="service-title text-2xl font-bold mb-6">服務說明</h2>
+      <h2 class="service-title text-2xl font-bold mb-6">
+        服務說明
+      </h2>
       <option
         v-for="option in contactOptions"
         :key="option.id"
@@ -14,16 +16,25 @@
     </div>
     <div class="content basis-2/5 p-4 flex flex-col items-center">
       <div>
-        <h3 class="text-xl mb-5 font-semibold">{{ contactOption.title }}</h3>
-        <p class="mb-5">{{ contactOption.detail }}</p>
-        <p class="mb-10">{{ contactOption.time }}</p>
+        <h3 class="text-xl mb-5 font-semibold">
+          {{ contactOption.title }}
+        </h3>
+        <p class="mb-5">
+          {{ contactOption.detail }}
+        </p>
+        <p class="mb-10">
+          {{ contactOption.time }}
+        </p>
         <div
           v-if="contactOption.others"
           class="bg-gray-200 p-2 rounded-md text-sm tracking-wide mb-5"
         >
           <span>{{ contactOption.others }}</span>
         </div>
-        <button class="btn btn-wide btn-error" @click="clickReserve">
+        <button
+          class="btn btn-wide btn-error"
+          @click="clickReserve"
+        >
           👉 立即預約
         </button>
       </div>
@@ -35,10 +46,14 @@
         :src="contactOption.image"
         :alt="contactOption.title"
         :class="[`image-${contactOption.id}`, `image-contact`]"
-      />
+      >
       <div class="image-title hidden sm:block">
-        <h3 class="text-3xl mb-2">{{ contactOption.title }}</h3>
-        <p class="tracking-widest">{{ contactOption.subtitle }}</p>
+        <h3 class="text-3xl mb-2">
+          {{ contactOption.title }}
+        </h3>
+        <p class="tracking-widest">
+          {{ contactOption.subtitle }}
+        </p>
       </div>
     </div>
   </div>

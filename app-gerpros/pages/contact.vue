@@ -2,8 +2,12 @@
   <div class="contact-wrapper">
     <div class="cover-wrapper w-full h-96 ">
       <div class="contact-us">
-        <h2 class="zh">聯絡我們</h2>
-        <h3 class="eng">CONTACT US</h3>
+        <h2 class="zh">
+          聯絡我們
+        </h2>
+        <h3 class="eng">
+          CONTACT US
+        </h3>
       </div>
     </div>
     <ContactUsIntroduction @click-reserve="onClickReserve" />

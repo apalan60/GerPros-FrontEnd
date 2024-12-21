@@ -1,5 +1,8 @@
 <template>
-  <button class="btn btn-primary" @click="handleAdd">
+  <button
+    class="btn btn-primary"
+    @click="handleAdd"
+  >
     新增產品
   </button>
 </template>
@@ -8,16 +11,16 @@
 import { useApiFetch } from '~/composables/useApiFetch';
 
 const props = defineProps<{
-  seriesId: string,
-  name: string,
-  price: number,
-  image: File | null,
-  detail: string
+  seriesId: string;
+  name: string;
+  price: number;
+  image: File | null;
+  detail: string;
 }>();
 
 const emit = defineEmits<{
-  (e: 'success', result: any): void
-  (e: 'error', error: any): void
+  (e: 'success', result: any): void;
+  (e: 'error', error: any): void;
 }>();
 
 const handleAdd = async () => {
@@ -37,10 +40,10 @@ const handleAdd = async () => {
     });
     console.log('產品新增成功', result);
     emit('success', result);
-  } catch (error) {
+  }
+  catch (error) {
     console.error('產品新增失敗', error);
     emit('error', error);
   }
 };
-
 </script>

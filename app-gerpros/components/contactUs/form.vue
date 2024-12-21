@@ -1,8 +1,13 @@
 <template>
   <div class="form-wrapper">
-    <h2 class="text-2xl font-bold mb-8">聯絡我們</h2>
+    <h2 class="text-2xl font-bold mb-8">
+      聯絡我們
+    </h2>
     <div class="form">
-      <form class="mb-10" @submit.prevent="submitForm">
+      <form
+        class="mb-10"
+        @submit.prevent="submitForm"
+      >
         <div class="grid grid-cols-2 gap-4 mb-4 container">
           <label>
             <div class="label">
@@ -13,7 +18,7 @@
               type="text"
               placeholder="請輸入姓氏"
               class="input input-bordered w-full"
-            />
+            >
           </label>
 
           <label>
@@ -26,7 +31,7 @@
                 type="text"
                 placeholder="請輸入名字"
                 class="input input-bordered w-full sm:w-7/12"
-              />
+              >
               <div class="hidden sm:flex gap-1 items-center">
                 <input
                   id="mr"
@@ -34,7 +39,7 @@
                   type="radio"
                   value="先生"
                   class="radio"
-                />
+                >
                 <label for="mr">先生</label>
                 <input
                   id="mrs"
@@ -42,7 +47,7 @@
                   type="radio"
                   value="小姐"
                   class="radio"
-                />
+                >
                 <label for="mrs">小姐</label>
               </div>
             </div>
@@ -59,7 +64,7 @@
                 type="radio"
                 value="先生"
                 class="radio"
-              />
+              >
               <label for="mr">先生</label>
               <input
                 id="mrs"
@@ -67,7 +72,7 @@
                 type="radio"
                 value="小姐"
                 class="radio"
-              />
+              >
               <label for="mrs">小姐</label>
             </div>
           </label>
@@ -81,7 +86,7 @@
               type="text"
               placeholder="請輸入公司名稱"
               class="input input-bordered w-full"
-            />
+            >
           </label>
 
           <label class="block">
@@ -93,7 +98,7 @@
               type="text"
               placeholder="請輸入聯絡電話"
               class="input input-bordered w-full"
-            />
+            >
           </label>
 
           <label class="block">
@@ -104,8 +109,14 @@
               v-model="customerType"
               class="select select-bordered w-full"
             >
-              <option disabled selected>請選擇</option>
-              <option v-for="option in customerTypeOption" :key="option">
+              <option
+                disabled
+                selected
+              >請選擇</option>
+              <option
+                v-for="option in customerTypeOption"
+                :key="option"
+              >
                 {{ option }}
               </option>
             </select>
@@ -120,16 +131,25 @@
               type="email"
               placeholder="請輸入E-MAIL"
               class="input input-bordered w-full"
-            />
+            >
           </label>
 
           <label>
             <div class="label">
               <span class="label-text">可聯絡時間</span>
             </div>
-            <select v-model="contactTime" class="select select-bordered w-full">
-              <option disabled selected>請選擇</option>
-              <option v-for="option in contactTimeOption" :key="option">
+            <select
+              v-model="contactTime"
+              class="select select-bordered w-full"
+            >
+              <option
+                disabled
+                selected
+              >請選擇</option>
+              <option
+                v-for="option in contactTimeOption"
+                :key="option"
+              >
                 {{ option }}
               </option>
             </select>
@@ -147,16 +167,34 @@
                 type="text"
                 class="input input-bordered w-1/5 bg-gray-200"
                 readonly
-              />
-              <select v-model="country" class="select select-bordered">
-                <option disabled selected>選擇縣市</option>
-                <option v-for="option in countryOption" :key="option">
+              >
+              <select
+                v-model="country"
+                class="select select-bordered"
+              >
+                <option
+                  disabled
+                  selected
+                >選擇縣市</option>
+                <option
+                  v-for="option in countryOption"
+                  :key="option"
+                >
                   {{ option }}
                 </option>
               </select>
-              <select v-model="area" class="select select-bordered">
-                <option disabled selected>選擇區域</option>
-                <option v-for="option in areaOption" :key="option">
+              <select
+                v-model="area"
+                class="select select-bordered"
+              >
+                <option
+                  disabled
+                  selected
+                >選擇區域</option>
+                <option
+                  v-for="option in areaOption"
+                  :key="option"
+                >
                   {{ option }}
                 </option>
               </select>
@@ -164,7 +202,7 @@
                 v-model="address"
                 type="text"
                 class="input input-bordered w-full"
-              />
+              >
             </div>
           </label>
 
@@ -173,9 +211,18 @@
               <span class="label-text">能為您提供什麼服務</span>
             </div>
             <div class="grid grid-cols-2 gap-4">
-              <select v-model="serviceType" class="select select-bordered">
-                <option disabled selected>請選擇</option>
-                <option v-for="option in serviceTypeOption" :key="option">
+              <select
+                v-model="serviceType"
+                class="select select-bordered"
+              >
+                <option
+                  disabled
+                  selected
+                >請選擇</option>
+                <option
+                  v-for="option in serviceTypeOption"
+                  :key="option"
+                >
                   {{ option }}
                 </option>
               </select>
@@ -184,7 +231,7 @@
                 type="text"
                 class="input input-bordered w-full"
                 placeholder="其他"
-              />
+              >
             </div>
           </label>
 
@@ -204,7 +251,7 @@
                     type="radio"
                     :value="option"
                     class="radio"
-                  />
+                  >
                   <label :for="index">{{ option }}</label>
                 </div>
               </template>
@@ -217,7 +264,7 @@
                   type="radio"
                   value="其他"
                   class="radio"
-                />
+                >
                 <label for="other"> 其他 </label>
               </div>
               <input
@@ -225,7 +272,7 @@
                 type="text"
                 class="input input-bordered w-3/5"
                 placeholder="其他"
-              />
+              >
             </div>
           </label>
           <label class="form-control">
@@ -236,32 +283,31 @@
               v-model="comment"
               class="textarea textarea-bordered h-24"
               placeholder="請輸入留言"
-            ></textarea>
+            />
           </label>
           <label class="form-control">
             <div class="label">
               <span class="label-text">圖片或檔案上傳</span>
-              <span class="label-text text-gray-500"
-                >檔案格式限制：JPEG、PDF、MP4</span
-              >
+              <span class="label-text text-gray-500">檔案格式限制：JPEG、PDF、MP4</span>
             </div>
-            <input type="file" class="file-input file-input-bordered w-full" />
+            <input
+              type="file"
+              class="file-input file-input-bordered w-full"
+            >
           </label>
           <label class="form-control">
             <div class="label">
               <span class="label-text">附件上傳</span>
-              <span class="label-text text-red-500"
-                >【可放名片或詢問的地板照片等，限制 2 MB】</span
-              >
+              <span class="label-text text-red-500">【可放名片或詢問的地板照片等，限制 2 MB】</span>
             </div>
             <input
               type="file"
               class="file-input file-input-sm file-input-bordered w-full"
-            />
+            >
             <input
               type="file"
               class="file-input file-input-sm file-input-bordered w-full"
-            />
+            >
           </label>
           <div class="mb-4">
             <span class="text-gray-500 block">
@@ -272,7 +318,9 @@
             </span>
           </div>
         </div>
-        <button class="btn btn-outline w-full">送出</button>
+        <button class="btn btn-outline w-full">
+          送出
+        </button>
       </form>
     </div>
   </div>

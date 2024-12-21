@@ -1,5 +1,8 @@
 <template>
-  <NuxtLayout name="product" :isManager="true">
+  <NuxtLayout
+    name="product"
+    :is-manager="true"
+  >
     <template #content>
       <div
         class="breadcrumbs w-full pl-10 mb-8 flex justify-start border-b border-solid border-base-200"
@@ -9,7 +12,9 @@
           <li v-if="searchedBrand">
             <a @click="goToCurrentBrand()">{{ searchedBrand }}</a>
           </li>
-          <li v-if="searchedSeries">{{ searchedSeries }}</li>
+          <li v-if="searchedSeries">
+            {{ searchedSeries }}
+          </li>
         </ul>
       </div>
       <div
@@ -19,12 +24,12 @@
           v-for="product in productionsItems"
           :key="product.name"
           :production="product"
-          :isManager = true
+          :is-manager="true"
           @search-brand="searchBrand"
           @search-series="searchSeries"
         />
       </div>
-      <add-product/>
+      <add-product />
       <ProductPagination
         class="mt-8"
         :total-pages="productionsTotalPages"
@@ -36,13 +41,12 @@
 
 <script setup>
 import { TEST_PRODUCTIONS_LIST } from '~/constants';
-import AddProduct from "~/pages/manager/products/add-product.vue";
+import AddProduct from '~/pages/manager/products/add-product.vue';
+
 definePageMeta({
   layout: 'manager',
 });
 const route = useRoute();
-
-
 
 // production
 const productionsRawData = ref({});
@@ -89,7 +93,8 @@ async function fetchData() {
     if (data) {
       productionsRawData.value = data;
     }
-  } catch (error) {
+  }
+  catch (error) {
     productionsRawData.value = TEST_PRODUCTIONS_LIST;
     console.error('無法獲取產品資料', error);
   }

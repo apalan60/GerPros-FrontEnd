@@ -1,7 +1,9 @@
 <template>
   <section class="company-culture">
     <div class="text-center">
-      <h2 class="text-xl font-bold tracking-widest mb-8">內部環境</h2>
+      <h2 class="text-xl font-bold tracking-widest mb-8">
+        內部環境
+      </h2>
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 max-w-6xl mx-auto gap-6"
       >
@@ -15,7 +17,7 @@
               :src="`/image/about-us-photo-${index}.webp`"
               :alt="photo.title"
               class="photo"
-            />
+            >
           </div>
         </div>
       </div>

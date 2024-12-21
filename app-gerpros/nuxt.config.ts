@@ -7,12 +7,6 @@ export default defineNuxtConfig({
     transpile: ['vue-countup-v3'],
   },
   compatibilityDate: '2024-08-22',
-  eslint: {
-    checker: true,
-    config: {
-      stylistic: true,
-    },
-  },
   runtimeConfig: {
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8080/api',
