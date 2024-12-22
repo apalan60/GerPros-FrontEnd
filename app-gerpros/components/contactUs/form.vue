@@ -288,7 +288,7 @@
           <label class="form-control">
             <div class="label">
               <span class="label-text">圖片或檔案上傳</span>
-              <span class="label-text text-gray-500">檔案格式限制：JPEG、PDF、MP4</span>
+              <span class="label-text text-gray-500">檔案格式限制：JPEG、PDF</span>
             </div>
             <input
               type="file"

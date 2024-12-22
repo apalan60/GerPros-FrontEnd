@@ -37,8 +37,6 @@
 <script setup>
 const { production = {} } = defineProps({ production: Object });
 const emit = defineEmits(['search-brand', 'search-series']);
-const searchedBrand = useState('searchedBrand');
-const searchedSeries = useState('searchedSeries');
 const attrs = useAttrs();
 const isManager = computed(() => attrs.isManager);
 const linkName = computed(() => isManager.value ? 'manager-products-id' : 'products-id');
