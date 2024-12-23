@@ -59,15 +59,27 @@
 </template>
 
 <script setup>
-import { FAQ } from '@/constants';
+import { FAQ } from '~/constants';
+
+const FAQList = ref([])
+onMounted(async () => {
+  const data = await useApiFetch('/FAQ');
+  if (data) {
+    FAQList.value = data;
+    return;
+  }
+  FAQList.value = FAQ;
+});
 
 const selected = ref('室內設計常見問題');
+
 const selectedFaqList = computed(() => {
   const option = selected.value;
-  return FAQ[option];
+  const category = FAQList.value.find((category) => category.categoryName === option);
+  return category ? category.faqItems : [];
 });
+
 function onSelect(option) {
-  console.log('🚀 ~ onSelect ~ option:', option);
   selected.value = option;
 }
 </script>
