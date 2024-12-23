@@ -25,7 +25,7 @@
           @search-series="searchSeries"
         />
       </div>
-      <ProductPagination
+      <Pagination
         class="mt-8"
         :total-pages="productionsTotalPages"
         @go-to-page="goToPage"

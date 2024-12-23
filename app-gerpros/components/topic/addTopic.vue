@@ -225,7 +225,6 @@ async function uploadImage(base64Image) {
     body: formData,
   });
 
-  data.url = 'https://picsum.photos/600/800?random=1';
   return data;
 }
 function replaceBase64ImagesToUrls(htmlContent, base64Images, urls) {

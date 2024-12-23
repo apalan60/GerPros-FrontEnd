@@ -17,7 +17,8 @@
           <div
             v-for="tag in props.topic.tags"
             :key="tag"
-            class="badge badge-outline"
+            class="badge badge-outline cursor-pointer"
+            @click="clickTag(tag)"
           >
             {{ tag }}
           </div>
@@ -37,6 +38,7 @@
 </template>
 
 <script setup>
+const emit = defineEmits(['click-tag']);
 const props = defineProps({
   topic: {
     type: Object,
@@ -51,6 +53,11 @@ const props = defineProps({
     }),
   },
 });
+
+function clickTag(tag) {
+  console.log("🚀 ~ clickTag ~ tag:", tag)
+  emit('click-tag', tag);
+}
 </script>
 
 <style scoped></style>
