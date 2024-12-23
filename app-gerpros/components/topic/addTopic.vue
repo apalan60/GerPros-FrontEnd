@@ -1,5 +1,5 @@
 <template>
-  <div class="w-[85vw] flex flex-col gap-4">
+  <div class="w-full flex flex-col gap-4">
     <label class="form-control w-full">
       <div class="label">
         <span class="label-text">標題</span>
@@ -66,6 +66,7 @@
           >
           <ul
             v-show="isDropdownVisible"
+            v-if="!!tagListOptions.length"
             tabindex="0"
             class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow absolute top-15 left-0"
           >
@@ -96,20 +97,21 @@
           <span class="label-text">內容</span>
         </div>
       </label>
-        <ClientOnly>
-          <QuillEditor
-            v-model:content="content"
-            content-type="html"
-            :toolbar="[
-              [{ header: 1 }, { header: 2 }],
-              ['bold', 'italic', 'underline', 'strike'],
-              [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
-              ['link', 'image'],
-            ]"
-          />
-        </ClientOnly>
+      <ClientOnly>
+        <QuillEditor
+          v-model:content="content"
+          content-type="html"
+          :toolbar="[
+            [{ header: 1 }, { header: 2 }],
+            ['bold', 'italic', 'underline', 'strike'],
+            [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
+            ['link', 'image'],
+          ]"
+        />
+      </ClientOnly>
     </div>
-    <button class="btn" @click="submit">submit</button>
+    <button class="btn" @click="submit">發布</button>
+    <div v-show="errorMessages" class="text-red-500">{{ errorMessages }}</div>
   </div>
 </template>
 
@@ -118,16 +120,13 @@ const title = ref('');
 const tags = ref([]);
 const tagInput = ref('');
 const abstract = ref('');
-
 const coverImageFile = ref({});
 const content = ref('');
-
 const isDropdownVisible = ref(false);
-const tagList = ref(['tag1', 'tag2', 'tag3', 'tag4', 'tag5']);
+const tagList = ref([]);
 const tagListOptions = computed(() => {
   return tagList.value.filter((tag) => !tags.value.includes(tag));
 });
-
 function handleCoverChange(event) {
   const selectedFile = event.target.files[0];
   if (selectedFile) {
@@ -136,50 +135,64 @@ function handleCoverChange(event) {
     coverImageFile.value = null;
   }
 }
-
 function showDropdown() {
   isDropdownVisible.value = true;
 }
-
 function hideDropdown() {
   setTimeout(() => {
     isDropdownVisible.value = false;
   }, 300);
 }
-
 function addTag(tag) {
   tagInput.value = '';
   if (tags.value.includes(tag)) return;
   tags.value.push(tag);
 }
-
 function deleteTag(tag) {
   tags.value = tags.value.filter((t) => t !== tag);
 }
 
+const errorMessages = ref('');
+const successMessage = ref('');
+const router = useRouter();
+
 async function submit() {
-  const formatContent = await getFormatContent();
+  const { formatHtml, fileStorageInfo } = await getFormatContent();
   const coverImage = await uploadImage(coverImageFile.value);
   const payload = {
     title: title.value,
     tags: [...tags.value],
-    coverImage: coverImage,  
-    content: formatContent,
+    coverImage: coverImage.url,
+    content: formatHtml,
+    abstract: abstract.value,
+    fileStorageInfo,
   };
+  try {
+    const data = await useApiFetch('/Posts', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    });
+    console.log(data);
+    successMessage.value = '新增成功';
+    setTimeout(() => {
+      router.back();
+    });
+  } catch (error) {
+    console.error(error);
+    errorMessages.value = error;
+  }
   console.log(payload);
 }
-
 async function getFormatContent() {
   const base64Images = extractBase64Images(content.value);
-  const urls = await uploadImages(base64Images);
+  const { urls, fileStorageInfo } = await uploadImages(base64Images);
   const formatHtml = replaceBase64ImagesToUrls(
     content.value,
     base64Images,
     urls,
   );
-  return formatHtml;
+  return { formatHtml, fileStorageInfo };
 }
-
 function extractBase64Images(htmlContent) {
   const base64Images = [];
   const regex = /<img[^>]+src\s*=\s*"(data:image\/[^;]+;base64,[^"]+)"/g;
@@ -191,32 +204,30 @@ function extractBase64Images(htmlContent) {
 
   return base64Images;
 }
-
 async function uploadImages(base64Images) {
   const urls = [];
+  const fileStorageInfo = [];
 
   base64Images.forEach(async (base64Image) => {
-    const url = await uploadImage(base64Image);
-    urls.push(url);
+    const data = await uploadImage(base64Image);
+    urls.push(data.url);
+    fileStorageInfo.push(data.FileStorageInfo);
   });
 
-  return urls;
+  return { urls, fileStorageInfo };
 }
-
 async function uploadImage(base64Image) {
   const formData = new FormData();
   formData.append('image', base64Image);
 
-  // const response = await fetch("https://api.cloudinary.com/v1_1/dkzjvzv7f/image/upload", {
-  //   method: "POST",
-  //   body: formData,
-  // });
+  const data = await useApiFetch('/Posts/image-upload', {
+    method: 'POST',
+    body: formData,
+  });
 
-  // const data = await response.json();
-  // return data.secure_url;
-  return 'https://picsum.photos/600/800?random=1';
+  data.url = 'https://picsum.photos/600/800?random=1';
+  return data;
 }
-
 function replaceBase64ImagesToUrls(htmlContent, base64Images, urls) {
   let newHtmlContent = htmlContent;
 
@@ -225,6 +236,18 @@ function replaceBase64ImagesToUrls(htmlContent, base64Images, urls) {
   });
 
   return newHtmlContent;
+}
+
+onMounted(async () => {
+  await fetchTagList();
+});
+async function fetchTagList() {
+  try {
+    const data = await useApiFetch('/Tags');
+    tagList.value = data;
+  } catch (error) {
+    console.error(error);
+  }
 }
 </script>
 
