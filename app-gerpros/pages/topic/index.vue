@@ -1,6 +1,6 @@
 <template>
   <div class="topic-wrapper">
-    <div class="cover-wrapper w-full h-96 bg-red-300">
+    <div class="cover-wrapper w-full h-96">
       <div class="header">
         <h2 class="zh">
           主題專欄

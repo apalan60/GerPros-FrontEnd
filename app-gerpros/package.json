@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@nuxt/image": "^1.7.1",
+    "@vueup/vue-quill": "^1.2.0",
     "countup.js": "^2.8.0",
     "scrollmagic": "^2.0.8",
     "swiper": "^11.1.10",
