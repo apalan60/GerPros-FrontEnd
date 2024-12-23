@@ -95,14 +95,19 @@
         <div class="label">
           <span class="label-text">內容</span>
         </div>
+      </label>
         <ClientOnly>
           <QuillEditor
             v-model:content="content"
             content-type="html"
-            :toolbar="[[{ 'header': 1 }, { 'header': 2 }], ['bold', 'italic', 'underline', 'strike'],[{ 'list': 'ordered'}, { 'list': 'bullet' }, { 'list': 'check' }], ['link', 'image'],]"
+            :toolbar="[
+              [{ header: 1 }, { header: 2 }],
+              ['bold', 'italic', 'underline', 'strike'],
+              [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
+              ['link', 'image'],
+            ]"
           />
         </ClientOnly>
-      </label>
     </div>
     <button class="btn" @click="submit">submit</button>
   </div>
@@ -157,8 +162,8 @@ async function submit() {
   const coverImage = await uploadImage(coverImageFile.value);
   const payload = {
     title: title.value,
-    tags: tags.value,
-    coverImage: coverImage,
+    tags: [...tags.value],
+    coverImage: coverImage,  
     content: formatContent,
   };
   console.log(payload);
@@ -188,11 +193,6 @@ function extractBase64Images(htmlContent) {
 }
 
 async function uploadImages(base64Images) {
-  base64Images = [
-    'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QBYRXhpZgAATU0AKgAAAAgAA1EQAAEAAAABAQAAAFERAAQAAAABAAABAgERAAQAAAABAAABAgEBAwABAAAABgAAAAAAAABIAAAAAQAAAEgAAAABAAOAAAEAAAAcAAEAAAEAAAAuAAEAAAEAAABIAAAAAAAAAAE',
-    'data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QBYRXhpZgAATU0AKgAAAAgAA1EQAAEAAAABAQAAAFERAAQAAAABAAABAgERAAQAAAABAAABAgEBAwABAAAABgAAAAAAAABIAAAAAQAAAEgAAAABAAOAAAEAAAAcAAEAAAEAAAAuAAEAAAEAAABIAAAAAAAAAAE',
-  ];
-
   const urls = [];
 
   base64Images.forEach(async (base64Image) => {
@@ -201,7 +201,6 @@ async function uploadImages(base64Images) {
   });
 
   return urls;
-  // return "https://picsum.photos/600/800?random=1"
 }
 
 async function uploadImage(base64Image) {
