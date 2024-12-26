@@ -209,24 +209,37 @@ async function uploadImages(base64Images) {
   const fileStorageInfo = [];
 
   base64Images.forEach(async (base64Image) => {
-    const data = await uploadImage(base64Image);
+    const blobImage = await base64ToBlob(base64Image);
+    const data = await uploadImage(blobImage);
     urls.push(data.url);
     fileStorageInfo.push(data.FileStorageInfo);
   });
 
   return { urls, fileStorageInfo };
 }
-async function uploadImage(base64Image) {
+async function uploadImage(image) {
   const formData = new FormData();
-  formData.append('image', base64Image);
+  const fileName = `${Date.now()}.png`;
+  formData.append('file', image, fileName);
 
-  const data = await useApiFetch('/Posts/image-upload', {
+  const response = await fetch('/Posts/image-upload', {
     method: 'POST',
     body: formData,
   });
 
-  return data;
+  if (!response.ok) {
+    throw new Error(`HTTP error! status: ${response.status}`);
+  }
+
+  return await response.json();
 }
+
+async function base64ToBlob(base64Image) {
+  const response = await fetch(base64Image);
+  return await response.blob();
+}
+
+
 function replaceBase64ImagesToUrls(htmlContent, base64Images, urls) {
   let newHtmlContent = htmlContent;
 
