@@ -115,33 +115,42 @@
         />
       </ClientOnly>
     </div>
-    <button class="btn" @click="submit">發布</button>
+    <button class="btn btn-success mb-4" @click="submit">更新</button>
     <div v-show="errorMessages" class="text-red-500">{{ errorMessages }}</div>
   </div>
 </template>
 
 <script setup>
+const route = useRoute();
+const id = computed(() => route.params.id);
 const title = ref('');
 const tags = ref([]);
 const tagInput = ref('');
 const description = ref('');
-const coverImageFile = ref({});
 const coverImageUrl = ref('');
+const coverImageFile = ref({});
 const content = ref('');
 const isDropdownVisible = ref(false);
 const tagList = ref([]);
+const props = defineProps({
+  topic: {
+    type: Object,
+    default: () => {},
+  },
+});
+
 const tagListOptions = computed(() => {
   return tagList.value.filter((tag) => !tags.value.includes(tag));
 });
 function handleCoverChange(event) {
   const selectedFile = event.target.files[0];
-  if (selectedFile) {
-    coverImageFile.value = selectedFile;
-    coverImageUrl.value = URL.createObjectURL(selectedFile);
-  } else {
+  if (!selectedFile) {
     coverImageFile.value = null;
-    coverImageUrl.value = '';
+    coverImageUrl.value = props.topic.coverImage;
+    return;
   }
+  coverImageFile.value = selectedFile;
+  coverImageUrl.value = URL.createObjectURL(selectedFile);
 }
 function showDropdown() {
   isDropdownVisible.value = true;
@@ -162,34 +171,34 @@ function deleteTag(tag) {
 
 const errorMessages = ref('');
 const successMessage = ref('');
-const router = useRouter();
 
 async function submit() {
   const { formatHtml, fileStorageInfo } = await getFormatContent();
-  const coverImage = await uploadImage(coverImageFile.value);
+  if (coverImageFile.value instanceof File) {
+    const coverImage = await uploadImage(coverImageFile.value);
+    coverImageUrl.value = coverImage.url;
+  }else{
+    coverImageUrl.value = props.topic.coverImage;
+  }
   const payload = {
     title: title.value,
     tags: [...tags.value],
-    coverImage: coverImage.url,
+    coverImage: coverImageUrl.value,
     content: formatHtml,
     description: description.value,
     fileStorageInfo,
   };
   try {
-    const data = await useApiFetch('/Posts', {
-      method: 'POST',
+    const data = await useApiFetch(`/Posts/${id.value}`, {
+      method: 'PUT',
       body: JSON.stringify(payload),
     });
     console.log(data);
-    successMessage.value = '新增成功';
-    setTimeout(() => {
-      router.back();
-    });
+    successMessage.value = '更新成功';
   } catch (error) {
     console.error(error);
     errorMessages.value = error;
   }
-  console.log(payload);
 }
 async function getFormatContent() {
   const base64Images = extractBase64Images(content.value);
@@ -250,7 +259,6 @@ async function base64ToBlob(base64Image) {
   return await response.blob();
 }
 
-
 function replaceBase64ImagesToUrls(htmlContent, base64Images, urls) {
   let newHtmlContent = htmlContent;
 
@@ -261,9 +269,18 @@ function replaceBase64ImagesToUrls(htmlContent, base64Images, urls) {
   return newHtmlContent;
 }
 
+watchEffect(() => {
+  title.value = props.topic.title;
+  tags.value = props.topic.tags;
+  description.value = props.topic.description;
+  coverImageUrl.value = props.topic.coverImage;
+  content.value = props.topic.content;
+});
+
 onMounted(async () => {
   await fetchTagList();
 });
+
 async function fetchTagList() {
   try {
     const data = await useApiFetch('/Tags');

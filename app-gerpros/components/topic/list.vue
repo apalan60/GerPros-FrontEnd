@@ -6,7 +6,9 @@
           v-for="topic in topicList"
           :key="topic.id"
           :topic="topic"
+          :is-manager="isManager"
           @click-tag="goToTag($event)"
+          @click-delete="onClickedDelete($event)"
         />
       </div>
       <div class="flex-none w-[20%] h-100 p-4 border-l-2 border-gray-200">
@@ -28,6 +30,25 @@
     </div>
     <Pagination class="mt-8" :total-pages="totalPages" @go-to-page="goToPage" />
   </div>
+  <dialog
+    id="delete_modal"
+    ref="dialogue"
+    class="modal modal-bottom sm:modal-middle"
+  >
+    <div class="modal-box">
+      <h3 class="text-lg font-bold">確定刪除文章?</h3>
+      <p class="py-4">請再次確定</p>
+      <div class="modal-action flex justify-end items-center gap-2">
+        <p v-if="isError" class="text-red-500">
+          發生錯誤，請檢察網路或洽詢系統人員
+        </p>
+        <button class="btn btn-outline" @click="onConfirmDelete">確定</button>
+        <form method="dialog">
+          <button class="btn" @click="isError = false">關閉</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
 </template>
 
 <script setup>
@@ -42,6 +63,8 @@ const topicList = computed(() => {
 const tagList = ref([]);
 const searchedTag = computed(() => route.query.Tags);
 const totalPages = computed(() => topicRawData.value.totalPages);
+const isManager = computed(() => route.path.includes('/manager/'));
+
 
 async function fetchData() {
   const params = {
@@ -92,12 +115,31 @@ async function goToPage(pageNumber) {
 
 async function goTo({ pageNumber = 1, tag } = {}) {
   await navigateTo({
-    path: '/topic',
+    path: isManager.value ? '/manager/topic' : '/topic',
     query: {
       PageNumber: pageNumber,
       Tags: tag,
     },
   });
+}
+const deleteTargetId = ref('');
+function onClickedDelete(id) {
+  deleteTargetId.value = id;
+  delete_modal.showModal();
+}
+
+const isError = ref(false);
+async function onConfirmDelete() {
+  try {
+    await useApiFetch(`/Posts/${deleteTargetId.value}`, {
+      method: 'DELETE',
+    });
+    deleteTargetId.value = '';
+    delete_modal.close();
+  } catch (error) {
+    console.error(error);
+    isError.value = true;
+  }
 }
 
 watch(

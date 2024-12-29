@@ -1,8 +1,14 @@
 <template>
-  <div>TOPIC</div>
+  <div>
+    <button class="btn btn-primary">
+      <NuxtLink to="/manager/topic/addTopic">Create Topic</NuxtLink>
+    </button>
+    <TopicList />
+  </div>
 </template>
 
 <script setup>
+
 definePageMeta({
   layout: 'manager',
 });
