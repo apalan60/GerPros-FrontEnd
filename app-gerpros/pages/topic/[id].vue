@@ -1,7 +1,7 @@
 <template>
   <div class="topic-wrapper">
     <div
-      class="cover-wrapper w-full h-96 bg-red-300"
+      class="cover-wrapper w-full h-96"
       :style="{ backgroundImage: `url(${topic.coverImage})` }"
     >
       <div class="header">
