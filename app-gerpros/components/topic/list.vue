@@ -87,7 +87,7 @@ async function fetchData() {
   }
 
   try {
-    const tagListData = await useApiFetch('/Tags');
+    const tagListData = await useApiFetch('Posts/tags');
     if (tagListData) {
       tagList.value = tagListData;
     }

@@ -139,6 +139,7 @@ const links = [
   { label: '常見問題', to: '/FAQ' },
   { label: '關於我們', to: '/aboutUs' },
   { label: '服務項目', to: '/services' },
+  { label: '管理頁面', to: '/manager' },
 ];
 
 // brand

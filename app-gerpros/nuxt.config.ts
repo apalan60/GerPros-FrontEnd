@@ -9,7 +9,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-08-22',
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE || 'http://localhost:8080/api',
+      apiBase: 'http://gerpros-alb-1638240279.ap-northeast-1.elb.amazonaws.com:8080/api',
     },
   },
 });

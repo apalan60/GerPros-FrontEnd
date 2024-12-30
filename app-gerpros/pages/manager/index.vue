@@ -58,8 +58,8 @@ definePageMeta({
   layout: 'manager',
 });
 
-const email = ref('administrator@localhost');
-const password = ref('Administrator1!');
+const email = ref('');
+const password = ref('');
 const errorMessage = ref('');
 const router = useRouter();
 const auth = useAuthStore();

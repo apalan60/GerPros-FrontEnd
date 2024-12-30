@@ -233,7 +233,7 @@ async function uploadImage(image) {
   const fileName = `${Date.now()}.png`;
   formData.append('file', image, fileName);
 
-  const response = await fetch('/Posts/image-upload', {
+  const response = await useApiFetch('/Posts/image-upload', {
     method: 'POST',
     body: formData,
   });
@@ -266,7 +266,7 @@ onMounted(async () => {
 });
 async function fetchTagList() {
   try {
-    const data = await useApiFetch('/Tags');
+    const data = await useApiFetch('Posts/tags');
     tagList.value = data;
   } catch (error) {
     console.error(error);
