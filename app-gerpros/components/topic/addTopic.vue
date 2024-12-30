@@ -216,33 +216,36 @@ function extractBase64Images(htmlContent) {
   return base64Images;
 }
 async function uploadImages(base64Images) {
-  const urls = [];
-  const fileStorageInfo = [];
-
-  base64Images.forEach(async (base64Image) => {
+  const uploadPromises = base64Images.map(async (base64Image) => {
     const blobImage = await base64ToBlob(base64Image);
     const data = await uploadImage(blobImage);
-    urls.push(data.url);
-    fileStorageInfo.push(data.FileStorageInfo);
+    return {
+      url: data.url,
+      fileStorageInfo: data.fileStorageInfo,
+    };
   });
+
+  const results = await Promise.all(uploadPromises);
+
+  const urls = results.map((result) => result.url);
+  const fileStorageInfo = results.map((result) => result.fileStorageInfo);
 
   return { urls, fileStorageInfo };
 }
+
 async function uploadImage(image) {
   const formData = new FormData();
-  const fileName = `${Date.now()}.png`;
-  formData.append('file', image, fileName);
+  formData.append('file', image);
 
-  const response = await useApiFetch('/Posts/image-upload', {
-    method: 'POST',
-    body: formData,
-  });
-
-  if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+  try{
+    const response = await useApiFetch('/Posts/image-upload', {
+      method: 'POST',
+      body: formData,
+    });
+    return response
+  }catch(e){
+    throw new Error(e);
   }
-
-  return await response.json();
 }
 
 async function base64ToBlob(base64Image) {
