@@ -9,7 +9,8 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-08-22',
   runtimeConfig: {
     public: {
-      apiBase: 'http://gerpros-alb-1638240279.ap-northeast-1.elb.amazonaws.com:8080/api',
+      //or use env variables
+      apiBase: 'https://gerpros.apalan60-tst.click/api',
     },
   },
 });
