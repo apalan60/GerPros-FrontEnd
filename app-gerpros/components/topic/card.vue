@@ -26,14 +26,14 @@
         <NuxtLink :to="{ name: 'topic-id', params: { id: props.topic?.id } }">
           <button class="btn btn-primary">閱讀更多</button>
         </NuxtLink>
-        <div class="flex gap-2">
+        <div v-if="isManager" class="flex gap-2">
           <NuxtLink
-            v-if="isManager"
+            
             :to="{ name: 'manager-topic-id', params: { id: props.topic?.id } }"
           >
             <button class="btn btn-success">編輯</button>
           </NuxtLink>
-          <button v-if="isManager" class="btn btn-error" @click="onClickDelete">刪除</button>
+          <button class="btn btn-error" @click="onClickDelete">刪除</button>
         </div>
       </div>
     </div>

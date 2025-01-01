@@ -46,7 +46,6 @@ async function fetchData() {
     const data = await useApiFetch(`/Posts/${id.value}`);
     if (data) {
       data.coverImage = '/image/contact_us_cover.webp';
-      data.content = replaceImgSrcToMock(data.content);
       topic.value = data;
     }
   }
@@ -55,11 +54,6 @@ async function fetchData() {
     console.error('無法獲取文章資料', error);
   }
 }
-
-function replaceImgSrcToMock(htmlContent) {
-  return htmlContent.replace(/src="(.+?)"/g, 'src="/image/about-us-photo-2.webp"');
-}
-
 
 async function goToTag(tag) {
   await navigateTo({
