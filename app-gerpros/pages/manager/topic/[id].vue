@@ -23,7 +23,6 @@ async function fetchData() {
   try {
     const data = await useApiFetch(`/Posts/${id.value}`);
     if (data) {
-      data.coverImage = '/image/contact_us_cover.webp';
       topic.value = data;
     }
   }
