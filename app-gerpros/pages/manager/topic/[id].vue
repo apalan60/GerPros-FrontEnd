@@ -7,6 +7,10 @@
 <script setup>
 import { TEST_TOPIC_DETAILS } from '~/constants';
 
+definePageMeta({
+  layout: 'manager',
+});
+
 const route = useRoute();
 const id = ref(route.params.id);
 const topic = ref({});

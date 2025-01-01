@@ -1,10 +1,6 @@
 <template>
   <div class="drawer">
-    <input
-      id="my-drawer-3"
-      type="checkbox"
-      class="drawer-toggle"
-    >
+    <input id="my-drawer-3" type="checkbox" class="drawer-toggle" >
     <div class="drawer-content flex flex-col">
       <!-- Navbar -->
       <div class="navbar bg-base-300 w-full">
@@ -29,24 +25,26 @@
             </svg>
           </label>
         </div>
+
         <div class="mx-2 flex-1 px-2">
-          Manager Site
+          <NuxtLink to="/manager/dashboard">
+            <a>Manager Site</a>
+          </NuxtLink>
         </div>
         <div class="hidden flex-none lg:block">
           <ul class="menu menu-horizontal">
-            <NuxtLink to="/products">
-              Production
-            </NuxtLink>
             <li>
-              <NuxtLink to="/manager/topic">
-                Topic
-              </NuxtLink>
+              <NuxtLink to="/manager/register"> 註冊 </NuxtLink>
             </li>
             <li>
-              <NuxtLink to="/manager/faq">
-                FAQ
-              </NuxtLink>
+              <NuxtLink to="/manager/products"> 產品/品牌系列 </NuxtLink>
             </li>
+            <li>
+              <NuxtLink to="/manager/topic"> 主題專欄 </NuxtLink>
+            </li>
+            <li>
+              <NuxtLink to="/manager/faq"> 常見問題 </NuxtLink>
+          </li>
           </ul>
         </div>
       </div>
@@ -64,19 +62,13 @@
       <ul class="menu bg-base-200 min-h-full w-80 p-4">
         <!-- Sidebar content here -->
         <li>
-          <NuxtLink to="/manager/products">
-            Production
-          </NuxtLink>
+          <NuxtLink to="/manager/products"> Production </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/manager/topic">
-            Topic
-          </NuxtLink>
+          <NuxtLink to="/manager/topic"> Topic </NuxtLink>
         </li>
         <li>
-          <NuxtLink to="/manager/faq">
-            FAQ
-          </NuxtLink>
+          <NuxtLink to="/manager/faq"> FAQ </NuxtLink>
         </li>
       </ul>
     </div>

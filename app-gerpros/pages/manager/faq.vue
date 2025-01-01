@@ -11,6 +11,10 @@
 </template>
 
 <script setup>
+definePageMeta({
+  layout: 'manager',
+});
+
 const isEditMode = ref(false);
 </script>
 
