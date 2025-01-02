@@ -288,8 +288,8 @@
   </div>
   <dialog id="dialog" class="modal">
   <div class="modal-box">
-    <h3 class="text-lg font-bold">Hello!</h3>
-    <p class="py-4">Press ESC key or click outside to close</p>
+    <h3 class="text-lg font-bold">完成送出！</h3>
+    <p class="py-4">感謝您的填寫，我們將儘速與您聯繫。</p>
   </div>
   <form method="dialog" class="modal-backdrop">
     <button>close</button>
