@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       //or use env variables
-      apiBase: 'https://gerpros.apalan60-tst.click/api',
+      apiBase: 'http://localhost:8080/api',
     },
   },
 });

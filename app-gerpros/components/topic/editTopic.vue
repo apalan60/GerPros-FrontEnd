@@ -181,6 +181,7 @@ async function submit() {
     coverImageUrl.value = props.topic.coverImage;
   }
   const payload = {
+    id: id.value,
     title: title.value,
     tags: [...tags.value],
     coverImage: coverImageUrl.value,
