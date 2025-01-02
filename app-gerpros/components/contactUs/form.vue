@@ -1,13 +1,8 @@
 <template>
   <div class="form-wrapper">
-    <h2 class="text-2xl font-bold mb-8">
-      聯絡我們
-    </h2>
+    <h2 class="text-2xl font-bold mb-8">聯絡我們</h2>
     <div class="form">
-      <form
-        class="mb-10"
-        @submit.prevent="submitForm"
-      >
+      <form class="mb-10" @submit.prevent="submitForm">
         <div class="grid grid-cols-2 gap-4 mb-4 container">
           <label>
             <div class="label">
@@ -109,14 +104,8 @@
               v-model="customerType"
               class="select select-bordered w-full"
             >
-              <option
-                disabled
-                selected
-              >請選擇</option>
-              <option
-                v-for="option in customerTypeOption"
-                :key="option"
-              >
+              <option disabled selected>請選擇</option>
+              <option v-for="option in customerTypeOption" :key="option">
                 {{ option }}
               </option>
             </select>
@@ -138,18 +127,9 @@
             <div class="label">
               <span class="label-text">可聯絡時間</span>
             </div>
-            <select
-              v-model="contactTime"
-              class="select select-bordered w-full"
-            >
-              <option
-                disabled
-                selected
-              >請選擇</option>
-              <option
-                v-for="option in contactTimeOption"
-                :key="option"
-              >
+            <select v-model="contactTime" class="select select-bordered w-full">
+              <option disabled selected>請選擇</option>
+              <option v-for="option in contactTimeOption" :key="option">
                 {{ option }}
               </option>
             </select>
@@ -168,33 +148,15 @@
                 class="input input-bordered w-1/5 bg-gray-200"
                 readonly
               >
-              <select
-                v-model="country"
-                class="select select-bordered"
-              >
-                <option
-                  disabled
-                  selected
-                >選擇縣市</option>
-                <option
-                  v-for="option in countryOption"
-                  :key="option"
-                >
+              <select v-model="country" class="select select-bordered">
+                <option disabled selected>選擇縣市</option>
+                <option v-for="option in countryOption" :key="option">
                   {{ option }}
                 </option>
               </select>
-              <select
-                v-model="area"
-                class="select select-bordered"
-              >
-                <option
-                  disabled
-                  selected
-                >選擇區域</option>
-                <option
-                  v-for="option in areaOption"
-                  :key="option"
-                >
+              <select v-model="area" class="select select-bordered">
+                <option disabled selected>選擇區域</option>
+                <option v-for="option in areaOption" :key="option">
                   {{ option }}
                 </option>
               </select>
@@ -211,18 +173,9 @@
               <span class="label-text">能為您提供什麼服務</span>
             </div>
             <div class="grid grid-cols-2 gap-4">
-              <select
-                v-model="serviceType"
-                class="select select-bordered"
-              >
-                <option
-                  disabled
-                  selected
-                >請選擇</option>
-                <option
-                  v-for="option in serviceTypeOption"
-                  :key="option"
-                >
+              <select v-model="serviceType" class="select select-bordered">
+                <option disabled selected>請選擇</option>
+                <option v-for="option in serviceTypeOption" :key="option">
                   {{ option }}
                 </option>
               </select>
@@ -288,25 +241,35 @@
           <label class="form-control">
             <div class="label">
               <span class="label-text">圖片或檔案上傳</span>
-              <span class="label-text text-gray-500">檔案格式限制：JPEG、PDF</span>
+              <span class="label-text text-gray-500"
+                >檔案格式限制：JPEG、PDF</span
+              >
             </div>
             <input
               type="file"
               class="file-input file-input-bordered w-full"
+              accept="image/jpeg,application/pdf"
+              @change="changeFile($event, 1)"
             >
           </label>
           <label class="form-control">
             <div class="label">
               <span class="label-text">附件上傳</span>
-              <span class="label-text text-red-500">【可放名片或詢問的地板照片等，限制 2 MB】</span>
+              <span class="label-text text-red-500"
+                >【可放名片或詢問的地板照片等，限制 2 MB】</span
+              >
             </div>
             <input
               type="file"
               class="file-input file-input-sm file-input-bordered w-full"
+              accept="image/jpeg,application/pdf"
+              @change="changeFile($event, 2)"
             >
             <input
               type="file"
               class="file-input file-input-sm file-input-bordered w-full"
+              accept="image/jpeg,application/pdf"
+              @change="changeFile($event, 3)"
             >
           </label>
           <div class="mb-4">
@@ -318,12 +281,20 @@
             </span>
           </div>
         </div>
-        <button class="btn btn-outline w-full">
-          送出
-        </button>
+        <button class="btn btn-outline w-full">送出</button>
       </form>
+      <div v-show="errorMessages" class="text-red-500"><p>{{ errorMessages }}</p></div>
     </div>
   </div>
+  <dialog id="dialog" class="modal">
+  <div class="modal-box">
+    <h3 class="text-lg font-bold">Hello!</h3>
+    <p class="py-4">Press ESC key or click outside to close</p>
+  </div>
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>
 </template>
 
 <script setup>
@@ -373,6 +344,63 @@ const knowMethodOption = [
 const otherKnowMethod = ref('');
 
 const comment = ref('');
+
+const files = ref({
+  1: null,
+  2: null,
+  3: null,
+});
+
+function changeFile(event, index) {
+  files.value[index] = event.target.files[0];
+}
+
+const errorMessages = ref('');
+async function submitForm() {
+  errorMessages.value = '';
+
+  const payload = {
+    lastName: lastName.value,
+    firstName: firstName.value,
+    customerTitle: customerTitle.value,
+    companyName: companyName.value,
+    phone: phone.value,
+    customerType: customerType.value,
+    email: email.value,
+    contactTime: contactTime.value,
+    country: country.value,
+    area: area.value,
+    zipCode: zipCode.value,
+    address: address.value,
+    serviceType: serviceType.value,
+    otherServiceType: otherServiceType.value,
+    knowMethod: knowMethod.value,
+    otherKnowMethod: otherKnowMethod.value,
+    comment: comment.value,
+    ...Object.fromEntries(
+      Object.values(files.value)
+        .filter((file) => file)
+        .map((file, index) => [`file${index + 1}`, file]),
+    ),
+  };
+
+  const formData = new FormData();
+  Object.entries(payload).forEach(([key, value]) => {
+    formData.append(key, value);
+  });
+  
+  try {
+    await useApiFetch('/ContactForm/Send', {
+      method: 'POST',
+      body: formData,
+    });
+  } catch (error) {
+    console.error(error);
+    errorMessages.value = '發生錯誤，請檢查您的資料是否完整';
+  }
+
+  dialog.showModal();
+}
 </script>
 
 <style>
