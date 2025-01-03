@@ -386,7 +386,7 @@ async function submitForm() {
     formData.append(key, value);
   });
   formFiles.forEach((file) => {
-    formData.append('file', file);
+    formData.append('files', file);
   });
   
   try {
