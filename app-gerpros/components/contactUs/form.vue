@@ -360,27 +360,27 @@ async function submitForm() {
   errorMessages.value = '';
 
   const payload = {
-    lastName: lastName.value,
-    firstName: firstName.value,
-    customerTitle: customerTitle.value,
-    companyName: companyName.value,
-    phone: phone.value,
-    customerType: customerType.value,
-    email: email.value,
-    contactTime: contactTime.value,
-    country: country.value,
-    area: area.value,
-    zipCode: zipCode.value,
-    address: address.value,
-    serviceType: serviceType.value,
-    otherServiceType: otherServiceType.value,
-    knowMethod: knowMethod.value,
-    otherKnowMethod: otherKnowMethod.value,
-    comment: comment.value,
+    LastName: lastName.value,
+    FirstName: firstName.value,
+    CustomerTitle: customerTitle.value,
+    CompanyName: companyName.value,
+    Phone: phone.value,
+    CustomerType: customerType.value,
+    Email: email.value,
+    ContactTime: contactTime.value,
+    Country: country.value,
+    Area: area.value,
+    ZipCode: zipCode.value,
+    Address: address.value,
+    ServiceType: serviceType.value,
+    OtherServiceType: otherServiceType.value,
+    KnowMethod: knowMethod.value,
+    OtherKnowMethod: otherKnowMethod.value,
+    Comment: comment.value,
   };
 
   const formFiles = Object.values(files.value).filter((value) => value instanceof File);
-  
+
   const formData = new FormData();
   Object.entries(payload).forEach(([key, value]) => {
     formData.append(key, value);
