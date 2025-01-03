@@ -377,16 +377,16 @@ async function submitForm() {
     knowMethod: knowMethod.value,
     otherKnowMethod: otherKnowMethod.value,
     comment: comment.value,
-    ...Object.fromEntries(
-      Object.values(files.value)
-        .filter((file) => file)
-        .map((file, index) => [`file${index + 1}`, file]),
-    ),
   };
+
+  const files = Object.values(payload).filter((value) => value instanceof File);
 
   const formData = new FormData();
   Object.entries(payload).forEach(([key, value]) => {
     formData.append(key, value);
+  });
+  files.forEach((file) => {
+    formData.append('file', file);
   });
   
   try {
@@ -394,12 +394,13 @@ async function submitForm() {
       method: 'POST',
       body: formData,
     });
+    dialog.showModal();
+    
   } catch (error) {
     console.error(error);
     errorMessages.value = '發生錯誤，請檢查您的資料是否完整';
   }
 
-  dialog.showModal();
 }
 </script>
 
