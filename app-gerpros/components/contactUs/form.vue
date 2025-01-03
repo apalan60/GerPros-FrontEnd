@@ -379,13 +379,13 @@ async function submitForm() {
     comment: comment.value,
   };
 
-  const files = Object.values(payload).filter((value) => value instanceof File);
-
+  const formFiles = Object.values(files.value).filter((value) => value instanceof File);
+  
   const formData = new FormData();
   Object.entries(payload).forEach(([key, value]) => {
     formData.append(key, value);
   });
-  files.forEach((file) => {
+  formFiles.forEach((file) => {
     formData.append('file', file);
   });
   
