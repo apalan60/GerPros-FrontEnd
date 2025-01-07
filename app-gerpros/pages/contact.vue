@@ -1,27 +1,24 @@
 <template>
   <div class="contact-wrapper">
-    <div class="cover-wrapper w-full h-96 ">
+    <div class="cover-wrapper w-full h-96">
       <div class="contact-us">
-        <h2 class="zh">
-          聯絡我們
-        </h2>
-        <h3 class="eng">
-          CONTACT US
-        </h3>
+        <h2 class="zh">聯絡我們</h2>
+        <h3 class="eng">CONTACT US</h3>
       </div>
     </div>
     <ContactUsIntroduction @click-reserve="onClickReserve" />
-    <ContactUsForm ref="formRef" />
+    <div id="contact-form">
+      <ContactUsForm  />
+    </div>
   </div>
 </template>
 
 <script setup>
 defineEmits(['click-reserve']);
 
-const formRef = ref(null);
-
 function onClickReserve() {
-  formRef.value.$el.scrollIntoView({ behavior: 'smooth' });
+  const form = document.getElementById('contact-form');
+  form.scrollIntoView({ behavior: 'smooth' });
 }
 </script>
 
