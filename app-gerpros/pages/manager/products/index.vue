@@ -24,7 +24,7 @@
           v-for="product in productionsItems"
           :key="product.name"
           :production="product"
-          :is-manager="true"
+          :isManager="true"
           @search-brand="searchBrand"
           @search-series="searchSeries"
         />

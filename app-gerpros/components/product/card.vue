@@ -40,6 +40,7 @@ const emit = defineEmits(['search-brand', 'search-series']);
 const attrs = useAttrs();
 const isManager = computed(() => attrs.isManager);
 const linkName = computed(() => isManager.value ? 'manager-products-id' : 'products-id');
+console.log('linkName', linkName.value);
 function searchBrand() {
   emit('search-brand', production.brandName);
 }
