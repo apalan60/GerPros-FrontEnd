@@ -41,7 +41,7 @@
 
 <script setup>
 import { TEST_PRODUCTIONS_LIST } from '~/constants';
-import AddProduct from '~/pages/manager/Products/add-product.vue';
+import AddProduct from '~/pages/manager/products/add-product.vue';
 
 definePageMeta({
   layout: 'manager',
