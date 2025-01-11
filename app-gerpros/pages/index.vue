@@ -17,9 +17,7 @@ register();
         <swiper-slide class="slide slide3" />
       </swiper-container>
       <div class="title-text">
-        <h2 class="text-8xl">
-          GerPros
-        </h2>
+        <img src="/image/logo.webp" alt="" width="500" class="full-content">
       </div>
     </div>
     <div class="mb-20">
@@ -41,13 +39,7 @@ register();
 }
 .title-text {
   position: absolute;
-
-  font-weight: bold;
-  font-family: 'Cinzel', serif;
   z-index: 2;
-  color: #dedede;
-  mix-blend-mode: exclusion;
-  text-align: center;
 }
 .slide-container {
   height: 100%;
