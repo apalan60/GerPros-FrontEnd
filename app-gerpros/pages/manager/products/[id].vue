@@ -163,7 +163,7 @@ function handleFileChange(e) {
 
 async function goTo({ pageNumber = 1, brand, series } = {}) {
   await navigateTo({
-    path: '/products',
+    path: '/manager/products',
     query: {
       PageNumber: pageNumber,
       Brand: brand,

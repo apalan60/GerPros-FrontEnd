@@ -1,14 +1,14 @@
 <template>
   <NuxtLayout
     name="product"
-    :is-manager="true"
+    :isManager="true"
   >
     <template #content>
       <div
         class="breadcrumbs w-full pl-10 mb-8 flex justify-start border-b border-solid border-base-200"
       >
         <ul>
-          <li><a @click="goTo()">All Products</a></li>
+          <li><a @click="goTo()">所有產品</a></li>
           <li v-if="searchedBrand">
             <a @click="goToCurrentBrand()">{{ searchedBrand }}</a>
           </li>
@@ -41,12 +41,13 @@
 
 <script setup>
 import { TEST_PRODUCTIONS_LIST } from '~/constants';
-import AddProduct from '~/pages/manager/products/add-product.vue';
+import AddProduct from '~/pages/manager/Products/add-product.vue';
 
 definePageMeta({
   layout: 'manager',
 });
 const route = useRoute();
+console.log('route', route.fullPath);
 
 // production
 const productionsRawData = ref({});

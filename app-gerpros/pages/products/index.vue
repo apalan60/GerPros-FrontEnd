@@ -5,7 +5,7 @@
         class="breadcrumbs w-full pl-10 mb-8 flex justify-start border-b border-solid border-base-200"
       >
         <ul>
-          <li><a @click="goTo()">All Products</a></li>
+          <li><a @click="goTo()">所有產品</a></li>
           <li v-if="searchedBrand">
             <a @click="goToCurrentBrand()">{{ searchedBrand }}</a>
           </li>
