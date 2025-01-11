@@ -84,7 +84,7 @@
           >
             <nuxt-link
               :to="link.to"
-              class="hover:text-accent relative"
+              class="hover:text-accent hover:bg-transparent active:text-accent active:bg-transparent focus:text-accent focus:bg-transparent relative"
               :tabindex="link.to === '/products' ? 0 : -1"
             >{{ link.label }}</nuxt-link>
             <ul
@@ -93,7 +93,7 @@
               class="dropdown-content bg-base-100 rounded-box shadow w-52"
             >
               <li>
-                <nuxt-link to="/products">
+                <nuxt-link to="/products" class="hover:bg-transparent hover:text-accent focus:text-accent focus:bg-transparent">
                   All Products
                 </nuxt-link>
               </li>
@@ -101,13 +101,13 @@
                 v-for="brand in brandsList"
                 :key="brand.name"
               >
-                <a @click="goTo({ brand: brand.name })">{{ brand.name }}</a>
-                <ul>
+                <a class="hover:bg-transparent hover:text-accent focus:text-accent focus:bg-transparent" @click="goTo({ brand: brand.name })">{{ brand.name }}</a>
+                <ul> 
                   <li
                     v-for="s in brand.series"
                     :key="s.name"
                   >
-                    <a @click="goTo({ brand: brand.name, series: s.name })">
+                    <a class="hover:bg-transparent hover:text-accent focus:text-accent focus:bg-transparent" @click="goTo({ brand: brand.name, series: s.name })">
                       {{ s.name }}
                     </a>
                   </li>
