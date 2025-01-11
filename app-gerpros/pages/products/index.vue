@@ -45,8 +45,7 @@ const productionsItems = computed(() => {
   const productions = productionsRawData.value.items;
   return productions?.map((production) => {
     return {
-      ...production,
-      image: '/image/about-us-photo-2.webp',
+      ...production
     };
   });
 });

@@ -55,7 +55,6 @@ const productionsItems = computed(() => {
   return productions?.map((production) => {
     return {
       ...production,
-      image: '/image/about-us-photo-2.webp',
     };
   });
 });

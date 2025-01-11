@@ -2,36 +2,36 @@
   <div class="p-4">
     <!-- 新增 icon -->
     <button
-      class="btn btn-circle btn-primary"
-      @click="showModal = true"
+        class="btn btn-circle btn-primary"
+        @click="showModal = true"
     >
       <!-- heroicons plus -->
       <svg
-        xmlns="http://www.w3.org/2000/svg"
-        class="h-6 w-6"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke="currentColor"
-        stroke-width="2"
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-6 w-6"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="2"
       >
         <path
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          d="M12 4v16m8-8H4"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M12 4v16m8-8H4"
         />
       </svg>
     </button>
 
     <!-- Modal -->
     <dialog
-      v-if="showModal"
-      class="modal modal-open"
-      @click.self="showModal = false"
+        v-if="showModal"
+        class="modal modal-open"
+        @click.self="showModal = false"
     >
       <form
-        method="dialog"
-        class="modal-box"
-        @submit.prevent
+          method="dialog"
+          class="modal-box"
+          @submit.prevent
       >
         <h3 class="font-bold text-lg mb-4">
           新增產品
@@ -42,22 +42,22 @@
           <label class="label">
             <span class="label-text">系列</span>
           </label>
-          <select v-model="selectedSeriesId">
+          <select v-model="seriesId">
             <option
-              disabled
-              value=""
+                disabled
+                value=""
             >
               請選擇系列
             </option>
             <template
-              v-for="brand in brandSeries"
-              :key="brand.id"
+                v-for="brand in brandSeries"
+                :key="brand.id"
             >
               <optgroup :label="brand.name">
                 <option
-                  v-for="seriesItem in brand.series"
-                  :key="seriesItem.id"
-                  :value="seriesItem.id"
+                    v-for="seriesItem in brand.series"
+                    :key="seriesItem.id"
+                    :value="seriesItem.id"
                 >
                   {{ brand.name }} / {{ seriesItem.name }}
                 </option>
@@ -72,9 +72,9 @@
             <span class="label-text">產品名稱</span>
           </label>
           <input
-            v-model="name"
-            class="input input-bordered"
-            placeholder="請輸入產品名稱"
+              v-model="name"
+              class="input input-bordered"
+              placeholder="請輸入產品名稱"
           >
         </div>
 
@@ -84,10 +84,10 @@
             <span class="label-text">價格</span>
           </label>
           <input
-            v-model.number="price"
-            class="input input-bordered"
-            type="number"
-            placeholder="請輸入價格"
+              v-model.number="price"
+              class="input input-bordered"
+              type="number"
+              placeholder="請輸入價格"
           >
         </div>
 
@@ -97,9 +97,9 @@
             <span class="label-text">圖片上傳</span>
           </label>
           <input
-            type="file"
-            class="file-input file-input-bordered w-full max-w-xs"
-            @change="handleFileUpload"
+              type="file"
+              class="file-input file-input-bordered w-full max-w-xs"
+              @change="handleFileUpload"
           >
         </div>
 
@@ -109,9 +109,9 @@
             <span class="label-text">詳細描述</span>
           </label>
           <textarea
-            v-model="detail"
-            class="textarea textarea-bordered"
-            placeholder="請輸入詳細描述"
+              v-model="detail"
+              class="textarea textarea-bordered"
+              placeholder="請輸入詳細描述"
           />
         </div>
 
@@ -119,20 +119,20 @@
         <div class="modal-action">
           <!-- 取消按鈕 -->
           <button
-            class="btn btn-ghost"
-            @click="showModal = false"
+              class="btn btn-ghost"
+              @click="showModal = false"
           >
             取消
           </button>
           <!-- 新增產品按鈕 -->
           <AddProductButton
-            :series-id="selectedSeriesId"
-            :name="name"
-            :price="price"
-            :image="selectedFile"
-            :detail="detail"
-            @success="handleSuccess"
-            @error="handleError"
+              :series-id="seriesId"
+              :name="name"
+              :price="price"
+              :image="selectedFile"
+              :detail="detail"
+              @success="handleSuccess"
+              @error="handleError"
           />
         </div>
       </form>
@@ -146,6 +146,7 @@ import { ref } from 'vue';
 import AddProductButton from '~/components/product/AddProductButton.vue';
 import ToastMessage from '~/components/ToastMessages.vue';
 import { useBrandSeriesStore } from '~/stores/brandSeries';
+import { useToast } from '~/composables/useToast';
 
 const showModal = ref(false);
 const { brandSeries } = useBrandSeriesStore();
