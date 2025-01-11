@@ -43,11 +43,7 @@ const route = useRoute();
 const productionsRawData = ref({});
 const productionsItems = computed(() => {
   const productions = productionsRawData.value.items;
-  return productions?.map((production) => {
-    return {
-      ...production
-    };
-  });
+  return productions ?? [];
 });
 const productionsTotalPages = computed(() => {
   return productionsRawData.value.totalPages;

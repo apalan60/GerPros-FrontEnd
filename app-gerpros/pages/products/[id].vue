@@ -94,7 +94,6 @@ async function fetchData() {
   try {
     const data = await useApiFetch(`/ProductItems/${id.value}`);
     if (data) {
-      data.image = '/image/about-us-photo-2.webp';
       product.value = data;
     }
   }
