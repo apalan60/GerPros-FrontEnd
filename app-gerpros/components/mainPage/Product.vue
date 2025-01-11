@@ -110,15 +110,6 @@
         </div>
       </div>
     </div>
-    <div class="text-center mt-8">
-      <NuxtLink :to="'/products'">
-        <button
-          class="bg-neutral text-neutral-content font-semibold py-2 px-6 rounded-lg hover:bg-blue-700 transition"
-        >
-          See More
-        </button>
-      </NuxtLink>
-    </div>
   </section>
 </template>
 
