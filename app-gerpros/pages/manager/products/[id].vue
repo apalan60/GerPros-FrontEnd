@@ -7,7 +7,7 @@
         <ul>
           <li>
             <a>
-              <NuxtLink :to="'/manager/products'">All Products</NuxtLink>
+              <NuxtLink :to="'/manager/products'">所有產品</NuxtLink>
             </a>
           </li>
           <li>

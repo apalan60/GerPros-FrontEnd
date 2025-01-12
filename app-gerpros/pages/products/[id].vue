@@ -6,7 +6,8 @@
       >
         <ul>
           <li>
-            <a><NuxtLink :to="'/products'">All Products</NuxtLink> </a>
+            <a><NuxtLink :to="'/products'">所有產品</NuxtLink> </a>
+            
           </li>
           <li>
             <a @click="goTo({ brand: brandName })">{{ product?.brandName }}</a>
@@ -40,7 +41,7 @@
               <div class="space-y-4 border-t border-gray-200 pt-4">
                 <div>
                   <h2 class="text-lg font-medium">
-                    Brand
+                    品牌
                   </h2>
                   <p class="text-gray-600">
                     {{ product?.brandName }}
@@ -48,7 +49,7 @@
                 </div>
                 <div>
                   <h2 class="text-lg font-medium">
-                    Series
+                    系列
                   </h2>
                   <p class="text-gray-600">
                     {{ product?.seriesName }}
@@ -56,15 +57,16 @@
                 </div>
                 <div>
                   <h2 class="text-lg font-medium">
-                    Price
+                    價格
                   </h2>
                   <p class="text-gray-600">
-                    {{ product?.price }}
+<!--                    如果為0 則為N/A-->
+                    {{ product?.price === 0 ? 'N/A' : product?.price }}
                   </p>
                 </div>
                 <div>
                   <h2 class="text-lg font-medium">
-                    Description
+                    描述
                   </h2>
                   <p class="text-gray-600">
                     {{ product?.detail }}
