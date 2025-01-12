@@ -29,7 +29,7 @@
           @search-series="searchSeries"
         />
       </div>
-      <add-product />
+      <add-product @reloadData="fetchData"/>
       <ProductPagination
         class="mt-8"
         :total-pages="productionsTotalPages"

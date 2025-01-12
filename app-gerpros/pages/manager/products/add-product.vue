@@ -169,8 +169,11 @@ function handleFileUpload(e: Event) {
   }
 }
 
-// Toast 訊息
+// Toast 訊息 && 重新載入資料事件
 const { showToast } = useToast();
+const emit = defineEmits<{
+  (e: 'reloadData'): void;
+}>();
 const handleSuccess = () => {
   showToast('success', '產品新增成功！');
   showModal.value = false;
@@ -180,6 +183,8 @@ const handleSuccess = () => {
   price.value = 0;
   detail.value = '';
   selectedFile.value = null;
+  // 重新載入資料
+  emit('reloadData');
 };
 
 const handleError = () => {
