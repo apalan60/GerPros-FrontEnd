@@ -53,7 +53,7 @@
         class="flex flex-col items-center gap-4"
       >
         <img
-          src="/image/about-us-value-material-pdf.jpg"
+          src="/image/about-us-value-material-pdf.webp"
           loading="lazy"
           alt="臺灣建築協會認可"
           class="h-[350px] object-cover"
@@ -66,7 +66,7 @@
         class="flex flex-col items-center gap-4"
       >
         <img
-          src="/image/about-us-value-npust-pdf.jpg"
+          src="/image/about-us-value-npust-pdf.webp"
           loading="lazy"
           alt="國立屏東科技大學試驗報告"
           class="h-[350px] object-cover"
@@ -79,7 +79,7 @@
         class="flex flex-col items-center gap-4"
       >
         <img
-          src="/image/about-us-value-sgs-pdf.jpg"
+          src="/image/about-us-value-sgs-pdf.webp"
           loading="lazy"
           alt="SGS 試驗報告"
           class="h-[350px] object-cover"
@@ -92,7 +92,7 @@
         其他測試認證
       </h2>
       <img
-        src="/image/about-us-value-tests.jpg"
+        src="/image/about-us-value-tests.webp"
         loading="lazy"
         alt="通過多項測試認證"
       >
@@ -104,12 +104,12 @@
 
 <style scoped>
 .bg-side-1 {
-  background-image: url('/image/about-us-value-pet.jpg');
+  background-image: url('/image/about-us-value-pet.webp');
   background-size: cover;
   background-position: center;
 }
 .bg-side-2 {
-  background-image: url('/image/about-us-value-water.jpg');
+  background-image: url('/image/about-us-value-water.webp');
   background-size: cover;
   background-position: center;
 }

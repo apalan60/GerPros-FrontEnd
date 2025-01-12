@@ -48,7 +48,7 @@
         :class="[`image-${contactOption.id}`, `image-contact`]"
       >
       <div class="image-title hidden sm:block">
-        <h3 class="text-3xl mb-2">
+        <h3 class="text-xl mb-2">
           {{ contactOption.title }}
         </h3>
         <p class="tracking-widest">

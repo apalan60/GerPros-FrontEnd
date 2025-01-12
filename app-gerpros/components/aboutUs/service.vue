@@ -5,7 +5,7 @@
       <div class="space-y-4">
         <div class="flex items-center space-x-4">
           <img
-            src="/image/icons8-award-100.png"
+            src="/image/icons8-award-100.webp"
             alt="Icon"
             class="w-10 h-10"
           >
@@ -20,7 +20,7 @@
       <div class="space-y-4">
         <div class="flex items-center space-x-4">
           <img
-            src="/image/icons8-award-100.png"
+            src="/image/icons8-award-100.webp"
             alt="Icon"
             class="w-10 h-10"
           >
@@ -35,7 +35,7 @@
       <div class="space-y-4">
         <div class="flex items-center space-x-4">
           <img
-            src="/image/icons8-award-100.png"
+            src="/image/icons8-award-100.webp"
             alt="Icon"
             class="w-10 h-10"
           >
@@ -50,7 +50,7 @@
       <div class="space-y-4">
         <div class="flex items-center space-x-4">
           <img
-            src="/image/icons8-award-100.png"
+            src="/image/icons8-award-100.webp"
             alt="Icon"
             class="w-10 h-10"
           >
@@ -65,7 +65,7 @@
       <div class="space-y-4">
         <div class="flex items-center space-x-4">
           <img
-            src="/image/icons8-award-100.png"
+            src="/image/icons8-award-100.webp"
             alt="Icon"
             class="w-10 h-10"
           >
@@ -90,7 +90,7 @@
 
 <style scoped>
 .bg-side {
-  background-image: url('/image/about-us-service-side.jpg');
+  background-image: url('/image/about-us-service-side.webp');
   background-size: cover;
   background-position: center;
 }

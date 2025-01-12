@@ -26,7 +26,7 @@
   display: flex;
   justify-content: right;
   align-items: flex-end;
-  background-image: url('/image/contact_us_cover.webp');
+  background-image: url('/image/topic-header-pc.webp');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center bottom;

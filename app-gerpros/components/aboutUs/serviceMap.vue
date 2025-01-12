@@ -13,7 +13,7 @@
           alt="icon1"
           class="mr-2 w-6 h-6"
         >
-        <span>訂立合同</span>
+        <span>訂立合約</span>
       </div>
       <p class="mb-4">
         客戶簽約後,我們隨時記錄提供專業建議,滿足您正式驗收,並安排後續工程時間。

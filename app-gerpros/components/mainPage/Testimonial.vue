@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-3xl font-bold">
+      <h2 class="text-xl font-bold">
         客戶回饋
       </h2>
       <div class="grid sm:grid-cols-2 lg:grid-cols-1 gap-8 mt-12">

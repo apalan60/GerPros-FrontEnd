@@ -1,7 +1,7 @@
 <template>
   <section>
     <div class="container mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4">注目產品</h2>
+      <h2 class="text-xl font-bold mb-4">注目產品</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
         <div class="ceiling">
           <div class="prod-type">
