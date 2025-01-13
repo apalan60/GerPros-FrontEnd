@@ -27,7 +27,7 @@
                 placeholder="請輸入名字"
                 class="input input-bordered w-full sm:w-7/12"
               >
-              <div class="hidden sm:flex gap-1 items-center">
+              <div class="hidden sm:flex gap-1 items-center space-x-1">
                 <input
                   id="mr"
                   v-model="customerTitle"
@@ -197,7 +197,7 @@
                 v-for="(option, index) in knowMethodOption"
                 :key="index"
               >
-                <div>
+                <div class="flex items-center gap-2 ">
                   <input
                     :id="index"
                     v-model="knowMethod"
