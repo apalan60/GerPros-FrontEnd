@@ -4,11 +4,7 @@
     <div class="flex-1 pl-16 space-y-6">
       <div class="space-y-4">
         <div class="flex items-center space-x-4">
-          <img
-            src="/image/icons8-award-100.webp"
-            alt="Icon"
-            class="w-10 h-10"
-          >
+          <p class="number">01 / </p>
           <h3 class="text-xl font-medium">
             門市諮詢
           </h3>
@@ -19,11 +15,7 @@
       </div>
       <div class="space-y-4">
         <div class="flex items-center space-x-4">
-          <img
-            src="/image/icons8-award-100.webp"
-            alt="Icon"
-            class="w-10 h-10"
-          >
+          <p class="number">02 / </p>
           <h3 class="text-xl font-medium">
             訂立合約
           </h3>
@@ -34,11 +26,7 @@
       </div>
       <div class="space-y-4">
         <div class="flex items-center space-x-4">
-          <img
-            src="/image/icons8-award-100.webp"
-            alt="Icon"
-            class="w-10 h-10"
-          >
+          <p class="number">03 / </p>
           <h3 class="text-xl font-medium">
             實地丈量
           </h3>
@@ -49,11 +37,7 @@
       </div>
       <div class="space-y-4">
         <div class="flex items-center space-x-4">
-          <img
-            src="/image/icons8-award-100.webp"
-            alt="Icon"
-            class="w-10 h-10"
-          >
+          <p class="number">04 / </p>
           <h3 class="text-xl font-medium">
             專業團隊
           </h3>
@@ -64,11 +48,7 @@
       </div>
       <div class="space-y-4">
         <div class="flex items-center space-x-4">
-          <img
-            src="/image/icons8-award-100.webp"
-            alt="Icon"
-            class="w-10 h-10"
-          >
+          <p class="number">05 / </p>
           <h3 class="text-xl font-medium">
             完工展示
           </h3>
@@ -93,5 +73,15 @@
   background-image: url('/image/about-us-service-side.webp');
   background-size: cover;
   background-position: center;
+}
+
+.number {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 50%;
+  font-style: italic;
+  opacity: 0.5;
 }
 </style>
