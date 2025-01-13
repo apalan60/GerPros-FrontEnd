@@ -1,12 +1,13 @@
 <template>
   <section>
-    <div class="max-w-6xl mx-auto text-center">
-      <h2 class="text-xl font-bold">客戶回饋</h2>
-      <div class="mt-10 h-[200px]">
+    <div class="max-w-6xl mx-auto pt-10 text-center relative">
+      <h2 class="text-xl font-bold relative z-50">客戶回饋</h2>
+      <div class="background absolute"/>
+      <div class="mt-10 h-[200px]" >
         <swiper-container
           class="slide-container w-full h-full"
           pagination="true"
-          slides-per-view="3"
+          :slides-per-view=slidesPerView
           space-between="30" 
           loop="true"
           autoplay-delay="3000"
@@ -31,6 +32,35 @@ import { register } from 'swiper/element/bundle';
 import 'swiper/swiper-bundle.css';
 
 register();
+
+const width = ref(0);
+const updateWidth = () => {
+  if (typeof window !== "undefined") {
+  width.value = window.innerWidth;
+  }
+};
+onMounted(() => {
+  updateWidth();
+  if (typeof window !== "undefined") {
+    window.addEventListener('resize', updateWidth);
+  }
+});
+onUnmounted(() => {
+  if (typeof window !== "undefined") {
+    window.removeEventListener('resize', updateWidth);
+  }
+});
+
+const slidesPerView = computed(() => {
+  if (width.value < 640) {
+    return 1;
+  } else if (width.value < 1024) {
+    return 2;
+  } else {
+    return 3;
+  }
+});
+
 
 const testimonials = ref([
   {
@@ -64,5 +94,15 @@ const testimonials = ref([
 </script>
 
 <style scoped>
+.background {
+  background: url('/image/topic-header-pc.webp') no-repeat center center/cover;
+  opacity: 0.5;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  height: 100%;
+  border-radius: 50px 50px 0 0;
+}
 
 </style>
