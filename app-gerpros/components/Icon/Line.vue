@@ -1,6 +1,6 @@
 <template>
   <a
-    href=""
+    href="https://lin.ee/Ydddkzw"
     class="neutral-content"
   >
     <svg
