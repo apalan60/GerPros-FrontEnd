@@ -58,6 +58,7 @@ const { brandSeries } = useBrandSeriesStore();
 async function fetchData() {
   try {
     let isManager = attrs.isManager
+    isManager??= false
     const data = await useApiFetch(`/Brands?isManager=${isManager}`);
     if (data) {
       brandsList.value = data;
