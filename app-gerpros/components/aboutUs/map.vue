@@ -1,17 +1,20 @@
 <template>
-  <div class="map w-full">
-    <img
-      class="image"
-      src="/image/about-us-taiwan-1.webp"
-      loading="lazy"
-      alt="shop"
-    >
-    <img
-      class="image-2"
-      src="/image/about-us-taiwan-2.webp"
-      loading="lazy"
-      alt="shop"
-    >
+  <div class="flex flex-col items-center w-full my-8">
+    <h2 class="text-xl font-bold tracking-widest mb-4">銷售地點</h2>
+    <div class="map max-w-[1200px]">
+      <img
+        class="image"
+        src="/image/about-us-taiwan-1.webp"
+        loading="lazy"
+        alt="shop"
+      >
+      <img
+        class="image-2"
+        src="/image/about-us-taiwan-2.webp"
+        loading="lazy"
+        alt="shop"
+      >
+    </div>
   </div>
 </template>
 
@@ -33,7 +36,7 @@ onMounted(async () => {
         .on('enter', () => {
           setTimeout(() => {
             revealElement.classList.add('visible');
-          }, 1000);
+          }, 900);
         })
         .on('leave', () => {
           revealElement.classList.remove('visible');
