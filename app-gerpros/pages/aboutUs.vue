@@ -151,4 +151,10 @@ function onClickedOption(option) {
   height: 1.5px;
   background: rgba(188, 140, 77, 1);
 }
+
+@media (max-width: 550px) {
+  .options-wrapper{
+    flex-direction: column;
+  }
+}
 </style>
