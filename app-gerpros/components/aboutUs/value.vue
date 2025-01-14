@@ -34,7 +34,7 @@
       </div>
       <div class="flex-1 h-100 bg-side-2" />
     </div>
-    <div class="flex flex-col items-center mt-16 w-3/4 mx-auto gap-4">
+    <div class="flex flex-col items-center mt-16 w-3/4 mx-auto gap-4 text-center">
       <h2 class="text-xl font-bold">
         創新無限．超越卓越
       </h2>
