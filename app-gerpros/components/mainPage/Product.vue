@@ -24,7 +24,7 @@
             <swiper-slide
               v-for="product in prodTile"
               :key="product.name"
-              class="slide slide-ceiling"
+              class="slide slide-top slide-ceiling"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -53,7 +53,7 @@
             <swiper-slide
               v-for="product in prodWall"
               :key="product.name"
-              class="slide slide-wall"
+              class="slide slide-top slide-wall"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -81,7 +81,7 @@
             <swiper-slide
               v-for="product in prodFloor"
               :key="product.name"
-              class="slide slide-floor"
+              class="slide slide-top slide-floor"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -89,8 +89,12 @@
               </div>
             </swiper-slide>
           </swiper-container>
-        </div>    
+        </div>
         <div class="cook">
+          <div class="prod-type prod-mobile">
+            <img src="/image/icon-cook.webp" alt="ceiling-icon" class="icon" >
+            <h3 class="floor-title text-lg">廚具</h3>
+          </div>
           <swiper-container
             class="swiper-container"
             direction="vertical"
@@ -101,7 +105,7 @@
             <swiper-slide
               v-for="product in prodCook"
               :key="product.name"
-              class="slide-down slide-cook"
+              class="slide slide-down slide-cook"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -109,16 +113,20 @@
               </div>
             </swiper-slide>
           </swiper-container>
-          <div class="prod-type">
-            <img
-              src="https://img.icons8.com/?size=100&id=h7tOIyNxrvf2&format=png&color=666666"
-              alt="ceiling-icon"
-              class="icon"
-            >
+          <div class="prod-type prod-pc">
+            <img src="/image/icon-cook.webp" alt="ceiling-icon" class="icon" >
             <h3 class="floor-title text-lg">廚具</h3>
           </div>
         </div>
         <div class="system">
+          <div class="prod-type prod-mobile">
+            <img
+              src="/image/icon-system.webp"
+              alt="ceiling-icon"
+              class="icon"
+            >
+            <h3 class="floor-title text-lg">系統板材</h3>
+          </div>
           <swiper-container
             class="swiper-container"
             direction="vertical"
@@ -129,7 +137,7 @@
             <swiper-slide
               v-for="product in prodSystem"
               :key="product.name"
-              class="slide-down slide-system"
+              class="slide slide-down slide-system"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -137,9 +145,9 @@
               </div>
             </swiper-slide>
           </swiper-container>
-          <div class="prod-type">
+          <div class="prod-type prod-pc">
             <img
-              src="https://img.icons8.com/?size=100&id=h7tOIyNxrvf2&format=png&color=666666"
+              src="/image/icon-system.webp"
               alt="ceiling-icon"
               class="icon"
             >
@@ -147,6 +155,14 @@
           </div>
         </div>
         <div class="wood-floor">
+          <div class="prod-type prod-mobile">
+              <img
+                src="/image/icon-wood.webp"
+                alt="ceiling-icon"
+                class="icon"
+              >
+              <h3 class="floor-title text-lg">木地板</h3>
+            </div>
           <swiper-container
             class="swiper-container"
             direction="vertical"
@@ -157,7 +173,7 @@
             <swiper-slide
               v-for="product in prodWood"
               :key="product.name"
-              class="slide-down slide-wood"
+              class="slide slide-down slide-wood"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -165,12 +181,8 @@
               </div>
             </swiper-slide>
           </swiper-container>
-          <div class="prod-type">
-            <img
-              src="https://img.icons8.com/?size=100&id=h7tOIyNxrvf2&format=png&color=666666"
-              alt="ceiling-icon"
-              class="icon"
-            >
+          <div class="prod-type prod-pc">
+            <img src="/image/icon-wood.webp" alt="ceiling-icon" class="icon" >
             <h3 class="floor-title text-lg">木地板</h3>
           </div>
         </div>
@@ -214,7 +226,6 @@ const prodWood = computed(() => {
 });
 
 async function fetchData() {
-  console.log("🚀 ~ fetchData ~ fetchData:", 'fetchData')
   const params = {
     PageSize: 12, // 固定參數
   };
@@ -252,8 +263,6 @@ onBeforeMount(async () => {
   align-items: center;
   position: relative;
   cursor: pointer;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
 }
 
 .slide img {
@@ -261,61 +270,6 @@ onBeforeMount(async () => {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
-}
-
-.slide-down {
-  text-align: center;
-  font-size: 18px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  cursor: pointer;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-}
-
-.slide-down img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-bottom-left-radius: 30px;
-  border-bottom-right-radius: 30px;
-}
-
-.slide-cook {
-  border-bottom-left-radius: 100px;
-}
-
-.slide-cook img {
-  border-bottom-left-radius: 100px;
-}
-
-.slide-wood {
-  border-bottom-right-radius: 100px;
-}
-
-.slide-wood img {
-  border-bottom-right-radius: 100px;  
-}
-
-.slide-ceiling {
-  border-top-left-radius: 100px;
-}
-
-.slide-ceiling img {
-  border-top-left-radius: 100px;
-}
-
-.slide-floor {
-  border-top-right-radius: 100px;
-}
-
-.slide-floor img {
-  border-top-right-radius: 100px;
 }
 
 .title {
@@ -325,14 +279,7 @@ onBeforeMount(async () => {
   background-color: rgba(66, 66, 66, 0.5);
   color: white;
   padding: 0.5rem;
-}
-
-.slide .title{
   bottom: 0;
-}
-
-.slide-down .title {
-  top: 0;
 }
 
 .icon {
@@ -354,5 +301,80 @@ onBeforeMount(async () => {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.prod-mobile {
+  display: flex;
+}
+
+.prod-pc {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .slide-top {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+
+  .slide-top img {
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+  }
+
+  .slide-down {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+
+  .slide-down img {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+
+  .slide-cook {
+    border-bottom-left-radius: 100px;
+  }
+
+  .slide-cook img {
+    border-bottom-left-radius: 100px;
+  }
+
+  .slide-wood {
+    border-bottom-right-radius: 100px;
+  }
+
+  .slide-wood img {
+    border-bottom-right-radius: 100px;
+  }
+
+  .slide-ceiling {
+    border-top-left-radius: 100px;
+  }
+
+  .slide-ceiling img {
+    border-top-left-radius: 100px;
+  }
+
+  .slide-floor {
+    border-top-right-radius: 100px;
+  }
+
+  .slide-floor img {
+    border-top-right-radius: 100px;
+  }
+
+  .slide-down .title {
+    top: 0;
+    bottom: auto;
+  }
+
+  .prod-mobile {
+    display: none;
+  }
+
+  .prod-pc {
+    display: flex;
+  }
 }
 </style>

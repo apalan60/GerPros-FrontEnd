@@ -15,6 +15,7 @@ register();
         <swiper-slide class="slide slide1" />
         <swiper-slide class="slide slide2" />
         <swiper-slide class="slide slide3" />
+        <swiper-slide class="slide slide4" />
       </swiper-container>
       <div class="title-text">
         <img src="/image/logo.webp" alt="" width="500" class="full-content" >
@@ -53,31 +54,37 @@ register();
   animation: zoom 7s infinite alternate;
 }
 .slide1 {
-  background: url('/image/topic-header-main.webp');
+  background: url('/image/main-pc-1.webp');
 }
 .slide2 {
-  background: url('/image/service-header-main.webp');
+  background: url('/image/main-pc-2.webp');
 }
 .slide3 {
-  background: url('/image/qa-header-main.webp');
+  background: url('/image/main-pc-3.webp');
+}
+.slide4 {
+  background: url('/image/main-pc-4.webp');
 }
 
-@media (max-width: 900px) {
+@media (max-width: 1000px) {
   .slide {
     background-size: cover;
     animation: none;
   }
 }
 
-@media (max-width: 798px) {
+@media (max-width: 400px) {
   .slide1 {
-    background: url('/image/topic-header-mobile.webp');
+    background: url('/image/main-mobile-1.webp');
   }
   .slide2 {
-    background: url('/image/service-header-mobile.webp');
+    background: url('/image/main-mobile-2.webp');
   }
   .slide3 {
-    background: url('/image/qa-header-mobile.webp');
+    background: url('/image/main-mobile-3.webp');
+  }
+  .slide4 {
+    background: url('/image/main-mobile-4.webp');
   }
 }
 @keyframes zoom {
