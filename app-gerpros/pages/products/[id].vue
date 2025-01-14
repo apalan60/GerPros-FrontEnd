@@ -22,7 +22,7 @@
           </li>
         </ul>
       </div>
-      <div class="bg-gray-100">
+      <div class="mx-5">
         <div class="container mx-auto px-4 md:px-0">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
             <div class="rounded-lg shadow overflow-hidden">
