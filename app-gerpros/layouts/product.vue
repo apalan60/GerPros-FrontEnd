@@ -51,12 +51,14 @@ import { useBrandSeriesStore } from '~/stores/brandSeries.ts';
 
 const attrs = useAttrs();
 console.log('attrs', attrs);
+
 const brandsList = useState('brandsList', () => []); // 初始為空陣列
 const { brandSeries } = useBrandSeriesStore();
 
 async function fetchData() {
   try {
-    const data = await useApiFetch('/Brands');
+    let isManager = attrs.isManager
+    const data = await useApiFetch(`/Brands?isManager=${isManager}`);
     if (data) {
       brandsList.value = data;
       brandSeries.value = data;
