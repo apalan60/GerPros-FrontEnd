@@ -25,6 +25,7 @@
               v-for="product in prodTile"
               :key="product.name"
               class="slide slide-top slide-ceiling"
+              @click="goTo({ id: product.id })"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -54,6 +55,7 @@
               v-for="product in prodWall"
               :key="product.name"
               class="slide slide-top slide-wall"
+              @click="goTo({ id: product.id })"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -82,6 +84,7 @@
               v-for="product in prodFloor"
               :key="product.name"
               class="slide slide-top slide-floor"
+              @click="goTo({ id: product.id })"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -106,6 +109,7 @@
               v-for="product in prodCook"
               :key="product.name"
               class="slide slide-down slide-cook"
+              @click="goTo({ id: product.id })"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -138,6 +142,7 @@
               v-for="product in prodSystem"
               :key="product.name"
               class="slide slide-down slide-system"
+              @click="goTo({ id: product.id })"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -174,6 +179,7 @@
               v-for="product in prodWood"
               :key="product.name"
               class="slide slide-down slide-wood"
+              @click="goTo({ id: product.id })"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -242,6 +248,13 @@ async function fetchData() {
     console.error('無法獲取產品資料', error);
   }
 }
+
+async function goTo({id} = {}) {
+  await navigateTo({
+    path: `/products/${id}`,
+  });
+}
+
 
 onBeforeMount(async () => {
   await fetchData();

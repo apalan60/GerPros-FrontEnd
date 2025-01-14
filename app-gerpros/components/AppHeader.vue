@@ -138,7 +138,7 @@ const links = [
   { label: '聯絡方式', to: '/contact' },
   { label: '常見問題', to: '/FAQ' },
   { label: '關於我們', to: '/aboutUs' },
-  { label: '服務項目', to: '/services' },
+  // { label: '服務項目', to: '/services' },
   { label: '管理頁面', to: '/manager' },
 ];
 
