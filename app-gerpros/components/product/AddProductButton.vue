@@ -38,11 +38,9 @@ const handleAdd = async () => {
       method: 'POST',
       body: formData,
     });
-    console.log('產品新增成功', result);
     emit('success', result);
   }
   catch (error) {
-    console.error('產品新增失敗', error);
     emit('error', error);
   }
 };

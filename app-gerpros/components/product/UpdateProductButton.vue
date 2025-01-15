@@ -36,11 +36,9 @@ const updateProduct = async () => {
       method: 'PUT',
       body: formData,
     });
-    console.log('產品更新成功', result);
     showToast('success', '產品更新成功！');
   }
   catch (error) {
-    console.error('產品更新失敗', error);
     showToast('error', '產品更新失敗！');
   }
 };

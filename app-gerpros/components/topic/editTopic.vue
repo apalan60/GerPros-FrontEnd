@@ -5,10 +5,10 @@
         <span class="label-text">標題</span>
       </div>
       <input
-        v-model="title"
-        type="text"
-        placeholder="Type here"
-        class="input input-bordered w-full"
+          v-model="title"
+          type="text"
+          placeholder="Type here"
+          class="input input-bordered w-full"
       >
     </label>
     <label class="form-control w-full">
@@ -16,69 +16,69 @@
         <span class="label-text">封面圖</span>
       </div>
       <img
-        class="max-h-[300px] w-auto object-contain mb-4"
-        :src="coverImageUrl"
-        alt=""
+          class="max-h-[300px] w-auto object-contain mb-4"
+          :src="coverImageUrl"
+          alt=""
       >
       <input
-        type="file"
-        class="file-input file-input-bordered file-input-sm w-full max-w-xs"
-        @change="handleCoverChange"
+          type="file"
+          class="file-input file-input-bordered file-input-sm w-full max-w-xs"
+          @change="handleCoverChange"
       >
     </label>
     <label
-      class="form-control w-full"
-      @blur="hideDropdown"
-      @focus="showDropdown"
+        class="form-control w-full"
+        @blur="hideDropdown"
+        @focus="showDropdown"
     >
       <div class="label">
         <span class="label-text">標籤</span>
       </div>
       <div class="flex gap-2 items-center">
         <div
-          v-for="tag in tags"
-          :key="tag"
-          class="badge badge-info gap-2 cursor-pointer"
-          @click="deleteTag(tag)"
+            v-for="tag in tags"
+            :key="tag"
+            class="badge badge-info gap-2 cursor-pointer"
+            @click="deleteTag(tag)"
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            class="inline-block h-4 w-4 stroke-current"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              class="inline-block h-4 w-4 stroke-current"
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
             />
           </svg>
           {{ tag }}
         </div>
         <div class="relative">
           <input
-            v-model="tagInput"
-            tabindex="0"
-            role="button"
-            type="text"
-            placeholder="Type here"
-            class="input input-bordered w-full w-xs"
-            @focus="showDropdown"
-            @click="showDropdown"
-            @blur="hideDropdown"
-            @keydown.enter="addTag($event.target.value)"
+              v-model="tagInput"
+              tabindex="0"
+              role="button"
+              type="text"
+              placeholder="Type here"
+              class="input input-bordered w-full w-xs"
+              @focus="showDropdown"
+              @click="showDropdown"
+              @blur="hideDropdown"
+              @keydown.enter="addTag($event.target.value)"
           >
           <ul
-            v-show="isDropdownVisible"
-            v-if="!!tagListOptions.length"
-            tabindex="0"
-            class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow absolute top-15 left-0"
+              v-show="isDropdownVisible"
+              v-if="!!tagListOptions.length"
+              tabindex="0"
+              class="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow absolute top-15 left-0"
           >
             <li
-              v-for="tagOpt in tagListOptions"
-              :key="tagOpt"
-              @click="addTag(tagOpt)"
+                v-for="tagOpt in tagListOptions"
+                :key="tagOpt"
+                @click="addTag(tagOpt)"
             >
               <a>{{ tagOpt }}</a>
             </li>
@@ -91,9 +91,9 @@
         <span class="label-text">摘要</span>
       </div>
       <textarea
-        v-model="description"
-        class="textarea textarea-bordered h-24"
-        placeholder="摘要"
+          v-model="description"
+          class="textarea textarea-bordered h-24"
+          placeholder="摘要"
       />
     </label>
     <div class="w-[85vw] flex flex-col gap-4">
@@ -104,9 +104,9 @@
       </label>
       <ClientOnly>
         <QuillEditor
-          v-model:content="content"
-          content-type="html"
-          :toolbar="[
+            v-model:content="content"
+            content-type="html"
+            :toolbar="[
             [{ header: 1 }, { header: 2 }],
             ['bold', 'italic', 'underline', 'strike'],
             [{ list: 'ordered' }, { list: 'bullet' }, { list: 'check' }],
@@ -117,10 +117,15 @@
     </div>
     <button class="btn btn-success mb-4" @click="submit">更新</button>
     <div v-show="errorMessages" class="text-red-500">{{ errorMessages }}</div>
+    <ToastMessage/>
   </div>
 </template>
 
 <script setup>
+import ToastMessage from '~/components/ToastMessages.vue';
+
+const {showToast} = useToast();
+
 const route = useRoute();
 const id = computed(() => route.params.id);
 const title = ref('');
@@ -135,13 +140,15 @@ const tagList = ref([]);
 const props = defineProps({
   topic: {
     type: Object,
-    default: () => {},
+    default: () => {
+    },
   },
 });
 
 const tagListOptions = computed(() => {
   return tagList.value.filter((tag) => !tags.value.includes(tag));
 });
+
 function handleCoverChange(event) {
   const selectedFile = event.target.files[0];
   if (!selectedFile) {
@@ -152,19 +159,23 @@ function handleCoverChange(event) {
   coverImageFile.value = selectedFile;
   coverImageUrl.value = URL.createObjectURL(selectedFile);
 }
+
 function showDropdown() {
   isDropdownVisible.value = true;
 }
+
 function hideDropdown() {
   setTimeout(() => {
     isDropdownVisible.value = false;
   }, 300);
 }
+
 function addTag(tag) {
   tagInput.value = '';
   if (tags.value.includes(tag)) return;
   tags.value.push(tag);
 }
+
 function deleteTag(tag) {
   tags.value = tags.value.filter((t) => t !== tag);
 }
@@ -173,11 +184,11 @@ const errorMessages = ref('');
 const successMessage = ref('');
 
 async function submit() {
-  const { formatHtml, fileStorageInfo } = await getFormatContent();
+  const {formatHtml, fileStorageInfo} = await getFormatContent();
   if (coverImageFile.value instanceof File) {
     const coverImage = await uploadImage(coverImageFile.value);
     coverImageUrl.value = coverImage.url;
-  }else{
+  } else {
     coverImageUrl.value = props.topic.coverImage;
   }
   const payload = {
@@ -189,31 +200,47 @@ async function submit() {
     description: description.value,
     fileStorageInfo,
   };
+
+  let response;
   try {
-    const data = await useApiFetch(`/Posts/${id.value}`, {
+    response = await useApiFetch(`/Posts/${id.value}`, {
       method: 'PUT',
       body: JSON.stringify(payload),
     });
-    console.log(data);
     successMessage.value = '更新成功';
+
+    showToast('success', '產品更新成功！');
   } catch (error) {
-    console.error(error);
-    errorMessages.value = error;
+    // 確保錯誤處理邏輯的安全性
+    if (error.data) {
+      const errorResponse = error.data;
+      const title = errorResponse.title || 'Unknown error occurred.';
+      showToast('error', '產品更新失敗！');
+      errorMessages.value = title;
+    } else {
+      // 處理非 API 錯誤
+      showToast('error', '無法與伺服器通信！');
+      errorMessages.value = '無法與伺服器通信，請稍後再試。';
+    }
   }
+
+
 }
+
 async function getFormatContent() {
   const base64Images = extractBase64Images(content.value);
   if (!base64Images.length) {
-    return { formatHtml: content.value, fileStorageInfo: [] };
+    return {formatHtml: content.value, fileStorageInfo: []};
   }
-  const { urls, fileStorageInfo } = await uploadImages(base64Images);
+  const {urls, fileStorageInfo} = await uploadImages(base64Images);
   const formatHtml = replaceBase64ImagesToUrls(
-    content.value,
-    base64Images,
-    urls,
+      content.value,
+      base64Images,
+      urls,
   );
-  return { formatHtml, fileStorageInfo };
+  return {formatHtml, fileStorageInfo};
 }
+
 function extractBase64Images(htmlContent) {
   const base64Images = [];
   const regex = /<img[^>]+src\s*=\s*"(data:image\/[^;]+;base64,[^"]+)"/g;
@@ -225,6 +252,7 @@ function extractBase64Images(htmlContent) {
 
   return base64Images;
 }
+
 async function uploadImages(base64Images) {
   const uploadPromises = base64Images.map(async (base64Image) => {
     const blobImage = await base64ToBlob(base64Image);
@@ -240,21 +268,22 @@ async function uploadImages(base64Images) {
   const urls = results.map((result) => result.url);
   const fileStorageInfo = results.map((result) => result.fileStorageInfo);
 
-  return { urls, fileStorageInfo };
+  return {urls, fileStorageInfo};
 }
 
 async function uploadImage(image) {
   const formData = new FormData();
   formData.append('file', image);
 
-  try{
-    const response = await useApiFetch('/Posts/image-upload', {
+  try {
+    return await useApiFetch('/Posts/image-upload', {
       method: 'POST',
       body: formData,
-    });
-    return response
-  }catch(e){
-    throw new Error(e);
+    })
+  } catch (error) {
+    const apiError = error.response.data;
+    const title = apiError.title || 'Unknown error occurred.';
+    throw new Error(title);
   }
 }
 
