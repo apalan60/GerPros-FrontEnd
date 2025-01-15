@@ -2,16 +2,16 @@
   <div class="card lg:card-side lg:w-[100%] bg-base-300 shadow-xl mt-4">
     <figure>
       <img
-        class="lg:w-[200px] lg:h-[200px] h-[300px] w-[100%] object-cover object-center"
+        class="lg:w-[225px] lg:min-h-[225px] lg:h-full h-[300px] w-[100%] object-cover object-center"
         :src="props.topic.coverImage"
         :alt="props.topic.title"
       >
     </figure>
-    <div class="card-body">
+    <div class="card-body w-[80%]">
       <h2 class="card-title">
         {{ props.topic.title }}
       </h2>
-      <p>{{ props.topic.description }}</p>
+      <p class="text-wrap">{{ props.topic.description }}</p>
       <div class="card-actions justify-between items-center">
         <div class="tags flex flex-wrap gap-2">
           <div
