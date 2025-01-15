@@ -1,10 +1,11 @@
 import { useAuthStore } from '~/stores/auth';
 
-async function refreshTokens() {
+export async function refreshTokens() {
   const auth = useAuthStore();
   const config = useRuntimeConfig();
 
   try {
+    console.log('refreshing tokens');
     const data = await $fetch('/Users/Refresh', {
       baseURL: config.public.apiBase,
       method: 'POST',
