@@ -1,9 +1,6 @@
 <template>
   <div class="topic-wrapper">
-    <div
-      class="cover-wrapper w-full h-96"
-      :style="{ backgroundImage: `url(${topic.coverImage})` }"
-    >
+    <div class="cover-wrapper w-full h-96">
       <div class="header">
         <h2 class="zh mb-4 font-bold ">
           {{ topic.title }}
@@ -21,9 +18,9 @@
       </div>
     </div>
 
-    <div class="topic-content-wrapper m-4">
+    <div class="topic-content-wrapper m-8">
       <div
-        class="content"
+        class="content container p-10"
         v-html="topic.content"
       />
     </div>
@@ -80,13 +77,14 @@ async function goToTag(tag) {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center bottom;
+  background-image: url('/image/topic-header-pc.webp');
 }
 
 .header {
   width: 90dvw;
   font-size: 2rem;
-  color: #dedede;
-  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  color: white;
+  text-shadow: 2px 2px 2px rgba(255, 255, 255, 0.2);
   margin-bottom: 3rem;
 }
 </style>
