@@ -16,15 +16,15 @@
           主題標籤
         </h2>
         <div class="tags flex flex-wrap gap-2 cursor-pointer">
-          <div
+          <span
             v-for="tag in tagList"
             :key="tag"
-            class="badge badge-outline badge-primary"
+            class="badge badge-outline badge-primary h-auto rounded-[1rem]"
             :class="{ 'badge-primary': tag === searchedTag }"
             @click="goToTag(tag)"
           >
             {{ tag }}
-          </div>
+          </span>
         </div>
       </div>
     </div>
