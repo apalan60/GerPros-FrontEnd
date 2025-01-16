@@ -93,10 +93,14 @@ async function goToTag(tag) {
 .topic-content-wrapper .content {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.5rem;
+}
+.topic-content-wrapper .content h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 .topic-content-wrapper .content h2 {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: bold;
 }
 .topic-content-wrapper .content img {
@@ -105,7 +109,7 @@ async function goToTag(tag) {
 }
 
 .topic-content-wrapper .content a {
-  color: blue;
+  color: royalblue;
   text-decoration: underline;
 }
 </style>
