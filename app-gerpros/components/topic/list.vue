@@ -1,5 +1,17 @@
 <template>
   <div class="container mx-auto p-4 flex flex-col items-center gap-4 mb-8">
+    <div
+      class="breadcrumbs w-full pl-10 mb-8 flex justify-start border-b border-solid border-base-200"
+    >
+      <ul>
+        <li>
+          <a><NuxtLink :to="'/topic'">主題專欄</NuxtLink> </a>
+        </li>
+        <li v-if="searchedTag">
+          {{ searchedTag }}
+        </li>
+      </ul>
+    </div>
     <div class="flex gap-4 w-full">
       <div class="grow">
         <TopicCard
@@ -64,7 +76,6 @@ const tagList = ref([]);
 const searchedTag = computed(() => route.query.Tags);
 const totalPages = computed(() => topicRawData.value.totalPages);
 const isManager = computed(() => route.path.includes('/manager/'));
-
 
 async function fetchData() {
   const params = {
