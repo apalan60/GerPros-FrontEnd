@@ -7,13 +7,13 @@
         :alt="props.topic.title"
       >
     </figure>
-    <div class="card-body w-[80%]">
+    <div class="card-body w-[80%] bg-[#d2c2af]"> //todo 換成統一用的css? 改到一半無法了
       <h2 class="card-title">
         {{ props.topic.title }}
       </h2>
       <p class="text-wrap">{{ props.topic.description }}</p>
       <div class="card-actions justify-between items-center">
-        <div class="tags flex flex-wrap gap-2">
+        <div class="tags flex flex-wrap gap-2 ">
           <div
             v-for="tag in props.topic.tags"
             :key="tag"
