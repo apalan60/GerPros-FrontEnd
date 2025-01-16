@@ -61,12 +61,15 @@
       </div>
     </div>
   </dialog>
+  <ToastMessage/>
 </template>
 
 <script setup>
+import ToastMessage from '~/components/ToastMessages.vue';
 import { TEST_TOPIC_LIST } from '~/constants';
 
 const route = useRoute();
+const {showToast} = useToast();
 
 const topicRawData = ref({});
 const topicList = computed(() => {
@@ -147,8 +150,11 @@ async function onConfirmDelete() {
     });
     deleteTargetId.value = '';
     delete_modal.close();
+    showToast('success', '刪除成功！');
+    await fetchData();
   } catch (error) {
     console.error(error);
+    showToast('error', '刪除失敗！');
     isError.value = true;
   }
 }
