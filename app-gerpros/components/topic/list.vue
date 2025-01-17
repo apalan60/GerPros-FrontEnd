@@ -31,7 +31,7 @@
           <span
             v-for="tag in tagList"
             :key="tag"
-            class="badge badge-outline badge-primary h-auto rounded-[1rem]"
+            class="badge badge-outline h-auto rounded-[1rem] border-stone-500 text-stone-500"
             :class="{ 'badge-primary': tag === searchedTag }"
             @click="goToTag(tag)"
           >
