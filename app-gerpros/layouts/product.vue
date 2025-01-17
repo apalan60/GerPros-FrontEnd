@@ -7,6 +7,11 @@
     >
     <div class="drawer-content flex flex-col items-center">
       <slot name="content" />
+    <div v-if="isManager" class="fixed bottom-4 right-4">
+        <button class="btn btn-primary" @click="openModal">
+          編輯品牌系列
+        </button>
+      </div>
     </div>
     <div class="drawer-side">
       <label
@@ -41,6 +46,7 @@
       </ul>
     </div>
   </div>
+  <BrandSeriesModal v-if="isManager" v-model:showModal="showModal" @refreshData="fetchData" />
 </template>
 
 <script setup>
@@ -48,9 +54,11 @@ import { TEST_BRANDS_LIST } from '@/constants';
 
 import { useState } from '#app';
 import { useBrandSeriesStore } from '~/stores/brandSeries.ts';
+import BrandSeriesModal from "~/components/BrandSeriesModal.vue";
 
 const attrs = useAttrs();
-console.log('attrs', attrs);
+const isManager = ref(attrs.isManager?? false);
+const showModal = ref(false);
 
 const brandsList = useState('brandsList', () => []); // 初始為空陣列
 const { brandSeries } = useBrandSeriesStore();
@@ -84,6 +92,11 @@ async function goTo({ pageNumber = 1, brand, series } = {}) {
     },
   });
 }
+
+function openModal() {
+  showModal.value = true;
+}
+
 </script>
 
 <style scoped></style>
