@@ -1,7 +1,7 @@
 <template>
   <div class="container mx-auto p-4 flex flex-col items-center gap-4 mb-8">
     <div
-      class="breadcrumbs w-full pl-10 mb-8 flex justify-start border-b border-solid border-base-200"
+      class="breadcrumbs w-full pl-10 mb-0 flex justify-start border-b border-solid border-base-200"
     >
       <ul>
         <li>
@@ -11,6 +11,17 @@
           {{ searchedTag }}
         </li>
       </ul>
+    </div>
+    <div class="tags flex flex-wrap gap-2 cursor-pointer sm:hidden">
+      <span
+        v-for="tag in tagList"
+        :key="tag"
+        class="badge badge-outline h-auto rounded-[1rem] border-stone-500 text-stone-500"
+        :class="{ 'badge-primary': tag === searchedTag }"
+        @click="goToTag(tag)"
+      >
+        {{ tag }}
+      </span>
     </div>
     <div class="flex gap-4 w-full">
       <div class="grow">
@@ -23,7 +34,9 @@
           @click-delete="onClickedDelete($event)"
         />
       </div>
-      <div class="flex-none w-[20%] h-100 p-4 border-l-2 border-gray-200">
+      <div
+        class="flex-none w-[20%] h-100 p-4 border-l-2 border-gray-200 sm:block hidden"
+      >
         <h2 class="text-lg font-bold pb-2 mb-4 border-b-2 border-base-200">
           主題標籤
         </h2>
@@ -61,7 +74,7 @@
       </div>
     </div>
   </dialog>
-  <ToastMessage/>
+  <ToastMessage />
 </template>
 
 <script setup>
@@ -69,7 +82,7 @@ import ToastMessage from '~/components/ToastMessages.vue';
 import { TEST_TOPIC_LIST } from '~/constants';
 
 const route = useRoute();
-const {showToast} = useToast();
+const { showToast } = useToast();
 
 const topicRawData = ref({});
 const topicList = computed(() => {
