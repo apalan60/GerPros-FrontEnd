@@ -7,12 +7,12 @@
           <div class="prod-type">
             <div class="icon">
               <img
-                src="https://img.icons8.com/?size=100&id=gmNNZ8Tvt2bT&format=png&color=666666"
+                src="/image/icon-wood.webp"
                 alt="floor-icon"
                 class="floor-icon"
               >
             </div>
-            <h3 class="ceiling-title text-lg">磁磚</h3>
+            <h3 class="ceiling-title text-lg">ARTEO</h3>
           </div>
           <swiper-container
             class="swiper-container"
@@ -38,11 +38,11 @@
         <div class="wall">
           <div class="prod-type">
             <img
-              src="https://img.icons8.com/?size=100&id=aJW9bYLdUlk9&format=png&color=666666"
+              src="https://img.icons8.com/?size=100&id=h7tOIyNxrvf2&format=png&color=666666"
               alt="wall-icon"
               class="icon"
             >
-            <h3 class="wall-title text-lg">壁布</h3>
+            <h3 class="wall-title text-lg">ARTFlOOR</h3>
           </div>
           <swiper-container
             class="swiper-container"
@@ -67,11 +67,11 @@
         <div class="floor">
           <div class="prod-type">
             <img
-              src="https://img.icons8.com/?size=100&id=h7tOIyNxrvf2&format=png&color=666666"
+              src="/image/壁布ICON.webp"
               alt="ceiling-icon"
               class="icon"
             >
-            <h3 class="floor-title text-lg">地板</h3>
+            <h3 class="floor-title text-lg">壁布</h3>
           </div>
           <swiper-container
             class="swiper-container"
@@ -162,11 +162,11 @@
         <div class="wood-floor">
           <div class="prod-type prod-mobile">
               <img
-                src="/image/icon-wood.webp"
+                src="/image/壁畫icon.webp"
                 alt="ceiling-icon"
                 class="icon"
               >
-              <h3 class="floor-title text-lg">木地板</h3>
+              <h3 class="floor-title text-lg">壁畫</h3>
             </div>
           <swiper-container
             class="swiper-container"
@@ -188,8 +188,8 @@
             </swiper-slide>
           </swiper-container>
           <div class="prod-type prod-pc">
-            <img src="/image/icon-wood.webp" alt="ceiling-icon" class="icon" >
-            <h3 class="floor-title text-lg">木地板</h3>
+            <img src="/image/壁畫icon.webp" alt="ceiling-icon" class="icon" >
+            <h3 class="floor-title text-lg">壁畫</h3>
           </div>
         </div>
       </div>
