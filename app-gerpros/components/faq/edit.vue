@@ -142,14 +142,14 @@ function onUpdate() {
 }
 
 async function updateQA() {
-  const category = FAQList.value.find(
-    (item) => item.categoryName === selected.value,
-  );
+  //改為所有QA一次更新
   try {
-    await useApiFetch(`/FAQ/${category.id}`, {
-      method: 'PUT',
-      body: JSON.stringify(category),
-    });
+    for (const category of FAQList.value) {
+      await useApiFetch(`/FAQ/${category.id}`, {
+        method: 'PUT',
+        body: JSON.stringify(category),
+      });
+    }
   } catch (error) {
     throw new Error('更新QA失敗', error);
   }
