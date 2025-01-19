@@ -78,7 +78,7 @@
         <IconLogo/>
       </div>
       <div class="navbar-center hidden lg:flex">
-        <ul class="menu menu-horizontal px-1">
+        <ul class="menu menu-horizontal px-1 brand-series-container">
           <li
               v-for="link in links"
               :key="link.name"
@@ -188,5 +188,13 @@ async function goTo({pageNumber = 1, brand, series} = {}) {
 <style scoped>
 .navbar {
   z-index: 1000;
+}
+
+.brand-series-container li > ul {
+  display: none;
+}
+
+.brand-series-container li:hover > ul {
+  display: block;
 }
 </style>
