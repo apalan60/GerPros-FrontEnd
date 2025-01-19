@@ -1,18 +1,22 @@
 <template>
-  <div class="container introduction flex flex-col items-center md:flex-row md:items-start mt-10 w-full">
+  <div
+    class="container introduction flex flex-col items-center md:flex-row md:items-start mt-10 w-full"
+  >
     <div
-      class="title flex ms-2 items-center gap-4 md:gap-2 md:items-start md:flex-col md:ms-12 md:basis-1/5"
+      class="title flex flex-wrap ms-2 items-center gap-4 md:gap-2 md:items-start md:flex-col md:ms-12 md:basis-1/5 mb-5"
     >
-      <h2 class="service-title text-2xl font-bold mb-6">服務說明</h2>
-      <option
-        v-for="option in contactOptions"
-        :key="option.id"
-        class="option mb-4 contact-option"
-        :class="{ active: selectedOption === option.id }"
-        @click="handleOptionClick(option.id)"
-      >
-        {{ option.title }}
-      </option>
+      <h2 class="service-title text-2xl font-bold md:mb-4">服務說明</h2>
+      <div class="options flex md:flex-col gap-4 h-full">
+        <option
+          v-for="option in contactOptions"
+          :key="option.id"
+          class="option contact-option h-full flex items-center mt-1"
+          :class="{ active: selectedOption === option.id }"
+          @click="handleOptionClick(option.id)"
+        >
+          {{ option.title }}
+        </option>
+      </div>
     </div>
     <div
       class="content md:basis-2/5 m-2 mb-10 flex flex-col text-wrap items-center md:text-left md:mt-2"
