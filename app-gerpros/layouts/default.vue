@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="max-w-full m-0 p-0">
     <AppHeader />
     <div class="min-h-screen noto-sans-tc-font">
       <slot />

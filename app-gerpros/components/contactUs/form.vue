@@ -141,29 +141,33 @@
             <div class="label">
               <span class="label-text">通訊地址</span>
             </div>
-            <div class="flex gap-2">
+            <div class="flex gap-2 flex-wrap">
               <input
                 v-model="zipCode"
                 type="text"
-                class="input input-bordered w-1/5 bg-gray-200"
+                class="input input-bordered bg-gray-200 w-[115px] text-gray-500"
+                placeholder="郵遞區號"
                 readonly
               >
-              <select v-model="country" class="select select-bordered">
-                <option disabled selected>選擇縣市</option>
-                <option v-for="option in countryOption" :key="option">
-                  {{ option }}
-                </option>
-              </select>
-              <select v-model="area" class="select select-bordered">
-                <option disabled selected>選擇區域</option>
-                <option v-for="option in areaOption" :key="option">
-                  {{ option }}
-                </option>
-              </select>
+              <div class="flex gap-2">
+                <select v-model="country" class="select select-bordered">
+                  <option disabled selected>選擇縣市</option>
+                  <option v-for="option in countryOption" :key="option">
+                    {{ option }}
+                  </option>
+                </select>
+                <select v-model="area" class="select select-bordered">
+                  <option disabled selected>選擇區域</option>
+                  <option v-for="option in areaOption" :key="option">
+                    {{ option }}
+                  </option>
+                </select>
+              </div>
               <input
                 v-model="address"
                 type="text"
                 class="input input-bordered w-full"
+                placeholder="請輸入地址"
               >
             </div>
           </label>
@@ -197,7 +201,7 @@
                 v-for="(option, index) in knowMethodOption"
                 :key="index"
               >
-                <div class="flex items-center gap-2 ">
+                <div class="flex items-center gap-2">
                   <input
                     :id="index"
                     v-model="knowMethod"
@@ -283,18 +287,20 @@
         </div>
         <button class="btn btn-outline w-full">送出</button>
       </form>
-      <div v-show="errorMessages" class="text-red-500"><p>{{ errorMessages }}</p></div>
+      <div v-show="errorMessages" class="text-red-500">
+        <p>{{ errorMessages }}</p>
+      </div>
     </div>
   </div>
   <dialog id="dialog" class="modal">
-  <div class="modal-box">
-    <h3 class="text-lg font-bold">完成送出！</h3>
-    <p class="py-4">感謝您的填寫，我們將儘速與您聯繫。</p>
-  </div>
-  <form method="dialog" class="modal-backdrop">
-    <button>close</button>
-  </form>
-</dialog>
+    <div class="modal-box">
+      <h3 class="text-lg font-bold">完成送出！</h3>
+      <p class="py-4">感謝您的填寫，我們將儘速與您聯繫。</p>
+    </div>
+    <form method="dialog" class="modal-backdrop">
+      <button>close</button>
+    </form>
+  </dialog>
 </template>
 
 <script setup>
@@ -379,7 +385,9 @@ async function submitForm() {
     Comment: comment.value,
   };
 
-  const formFiles = Object.values(files.value).filter((value) => value instanceof File);
+  const formFiles = Object.values(files.value).filter(
+    (value) => value instanceof File,
+  );
 
   const formData = new FormData();
   Object.entries(payload).forEach(([key, value]) => {
@@ -388,19 +396,17 @@ async function submitForm() {
   formFiles.forEach((file) => {
     formData.append('files', file);
   });
-  
+
   try {
     await useApiFetch('/ContactForm/Send', {
       method: 'POST',
       body: formData,
     });
     dialog.showModal();
-    
   } catch (error) {
     console.error(error);
     errorMessages.value = '發生錯誤，請檢查您的資料是否完整';
   }
-
 }
 </script>
 

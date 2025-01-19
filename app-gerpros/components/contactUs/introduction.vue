@@ -1,9 +1,9 @@
 <template>
-  <div class="container introduction flex mt-10">
-    <div class="ms-12 title basis-1/5">
-      <h2 class="service-title text-2xl font-bold mb-6">
-        服務說明
-      </h2>
+  <div class="container introduction flex flex-col items-center md:flex-row md:items-start mt-10 w-full">
+    <div
+      class="title flex ms-2 items-center gap-4 md:gap-2 md:items-start md:flex-col md:ms-12 md:basis-1/5"
+    >
+      <h2 class="service-title text-2xl font-bold mb-6">服務說明</h2>
       <option
         v-for="option in contactOptions"
         :key="option.id"
@@ -14,40 +14,39 @@
         {{ option.title }}
       </option>
     </div>
-    <div class="content basis-2/5 p-4 flex flex-col items-center">
-      <div>
-        <h3 class="text-xl mb-5 font-semibold">
-          {{ contactOption.title }}
-        </h3>
-        <p class="mb-5">
-          {{ contactOption.detail }}
-        </p>
-        <p class="mb-10">
-          {{ contactOption.time }}
-        </p>
-        <div
-          v-if="contactOption.others"
-          class="bg-gray-200 p-2 rounded-md text-sm tracking-wide mb-5"
-        >
-          <span>{{ contactOption.others }}</span>
-        </div>
-        <button
-          class="btn btn-wide btn-error"
-          @click="clickReserve"
-        >
-          👉 立即預約
-        </button>
+    <div
+      class="content md:basis-2/5 m-2 mb-10 flex flex-col text-wrap items-center md:text-left md:mt-2"
+    >
+      <h3 class="text-xl mb-5 font-semibold">
+        {{ contactOption.title }}
+      </h3>
+      <p class="mb-5">
+        {{ contactOption.detail }}
+      </p>
+      <p class="mb-5">
+        {{ contactOption.time }}
+      </p>
+      <div
+        v-if="contactOption.others"
+        class="bg-gray-200 p-2 rounded-md text-sm tracking-wide mb-5"
+      >
+        <span>{{ contactOption.others }}</span>
       </div>
+      <button class="btn btn-wide btn-error" @click="clickReserve">
+        👉 立即預約
+      </button>
     </div>
-    <div class="image-mask basis-2/5 items-center content-center">
+    <div
+      class="relative items-center content-center hidden md:flex md:basis-2/5 md:h-full"
+    >
       <img
-        class="image-object hidden sm:block"
+        class="image-object"
         loading="lazy"
         :src="contactOption.image"
         :alt="contactOption.title"
         :class="[`image-${contactOption.id}`, `image-contact`]"
       >
-      <div class="image-title hidden sm:block">
+      <div class="image-title">
         <h3 class="text-xl mb-2">
           {{ contactOption.title }}
         </h3>
@@ -100,10 +99,6 @@ function clickReserve() {
 <style scoped>
 .introduction {
   display: flex;
-}
-.image-mask {
-  position: relative;
-  display: inline-block;
 }
 .image-staff {
   transform: scaleX(-1);
