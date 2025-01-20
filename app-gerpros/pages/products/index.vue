@@ -15,7 +15,7 @@
         </ul>
       </div>
       <div
-        class="productions-wrapper grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-10 mx-16"
+        class="productions-wrapper grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-10 mx-16"
       >
         <ProductCard
           v-for="product in productionsItems"
@@ -26,7 +26,7 @@
         />
       </div>
       <Pagination
-        class="mt-8"
+        class="mt-8 mb-8"
         :total-pages="productionsTotalPages"
         @go-to-page="goToPage"
       />
