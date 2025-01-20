@@ -18,7 +18,7 @@
         </ul>
       </div>
       <div
-        class="productions-wrapper grid grid-cols-1 md:grid-cols-3 lg:grid-cols-2 gap-10 mx-16"
+        class="productions-wrapper grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-10 mx-16"
       >
         <ProductCard
           v-for="product in productionsItems"

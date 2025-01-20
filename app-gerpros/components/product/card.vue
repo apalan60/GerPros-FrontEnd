@@ -3,13 +3,12 @@
     <NuxtLink
       :to="{ name: linkName, params: { id: production?.id ?? 0 } }"
     >
-      <figure class="cursor-pointer">
+      <figure class="cursor-pointer h-72 ">
         <img
-          :src="production?.image"
+          :src="production?.image?? 'image'"
           :alt="production?.title"
         >
       </figure>
-    </NuxtLink>
     <div class="card-body">
       <h2 class="card-title cursor-pointer">
         {{ production?.name }}
@@ -31,6 +30,7 @@
         </div>
       </div>
     </div>
+    </NuxtLink>
   </div>
 </template>
 
@@ -40,7 +40,6 @@ const emit = defineEmits(['search-brand', 'search-series']);
 const attrs = useAttrs();
 const isManager = computed(() => attrs.isManager);
 const linkName = computed(() => isManager.value ? 'manager-products-id' : 'products-id');
-console.log('linkName', linkName.value);
 function searchBrand() {
   emit('search-brand', production.brandName);
 }
