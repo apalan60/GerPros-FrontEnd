@@ -7,7 +7,7 @@
           <div class="prod-type">
             <div class="icon">
               <img
-                src="/image/icon-wood.webp"
+                src="/image/SoleAgent/人字型icon.png"
                 alt="floor-icon"
                 class="floor-icon"
               >
@@ -38,7 +38,7 @@
         <div class="wall">
           <div class="prod-type">
             <img
-              src="https://img.icons8.com/?size=100&id=h7tOIyNxrvf2&format=png&color=666666"
+              src="/image/SoleAgent/木地板ICON.png"
               alt="wall-icon"
               class="icon"
             >
