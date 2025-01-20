@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="text-center">
+    <div class="text-center mt-44">
       <h2 class="text-xl font-bold tracking-widest">
         代理品牌
       </h2>
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <div class="text-center mt-28">
+    <div class="text-center mt-44">
       <h2 class="text-xl font-bold tracking-widest">
         合作品牌
       </h2>

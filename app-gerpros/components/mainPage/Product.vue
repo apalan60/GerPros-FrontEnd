@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="container mx-auto text-center">
+    <div class="container mx-auto text-center mt-44 mb-44">
       <h2 class="text-xl font-bold mb-4">注目產品</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
         <div class="ceiling">

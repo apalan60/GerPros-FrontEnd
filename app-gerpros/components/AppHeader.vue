@@ -123,7 +123,7 @@
           </li>
         </ul>
       </div>
-      <div class="navbar-end grid grid-flow-col gap-4 pt-2">
+      <div class="navbar-end grid grid-flow-col gap-4 pt-2 pr-8">
         <IconInstagram/>
         <IconLine/>
         <IconFacebook/>
