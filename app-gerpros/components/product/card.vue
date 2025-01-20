@@ -9,6 +9,7 @@
           :alt="production?.title"
         >
       </figure>
+    </NuxtLink>
     <div class="card-body">
       <h2 class="card-title cursor-pointer">
         {{ production?.name }}
@@ -30,7 +31,6 @@
         </div>
       </div>
     </div>
-    </NuxtLink>
   </div>
 </template>
 
