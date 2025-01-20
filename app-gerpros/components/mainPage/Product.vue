@@ -1,13 +1,13 @@
 <template>
   <section>
-    <div class="container mx-auto text-center">
+    <div class="container mx-auto text-center mt-44 mb-44">
       <h2 class="text-xl font-bold mb-4">注目產品</h2>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
         <div class="ceiling">
           <div class="prod-type">
             <div class="icon">
               <img
-                src="/image/icon-wood.webp"
+                src="/image/SoleAgent/人字型icon.png"
                 alt="floor-icon"
                 class="floor-icon"
               >
@@ -38,7 +38,7 @@
         <div class="wall">
           <div class="prod-type">
             <img
-              src="https://img.icons8.com/?size=100&id=h7tOIyNxrvf2&format=png&color=666666"
+              src="/image/SoleAgent/木地板ICON.png"
               alt="wall-icon"
               class="icon"
             >

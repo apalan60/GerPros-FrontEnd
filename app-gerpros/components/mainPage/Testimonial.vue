@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="max-w-6xl mx-auto pt-10 text-center relative">
+    <div class="max-w-6xl mx-auto pt-10 text-center relative mt-44">
       <h2 class="text-xl font-bold relative z-50">客戶回饋</h2>
       <div class="background absolute"/>
       <div class="mt-10 h-[200px]" >

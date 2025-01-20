@@ -21,10 +21,10 @@ register();
         <img src="/image/logo.webp" alt="" width="500" class="full-content" >
       </div>
     </div>
-    <div class="mb-20">
+    <div class="mt-32 mb-32">
       <MainPageService />
     </div>
-    <div class="mb-20">
+    <div class="mt-32 mb-32">
       <MainPageTestimonial />
     </div>
     <div class="mb-20">

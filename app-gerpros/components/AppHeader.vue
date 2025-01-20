@@ -54,16 +54,16 @@
                   </nuxt-link>
                 </li>
                 <li
-                  v-for="brand in brandsList"
-                  :key="brand.name"
+                    v-for="brand in brandsList"
+                    :key="brand.name"
                 >
                   <a @click.prevent="toggleBrand(brand.name)">
                     {{ brand.name }}
                   </a>
                   <ul v-if="expandedBrands[brand.name]">
                     <li
-                      v-for="s in brand.series"
-                      :key="s.name"
+                        v-for="s in brand.series"
+                        :key="s.name"
                     >
                       <a @click="goTo({ brand: brand.name, series: s.name })">
                         {{ s.name }}
@@ -98,7 +98,7 @@
               <li>
                 <nuxt-link to="/products"
                            class="hover:bg-transparent hover:text-accent focus:text-accent focus:bg-transparent">
-                  所有產品 
+                  所有產品
                 </nuxt-link>
               </li>
               <li
@@ -123,12 +123,16 @@
           </li>
         </ul>
       </div>
-
-      <div class="navbar-end">
-        <button class="btn btn-ghost btn-circle">
-          <ThemeToggle/>
-        </button>
+      <div class="navbar-end grid grid-flow-col gap-4 pt-2 pr-8">
+        <IconInstagram/>
+        <IconLine/>
+        <IconFacebook/>
       </div>
+      <!--      <div class="navbar-end">-->
+      <!--        <button class="btn btn-ghost btn-circle">-->
+      <!--          <ThemeToggle/>-->
+      <!--        </button>-->
+      <!--      </div>-->
     </div>
   </div>
 </template>

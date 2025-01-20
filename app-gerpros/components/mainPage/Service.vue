@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="container mx-auto text-center">
+    <div class="container mx-auto text-center mt-44">
       <h2 class="text-xl font-extrabold">
         從磁磚到地板，給您最好的品質
       </h2>
