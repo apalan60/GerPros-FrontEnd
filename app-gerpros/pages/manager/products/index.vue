@@ -1,11 +1,11 @@
 <template>
   <NuxtLayout
-    name="product"
-    :isManager="true"
+      name="product"
+      :isManager="true"
   >
     <template #content>
       <div
-        class="breadcrumbs w-full pl-10 mb-8 flex justify-start border-b border-solid border-base-200"
+          class="breadcrumbs w-full pl-10 mb-8 flex justify-start border-b border-solid border-base-200"
       >
         <ul>
           <li><a @click="goTo()">所有產品</a></li>
@@ -18,29 +18,30 @@
         </ul>
       </div>
       <div
-        class="productions-wrapper grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-10 mx-16"
+          class="productions-wrapper grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-10 mx-16"
       >
         <ProductCard
-          v-for="product in productionsItems"
-          :key="product.name"
-          :production="product"
-          :isManager="true"
-          @search-brand="searchBrand"
-          @search-series="searchSeries"
+            v-for="product in productionsItems"
+            :key="product.name"
+            :production="product"
+            :isManager="true"
+            @search-brand="searchBrand"
+            @search-series="searchSeries"
         />
       </div>
-      <add-product @reloadData="fetchData"/>
-      <ProductPagination
-        class="mt-8"
-        :total-pages="productionsTotalPages"
-        @go-to-page="goToPage"
+      <Pagination
+          class="mt-8 mb-8"
+          :total-pages="productionsTotalPages"
+          @go-to-page="goToPage"
       />
+      <add-product @reloadData="fetchData"/>
     </template>
+
   </NuxtLayout>
 </template>
 
 <script setup>
-import { TEST_PRODUCTIONS_LIST } from '~/constants';
+import {TEST_PRODUCTIONS_LIST} from '~/constants';
 import AddProduct from '~/pages/manager/products/add-product.vue';
 
 definePageMeta({
@@ -68,11 +69,11 @@ const searchedBrand = computed(() => route.query.Brand);
 const searchedSeries = computed(() => route.query.Series);
 
 function searchBrand(brand) {
-  goTo({ brand });
+  goTo({brand});
 }
 
-function searchSeries({ brand, series }) {
-  goTo({ brand, series });
+function searchSeries({brand, series}) {
+  goTo({brand, series});
 }
 
 async function fetchData() {
@@ -93,8 +94,7 @@ async function fetchData() {
     if (data) {
       productionsRawData.value = data;
     }
-  }
-  catch (error) {
+  } catch (error) {
     productionsRawData.value = TEST_PRODUCTIONS_LIST;
     console.error('無法獲取產品資料', error);
   }
@@ -110,10 +110,10 @@ async function goToPage(pageNumber) {
 }
 
 async function goToCurrentBrand() {
-  await goTo({ brand: searchedBrand.value });
+  await goTo({brand: searchedBrand.value});
 }
 
-async function goTo({ pageNumber = 1, brand, series } = {}) {
+async function goTo({pageNumber = 1, brand, series} = {}) {
   await navigateTo({
     path: '/manager/products',
     query: {
@@ -125,11 +125,11 @@ async function goTo({ pageNumber = 1, brand, series } = {}) {
 }
 
 watch(
-  () => route.query,
-  () => {
-    fetchData();
-  },
-  { immediate: true },
+    () => route.query,
+    () => {
+      fetchData();
+    },
+    {immediate: true},
 );
 </script>
 
