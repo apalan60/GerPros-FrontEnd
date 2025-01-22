@@ -27,10 +27,12 @@ register();
     <div class="mt-32 mb-32">
       <MainPageTestimonial />
     </div>
-    <div class="mb-20">
+    <div>
       <MainPageProduct />
     </div>
-    <div />
+    <div class="mb-32">
+      <MainPageCase />
+    </div>
   </div>
 </template>
 
