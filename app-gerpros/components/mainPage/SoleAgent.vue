@@ -24,10 +24,7 @@
       </div>
     </div>
 
-    <div class="text-center mt-44">
-      <h2 class="text-xl font-bold tracking-widest">
-        合作品牌
-      </h2>
+    <div class="text-center mt-14">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-0 max-w-6xl mx-auto justify-center">
         <div
             v-for="brand in partnerBrands"
