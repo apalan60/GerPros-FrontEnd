@@ -32,7 +32,7 @@
       </p>
       <div
         v-if="contactOption.others"
-        class="bg-gray-200 p-2 rounded-md text-sm tracking-wide mb-5"
+        class=" p-2 rounded-md text-sm tracking-wide mb-5 mt-5"
       >
         <span>{{ contactOption.others }}</span>
       </div>
