@@ -62,9 +62,9 @@ const agencyBrands = reactive([
     intro: '德國進口超耐磨木地板',
   },
   {
-    name: 'Zambaiti Parati',
+    name: 'Kronospan',
     image:
-        'image/SoleAgent/zambaiti-logo.png',
+        'image/SoleAgent/kronospan-Logo.png',
     intro: '義大利進口壁布',
   },
   {
@@ -85,19 +85,19 @@ const partnerBrands = reactive([
   {
     name: 'ELIE SAAB',
     image:
-        'image/SoleAgent/ElieSaab.png',
+        'image/SoleAgent/eliee_saab.png',
     intro: '義大利進口壁布 華麗極致',
   },
   {
     name: 'Philipp Plein',
     image:
-        'https://img1.wsimg.com/isteam/ip/e901cef4-3288-4b61-82d3-73973b1db24d/phillip-plein-logo-01.png/:/cr=t:0%25,l:0%25,w:100%25,h:100%25/rs=w:730,h:730,cg:true',
+        'image/SoleAgent/philipp_plein.png',
     intro: '義大利進口壁布 個性奢華',
   },
   {
     name: 'Trussardi',
     image:
-        'image/SoleAgent/Trussardi-Logo.png',
+        'image/SoleAgent/trussardi.png',
     intro: '義大利進口壁布 現代格調',
   }
 ]);

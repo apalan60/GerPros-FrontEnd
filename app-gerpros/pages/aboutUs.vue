@@ -17,14 +17,14 @@
         </div>
       </div>
       <div
-        class="title font-bold gap-2"
+        class="title gap-2"
         :class="{ 'text-xl': !isStory }"
       >
         <h2
           v-for="(title, index) in contentData[selectedOption].title"
           :key="index"
         >
-          {{ title }}
+          <strong>德藝緻股份有限公司</strong>{{ title }}
         </h2>
       </div>
       <div class="line" />
@@ -70,15 +70,9 @@ const options = [
 const contentData = {
   story: {
     title: [
-      '德藝緻股份有限公司是',
-      '歐盟集團 - Cersanit S.A. 和土耳其進口超耐磨地板 Art Floor',
-      '在台灣的總代理公司。',
+     '專注於引進國際高端建材品牌，致力於將世界頂級的設計與工藝引入台灣市場。我們代理多個歐系知名品牌，產品涵蓋ArtFloor、Arteo、Kronospan超耐磨木地板，ELIE SAAB、Philipp Plein、Trussardi義大利進口壁布及壁畫，Cersanit歐洲進口衛浴瓷器與磁磚以及Pino歐系廚具，為顧客提供兼具美感與實用性的空間設計解決方案。',
     ],
     content: [
-      '德藝緻股份有限公司專注於引進國際高端建材品牌，致力於將世界頂級的設計與工藝引入台灣市場。我們代理多個歐系知名品牌，產品涵蓋ArtFloor、Arteo、Kronospan超耐磨木地板，ELIE SAAB、Philipp Plein、Trussardi義大利進口壁布及壁畫，Cersanit歐洲進口衛浴瓷器與磁磚以及Pino歐系廚具，為顧客提供兼具美感與實用性的空間設計解決方案。',
-      '',
-      '',
-      '',
       '我們始終堅持品質至上的原則，所代理的產品皆通過嚴格的品質控管，確保每一件商品無論是材質、功能還是環保性，都符合國際標準與消費者的高期待。不論是展現藝術品味的壁布、耐用且質感卓越的木地板，或是結合創新與實用的歐系廚具，德藝緻全方位滿足現代空間的多元需求。',
     ],
   },
