@@ -64,7 +64,7 @@ const agencyBrands = reactive([
   {
     name: 'Kronospan',
     image:
-        'image/SoleAgent/kronospan-Logo.png',
+        'image/SoleAgent/Kronospan-Logo.png',
     intro: '義大利進口壁布',
   },
   {
