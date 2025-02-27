@@ -65,7 +65,7 @@ const agencyBrands = reactive([
     name: 'Kronospan',
     image:
         'image/SoleAgent/Kronospan-Logo.png',
-    intro: '義大利進口壁布',
+    intro: '奧地利進口超耐磨木地板',
   },
   {
     name: 'Pino',
