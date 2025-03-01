@@ -22,10 +22,10 @@
             loop="true"
           >
             <swiper-slide
-              v-for="product in prodTile"
-              :key="product.name"
-              class="slide slide-top slide-ceiling"
-              @click="goTo({ id: product.id })"
+                v-for="product in prodARTEO"
+                :key="product.name"
+                class="slide slide-top slide-ceiling"
+                @click="goTo({ id: product.id })"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -52,10 +52,10 @@
             loop="true"
           >
             <swiper-slide
-              v-for="product in prodWall"
-              :key="product.name"
-              class="slide slide-top slide-wall"
-              @click="goTo({ id: product.id })"
+                v-for="product in prodARTFLOOR"
+                :key="product.name"
+                class="slide slide-top slide-wall"
+                @click="goTo({ id: product.id })"
             >
               <img :src="product.image" alt="product" >
               <div class="title">
@@ -79,9 +79,9 @@
             pagination="true"
             autoplay-delay="3000"
             loop="true"
-          >
-            <swiper-slide
-              v-for="product in prodFloor"
+        >
+          <swiper-slide
+              v-for="product in prodWallpaper"
               :key="product.name"
               class="slide slide-top slide-floor"
               @click="goTo({ id: product.id })"
@@ -104,27 +104,27 @@
             pagination="true"
             autoplay-delay="3000"
             loop="true"
-          >
-            <swiper-slide
-              v-for="product in prodCook"
+        >
+          <swiper-slide
+              v-for="product in prodKitchen"
               :key="product.name"
               class="slide slide-down slide-cook"
               @click="goTo({ id: product.id })"
-            >
-              <img :src="product.image" alt="product" >
-              <div class="title">
-                {{ product.name }}
-              </div>
-            </swiper-slide>
-          </swiper-container>
-          <div class="prod-type prod-pc">
-            <img src="/image/icon-cook.webp" alt="ceiling-icon" class="icon" >
-            <h3 class="floor-title text-lg">廚具</h3>
-          </div>
+          >
+            <img :src="product.image" alt="product">
+            <div class="title">
+              {{ product.name }}
+            </div>
+          </swiper-slide>
+        </swiper-container>
+        <div class="prod-type prod-pc">
+          <img src="/image/icon-cook.webp" alt="ceiling-icon" class="icon">
+          <h3 class="floor-title text-lg">廚具</h3>
         </div>
-        <div class="system">
-          <div class="prod-type prod-mobile">
-            <img
+      </div>
+      <div class="system">
+        <div class="prod-type prod-mobile">
+          <img
               src="/image/icon-system.webp"
               alt="ceiling-icon"
               class="icon"
@@ -174,9 +174,9 @@
             pagination="true"
             autoplay-delay="3000"
             loop="true"
-          >
-            <swiper-slide
-              v-for="product in prodWood"
+        >
+          <swiper-slide
+              v-for="product in prodPainting"
               :key="product.name"
               class="slide slide-down slide-wood"
               @click="goTo({ id: product.id })"
@@ -199,54 +199,62 @@
 
 <!-- eslint-disable @stylistic/arrow-parens -->
 <script setup>
-import { register } from 'swiper/element/bundle';
+import {register} from 'swiper/element/bundle';
 import 'swiper/swiper-bundle.css';
+import {onBeforeMount, ref} from 'vue';
 
 register();
 
-const productionsRawData = ref({});
-const productionsItems = computed(() => {
-  const productions = productionsRawData.value.items;
-  return productions ?? [];
-});
-const prodTile = computed(() => {
-  return productionsItems.value.slice(0, 2);
-});
-const prodWall = computed(() => {
-  return productionsItems.value.slice(2, 4);
-});
-const prodFloor = computed(() => {
-  return productionsItems.value.slice(4, 6);
-});
-const prodCook = computed(() => {
-  // return productionsItems.value.slice(6, 8);
-  return productionsItems.value.slice(1, 3);
-});
-const prodSystem = computed(() => {
-  // return productionsItems.value.slice(8, 10);
-  return productionsItems.value.slice(3, 5);
-});
-const prodWood = computed(() => {
-  // return productionsItems.value.slice(10, 12);
-  return productionsItems.value.slice(4, 6);
-});
+/**
+ * Get value from GetProductItems
+ */
+const prodARTEO = ref([]);
+const prodARTFLOOR = ref([]);
+const prodWallpaper = ref([]);
+const prodKitchen = ref([]);
+const prodSystem = ref([]);
+const prodPainting = ref([]);
 
-async function fetchData() {
+async function GetProductItems({Brand, Series, PageSize = 3} = {}) {
   const params = {
-    PageSize: 12, // 固定參數
+    PageNumber: 1,
+    PageSize
   };
+
+  if (Brand) {
+    params.Brand = Brand;
+  }
+
+  if (Series) {
+    params.Series = Series;
+  }
+
   params.PageNumber = 1;
   try {
-    const data = await useApiFetch('/ProductItems', {
+    console.log('GetProductItems', params);
+    return await useApiFetch('/ProductItems', {
       params,
     });
-    if (data) {
-      productionsRawData.value = data;
-    }
   } catch (error) {
-    productionsRawData.value = TEST_PRODUCTIONS_LIST;
     console.error('無法獲取產品資料', error);
+    return {items: []}
   }
+}
+
+async function fetchProducts() {
+  prodARTEO.value    = (await GetProductItems({ Brand: 'ARTEO' })).items || [];
+  prodARTFLOOR.value = (await GetProductItems({ Brand: 'Artfloor' })).items || [];
+  prodWallpaper.value     = (await GetProductItems({ Series: '壁布' })).items || [];
+  prodKitchen.value     = (await GetProductItems({ Series: '廚具' })).items || [];
+  prodSystem.value = (await GetProductItems({ Series: '廚具' })).items || []; // 系統板材暫時沒資料，先以廚具取代
+  prodPainting.value     = (await GetProductItems({ Series: '壁畫' })).items || [];
+  
+  console.log('prodARTEO', prodARTEO);
+  console.log('prodARTFLOOR', prodARTFLOOR.value);
+  console.log('prodWallpaper', prodWallpaper.value);
+  console.log('prodKitchen', prodKitchen.value);
+  console.log('prodSystem', prodSystem.value);
+  console.log('prodPainting', prodPainting.value);
 }
 
 async function goTo({id} = {}) {
@@ -257,7 +265,7 @@ async function goTo({id} = {}) {
 
 
 onBeforeMount(async () => {
-  await fetchData();
+  await fetchProducts();
 });
 </script>
 
