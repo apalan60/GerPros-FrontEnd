@@ -231,7 +231,6 @@ async function GetProductItems({Brand, Series, PageSize = 3} = {}) {
 
   params.PageNumber = 1;
   try {
-    console.log('GetProductItems', params);
     return await useApiFetch('/ProductItems', {
       params,
     });
@@ -242,19 +241,32 @@ async function GetProductItems({Brand, Series, PageSize = 3} = {}) {
 }
 
 async function fetchProducts() {
-  prodARTEO.value    = (await GetProductItems({ Brand: 'ARTEO' })).items || [];
-  prodARTFLOOR.value = (await GetProductItems({ Brand: 'Artfloor' })).items || [];
-  prodWallpaper.value     = (await GetProductItems({ Series: '壁布' })).items || [];
-  prodKitchen.value     = (await GetProductItems({ Series: '廚具' })).items || [];
-  prodSystem.value = (await GetProductItems({ Series: '廚具' })).items || []; // 系統板材暫時沒資料，先以廚具取代
-  prodPainting.value     = (await GetProductItems({ Series: '壁畫' })).items || [];
-  
-  console.log('prodARTEO', prodARTEO);
-  console.log('prodARTFLOOR', prodARTFLOOR.value);
-  console.log('prodWallpaper', prodWallpaper.value);
-  console.log('prodKitchen', prodKitchen.value);
-  console.log('prodSystem', prodSystem.value);
-  console.log('prodPainting', prodPainting.value);
+  try {
+    const [
+        arteoRes,
+        artfloorRes,
+        wallpaperRes,
+        kitchenRes,
+        systemRes,
+        paintingRes
+    ] = await Promise.all([
+        GetProductItems({ Brand: 'ARTEO' }),
+        GetProductItems({ Brand: 'Artfloor' }),
+        GetProductItems({ Series: '壁布' }),
+        GetProductItems({ Series: '廚具' }), 
+        GetProductItems({ Series: '廚具' }), // 系統板材暫時沒資料，先以廚具取代
+        GetProductItems({ Series: '壁畫' }),
+    ]);
+    
+    prodARTEO.value = arteoRes.items;
+    prodARTFLOOR.value = artfloorRes.items;
+    prodWallpaper.value = wallpaperRes.items;
+    prodKitchen.value = kitchenRes.items;
+    prodSystem.value = systemRes.items;
+    prodPainting.value = paintingRes.items;
+  } catch (error) {
+    console.error('無法獲取產品資料', error);
+  }
 }
 
 async function goTo({id} = {}) {
