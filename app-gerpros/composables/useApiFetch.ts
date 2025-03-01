@@ -27,19 +27,41 @@ export async function useApiFetch<T>(url: string, options: any = {}) {
   const auth = useAuthStore();
   const config = useRuntimeConfig();
 
-  if (auth.isLoggedIn.value && auth.shouldRefresh.value) {
-    await refreshTokens();
-  }
+  const attemptFetch = async () => {
+    if (auth.isLoggedIn.value) {
+      options.headers = {
+        ...(options.headers || {}),
+        Authorization: `${auth.tokenType.value} ${auth.accessToken.value}`,
+      };
+    }
+    return $fetch<T>(url, {
+      baseURL: config.public.apiBase,
+      ...options,
+    });
+  };
 
-  if (auth.isLoggedIn.value) {
-    options.headers = {
-      ...(options.headers || {}),
-      Authorization: `${auth.tokenType.value} ${auth.accessToken.value}`,
-    };
+  try {
+    if (auth.isLoggedIn.value && auth.shouldRefresh.value) {
+      await refreshTokens();
+    }
+    return await attemptFetch();
   }
-
-  return $fetch<T>(url, {
-    baseURL: config.public.apiBase,
-    ...options,
-  });
+  catch (e: any) {
+    if (e.response?.status === 401) {
+      try {
+        await refreshTokens();
+        return await attemptFetch();
+      }
+      catch (e2: any) {
+        if (e2.response?.status === 401) {
+          alert('您的登入狀態已過期，請重新登入。');
+        }
+        auth.clearTokens();
+        navigateTo('/manager');
+        throw e2;
+      }
+    }
+    throw e;
+  }
+  
 }
