@@ -24,7 +24,7 @@
           v-for="(title, index) in contentData[selectedOption].title"
           :key="index"
         >
-          <strong>德藝緻股份有限公司</strong>{{ title }}
+          <template v-if="isStory"><strong>德藝緻股份有限公司</strong></template>{{ title }}
         </h2>
       </div>
       <div class="line" />
